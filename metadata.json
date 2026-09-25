@@ -1,0 +1,6 @@
+{
+  "name": "MyGlucoGuide - Pakistan Diabetes Education & Glucose Awareness",
+  "description": "Simple, practical diabetes education, glucose pattern awareness, and Continuous Glucose Monitoring (CGM) insights for individuals and families across Pakistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
