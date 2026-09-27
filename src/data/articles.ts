@@ -59,7 +59,7 @@ export const ARTICLES: Article[] = [
     summary: 'An objective look at how Continuous Glucose Monitors and conventional blood glucose meters function, their physiological differences, and their roles in diabetes care.',
     date: 'Sep 15, 2026',
     readTime: '7 min read',
-    imageUrl: '/assets/images/cgm_sensor_device_smart_1790358083075.webp',
+    imageUrl: '/assets/images/cgm_upper_arm_sensor_1790517820663.webp',
     keyTakeaways: [
       'Blood glucose meters sample capillary whole blood to deliver a single point-in-time measurement.',
       'Continuous Glucose Monitors (CGM) sample interstitial fluid beneath the skin to record readings and directional trend arrows throughout the day.',
@@ -84,6 +84,7 @@ export const ARTICLES: Article[] = [
     summary: 'An educational overview of how sustained blood glucose levels can affect retinal micro-vessels, and why annual dilated eye exams are recommended.',
     date: 'Sep 12, 2026',
     readTime: '5 min read',
+    imageUrl: '/assets/images/hero_pakistani_glucose_app_1790358065352.webp',
     keyTakeaways: [
       'Prolonged elevated glucose can affect small blood vessels in the retina (diabetic retinopathy).',
       'Early changes in the retina may not cause noticeable visual symptoms initially.',
@@ -131,6 +132,7 @@ export const ARTICLES: Article[] = [
     summary: 'Moving beyond single numbers to understand glucose variability, daily circadian rhythms, and standard reference ranges.',
     date: 'Sep 02, 2026',
     readTime: '6 min read',
+    imageUrl: '/assets/images/cgm_upper_arm_sensor_1790517820663.webp',
     keyTakeaways: [
       '70–180 mg/dL is a commonly used Time in Range reference for many people with diabetes. Individual targets may vary. Discuss your glucose targets with your healthcare professional.',
       'Glucose variability describes the magnitude of fluctuations throughout the day.',
@@ -154,6 +156,7 @@ export const ARTICLES: Article[] = [
     summary: 'Separating evidence-based health information from unverified local remedies and misconceptions.',
     date: 'Aug 28, 2026',
     readTime: '5 min read',
+    imageUrl: '/assets/images/pakistani_healthy_diet_plate_1790358112322.webp',
     keyTakeaways: [
       'There is no scientifically verified miracle cure for diabetes; effective care relies on personalized lifestyle and medical management.',
       'Insulin is a vital physiological hormone and prescribed therapy when recommended by a doctor, not a punishment.',
@@ -177,6 +180,7 @@ export const ARTICLES: Article[] = [
     summary: 'Educational guidelines from international medical alliances on pre-fasting medical assessments and glucose monitoring.',
     date: 'Aug 20, 2026',
     readTime: '6 min read',
+    imageUrl: '/assets/images/about_pakistani_family_health_1790358098847.webp',
     keyTakeaways: [
       'Medical consensus and Islamic scholars emphasize that individuals at medical risk should consult their doctor regarding fasting exemptions.',
       'A pre-Ramadan medical assessment 4–6 weeks prior allows doctors to review risk categories and adjust regimens if appropriate.',
