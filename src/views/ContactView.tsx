@@ -33,7 +33,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
   const validate = () => {
     const errs: Partial<Record<keyof ContactFormData, string>> = {};
     if (!formData.name.trim()) errs.name = 'Please provide your name';
-    if (!formData.email.trim() || !formData.email.includes('@')) {
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       errs.email = 'Please provide a valid email address';
     }
     if (!formData.message.trim() || formData.message.length < 10) {
@@ -231,49 +231,59 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 {/* Name */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     Your Name *
                   </label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
                     required
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? "contact-name-error" : undefined}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Tariq Mehmood"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
                   />
                   {errors.name && (
-                    <p className="text-xs text-red-600 mt-1">{errors.name}</p>
+                    <p id="contact-name-error" className="text-xs text-red-600 mt-1">{errors.name}</p>
                   )}
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     Email Address *
                   </label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
                     required
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-600 mt-1">{errors.email}</p>
+                    <p id="contact-email-error" className="text-xs text-red-600 mt-1">{errors.email}</p>
                   )}
                 </div>
 
                 {/* Phone / WhatsApp (Optional) */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-phone" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     Phone / WhatsApp Number <span className="text-slate-400 font-normal">(Optional)</span>
                   </label>
                   <input
+                    id="contact-phone"
+                    name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -284,10 +294,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
                 {/* Topic */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-topic" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     Inquiry Topic
                   </label>
                   <select
+                    id="contact-topic"
+                    name="topic"
                     value={formData.topic}
                     onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
@@ -301,11 +313,15 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                     Message *
                   </label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     required
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? "contact-message-error" : undefined}
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -313,7 +329,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
                   />
                   {errors.message && (
-                    <p className="text-xs text-red-600 mt-1">{errors.message}</p>
+                    <p id="contact-message-error" className="text-xs text-red-600 mt-1">{errors.message}</p>
                   )}
                 </div>
 

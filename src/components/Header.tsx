@@ -86,10 +86,10 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="header-whatsapp-cta"
               onClick={() => handleWhatsAppClick('header_bar', 'header-whatsapp-cta')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
+              className="inline-flex items-center gap-2 px-2.5 sm:px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
-              <span>Chat on WhatsApp</span>
+              <span className="hidden sm:inline">Chat on WhatsApp</span>
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -98,6 +98,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 cursor-pointer"
               aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -111,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top duration-200">
+        <div id="mobile-navigation" className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top duration-200">
           <div className="flex flex-col space-y-2">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;

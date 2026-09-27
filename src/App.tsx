@@ -117,7 +117,7 @@ export default function App() {
       />
 
       {/* Floating WhatsApp Quick Action (Bottom-right) */}
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="hidden sm:flex fixed bottom-5 right-5 z-40">
         <button
           id="floating-whatsapp-widget"
           onClick={handleFloatingWhatsApp}
