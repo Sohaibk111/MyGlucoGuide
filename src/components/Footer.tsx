@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { MessageCircle, Mail, ShieldAlert, BarChart3, BookCheck } from 'lucide-react';
+import { MessageCircle, Mail, ShieldAlert, BookCheck } from 'lucide-react';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
   onOpenWhatsApp: (source: string) => void;
-  onToggleAnalyticsModal?: () => void;
   onToggleSourcesModal?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigate,
   onOpenWhatsApp,
-  onToggleAnalyticsModal,
   onToggleSourcesModal,
 }) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'disclaimer' | null>(null);
   const whatsappNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
+
+  useEffect(() => {
+    if (!showLegalModal) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowLegalModal(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showLegalModal]);
 
   const handleLink = (page: PageId) => {
     trackEvent('cta_click', { action: 'footer_link', target: page });
@@ -180,17 +187,6 @@ export const Footer: React.FC<FooterProps> = ({
                   <span>Clinical Sources & References</span>
                 </button>
               )}
-
-              {onToggleAnalyticsModal && (
-                <button
-                  onClick={onToggleAnalyticsModal}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 text-[11px] font-medium transition cursor-pointer self-start"
-                  title="View tracked Meta Pixel and Custom events"
-                >
-                  <BarChart3 className="w-3.5 h-3.5" />
-                  <span>Meta Pixel & Event Inspector</span>
-                </button>
-              )}
             </div>
           </div>
         </div>
@@ -243,9 +239,9 @@ export const Footer: React.FC<FooterProps> = ({
 
       {/* Legal / Disclaimer Simple Modal */}
       {showLegalModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white text-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200">
-            <h3 className="text-lg font-bold mb-3">
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4" role="presentation">
+          <div className="bg-white text-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200" role="dialog" aria-modal="true" aria-labelledby="footer-legal-modal-title">
+            <h3 id="footer-legal-modal-title" className="text-lg font-bold mb-3">
               {showLegalModal === 'privacy' ? 'Privacy Policy' : 'Comprehensive Medical Disclaimer'}
             </h3>
             <div className="text-xs text-slate-600 space-y-3 leading-relaxed max-h-80 overflow-y-auto pr-1">

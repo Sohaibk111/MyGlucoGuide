@@ -144,7 +144,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
                 <img
-                  src="/assets/images/hero_pakistani_glucose_app_1790358065352.jpg"
+                  src="/assets/images/hero_pakistani_glucose_app_1790358065352.webp"
                   alt="Pakistani adult with smartphone showing glucose insights and trend patterns"
                   className="w-full h-auto object-cover aspect-4/3"
                   referrerPolicy="no-referrer"
@@ -305,8 +305,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="lg:col-span-5 order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white aspect-4/3 relative">
                 <img
-                  src="/assets/images/cgm_sensor_device_smart_1790358083075.jpg"
-                  alt="Continuous Glucose Monitoring CGM sensor next to a smartphone"
+                  src="/assets/images/cgm_upper_arm_sensor_1790517820663.webp"
+                  alt="Person wearing a continuous glucose monitor sensor on the upper arm with glucose readings displayed on a smartphone"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
