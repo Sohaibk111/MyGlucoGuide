@@ -151,7 +151,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 />
 
                 {/* Subtle Floating Sensor Card Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100 flex items-center justify-between gap-3">
+                {/* Extra right-clearance below 414px keeps this clear of the fixed floating WhatsApp widget */}
+                <div className="absolute bottom-4 left-4 right-4 max-[413px]:right-16 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 font-bold text-xs shrink-0">
                       CGM

@@ -86,10 +86,11 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="header-whatsapp-cta"
               onClick={() => handleWhatsAppClick('header_bar', 'header-whatsapp-cta')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
+              aria-label="Chat on WhatsApp"
+              className="inline-flex items-center gap-2 px-3 min-[375px]:px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
-              <span>Chat on WhatsApp</span>
+              <span className="hidden min-[375px]:inline">Chat on WhatsApp</span>
             </button>
 
             {/* Mobile Hamburger Button */}
