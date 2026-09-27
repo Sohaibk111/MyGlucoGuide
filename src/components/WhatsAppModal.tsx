@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, MessageCircle, Send } from 'lucide-react';
 import { trackWhatsAppClick } from '../services/analytics';
 
@@ -47,6 +47,15 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
     PRESET_MESSAGES[0].message
   );
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleSelectPreset = (id: string, message: string) => {
@@ -54,10 +63,21 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
     setCustomText(message);
   };
 
+  // Business WhatsApp number must be supplied via VITE_WHATSAPP_NUMBER (no fake/placeholder fallback).
+  const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
+  const isNumberConfigured = configuredNumber.length > 0;
+
   const handleLaunchWhatsApp = () => {
-    const phoneNumber = '923001234567';
+    if (!isNumberConfigured) {
+      // Fail loudly in dev/console rather than silently messaging a placeholder number.
+      console.error(
+        'MyGlucoGuide: VITE_WHATSAPP_NUMBER is not configured. Set it in your environment before deploying.'
+      );
+      return;
+    }
+
     const encodedText = encodeURIComponent(customText);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${configuredNumber}?text=${encodedText}`;
 
     // Robust WhatsApp click tracking with required properties
     trackWhatsAppClick({
@@ -67,7 +87,6 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
       additionalParams: {
         preset: selectedPreset,
         message_length: customText.length,
-        phone: phoneNumber,
       },
     });
 
@@ -157,12 +176,19 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
           />
         </div>
 
+        {!isNumberConfigured && (
+          <div className="mb-4 p-3 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-800">
+            WhatsApp number is not configured yet. Set <code>VITE_WHATSAPP_NUMBER</code> in your environment to enable this button.
+          </div>
+        )}
+
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
           <button
             type="button"
             onClick={handleLaunchWhatsApp}
-            className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow transition cursor-pointer"
+            disabled={!isNumberConfigured}
+            className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-emerald-600"
           >
             <Send className="w-4 h-4" />
             <span>Open in WhatsApp</span>

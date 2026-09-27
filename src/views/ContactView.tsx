@@ -43,6 +43,23 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
     return Object.keys(errs).length === 0;
   };
 
+  // This form has no backend: it cannot actually transmit data on its own.
+  // Rather than showing a fake "message sent" confirmation with nothing behind it,
+  // we hand the message to the user's own email client (pre-filled) to actually send.
+  const buildMailtoUrl = () => {
+    const subject = encodeURIComponent(`MyGlucoGuide Inquiry: ${formData.topic}`);
+    const bodyLines = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : null,
+      `Topic: ${formData.topic}`,
+      '',
+      formData.message,
+    ].filter((line): line is string => line !== null);
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    return `mailto:myglucoguide@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
@@ -52,12 +69,14 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
       setSubmitting(false);
       setSubmitted(true);
 
+      // Note: name/email are intentionally excluded from analytics params so
+      // personally identifiable contact details are never forwarded to Meta Pixel.
       trackEvent('contact_form_submission', {
-        name: formData.name,
-        email: formData.email,
         topic: formData.topic,
         message_length: formData.message.length,
       });
+
+      window.location.href = buildMailtoUrl();
     }, 600);
   };
 
@@ -186,10 +205,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                 </div>
                 <div>
                   <h4 className="text-base font-bold text-emerald-950">
-                    Message Sent Successfully!
+                    Almost Done!
                   </h4>
                   <p className="text-xs sm:text-sm text-emerald-800 mt-1 max-w-md mx-auto">
-                    Thank you, <strong>{formData.name}</strong>. We have received your inquiry and our educational coordinator will reply to <strong>{formData.email}</strong> shortly.
+                    Thank you, <strong>{formData.name}</strong>. We've opened your email app with your message pre-filled to <strong>myglucoguide@gmail.com</strong> — just hit send to complete your inquiry, and our educational coordinator will reply to <strong>{formData.email}</strong> shortly. If your email app didn't open, please email us directly or use WhatsApp instead.
                   </p>
                 </div>
 

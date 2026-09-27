@@ -92,6 +92,8 @@ export const FaqView: React.FC<FaqViewProps> = ({ onOpenWhatsApp }) => {
                 <button
                   type="button"
                   onClick={() => setOpenId(isOpen ? null : faq.id)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${faq.id}`}
                   className="w-full text-left p-5 flex items-center justify-between gap-4 font-semibold text-slate-900 hover:text-sky-700 transition cursor-pointer"
                 >
                   <span className="text-sm sm:text-base">{faq.question}</span>
@@ -102,7 +104,10 @@ export const FaqView: React.FC<FaqViewProps> = ({ onOpenWhatsApp }) => {
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                  <div
+                    id={`faq-answer-${faq.id}`}
+                    className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100"
+                  >
                     {faq.answer}
                   </div>
                 )}

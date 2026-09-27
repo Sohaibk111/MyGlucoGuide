@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, BookCheck, ExternalLink, ShieldCheck } from 'lucide-react';
 import { MEDICAL_SOURCES } from '../data/sources';
 
@@ -8,6 +8,15 @@ interface SourcesModalProps {
 }
 
 export const SourcesModal: React.FC<SourcesModalProps> = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (

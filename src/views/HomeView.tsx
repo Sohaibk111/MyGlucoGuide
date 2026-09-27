@@ -40,6 +40,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
     onOpenWhatsApp('hero_primary');
   };
 
+  const handleArticleSelect = (art: Article) => {
+    trackEvent('article_view', {
+      article_slug: art.slug,
+      article_title: art.title,
+      category: art.category,
+    });
+    onSelectArticle(art);
+  };
+
   const handleEducationCta = () => {
     trackEvent('cta_click', { action: 'hero_explore_education', page: 'home' });
     const educationEl = document.getElementById('diabetes-education-section');
@@ -135,7 +144,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
                 <img
-                  src="/src/assets/images/hero_pakistani_glucose_app_1790358065352.jpg"
+                  src="/assets/images/hero_pakistani_glucose_app_1790358065352.jpg"
                   alt="Pakistani adult with smartphone showing glucose insights and trend patterns"
                   className="w-full h-auto object-cover aspect-4/3"
                   referrerPolicy="no-referrer"
@@ -295,7 +304,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="lg:col-span-5 order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white aspect-4/3 relative">
                 <img
-                  src="/src/assets/images/cgm_sensor_device_smart_1790358083075.jpg"
+                  src="/assets/images/cgm_sensor_device_smart_1790358083075.jpg"
                   alt="Continuous Glucose Monitoring CGM sensor next to a smartphone"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -412,7 +421,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-[11px] text-slate-400">{art.date}</span>
                 <button
-                  onClick={() => onSelectArticle(art)}
+                  onClick={() => handleArticleSelect(art)}
                   className="inline-flex items-center gap-1 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
                 >
                   <span>Read Guide</span>

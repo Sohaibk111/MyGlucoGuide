@@ -17,6 +17,7 @@ export const Footer: React.FC<FooterProps> = ({
   onToggleSourcesModal,
 }) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'disclaimer' | null>(null);
+  const whatsappNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
 
   const handleLink = (page: PageId) => {
     trackEvent('cta_click', { action: 'footer_link', target: page });
@@ -159,7 +160,10 @@ export const Footer: React.FC<FooterProps> = ({
                 Email: <span className="text-slate-200">myglucoguide@gmail.com</span>
               </div>
               <div className="text-slate-400">
-                WhatsApp: <span className="text-slate-200">+92 300 1234567</span>
+                WhatsApp:{' '}
+                <span className="text-slate-200">
+                  {whatsappNumber ? `+${whatsappNumber}` : 'Coming soon'}
+                </span>
               </div>
               <div className="text-slate-400">
                 Hours: <span className="text-slate-200">Mon - Sat, 9:00 AM - 7:00 PM PKT</span>

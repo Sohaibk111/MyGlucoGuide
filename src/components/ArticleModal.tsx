@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, Clock, Calendar, MessageCircle, AlertCircle, CheckCircle2, BookCheck } from 'lucide-react';
 import { Article } from '../types';
 import { trackWhatsAppClick } from '../services/analytics';
@@ -14,6 +14,15 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
   onClose,
   onOpenWhatsApp,
 }) => {
+  useEffect(() => {
+    if (!article) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [article, onClose]);
+
   if (!article) return null;
 
   const handleWhatsAppInquiry = () => {

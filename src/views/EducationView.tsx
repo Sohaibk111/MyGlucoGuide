@@ -37,6 +37,15 @@ export const EducationView: React.FC<EducationViewProps> = ({
     onOpenWhatsApp('education_page_cta');
   };
 
+  const handleArticleSelect = (art: Article) => {
+    trackEvent('article_view', {
+      article_slug: art.slug,
+      article_title: art.title,
+      category: art.category,
+    });
+    onSelectArticle(art);
+  };
+
   return (
     <div className="space-y-16 sm:space-y-24 py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* 1. Header */}
@@ -230,7 +239,7 @@ export const EducationView: React.FC<EducationViewProps> = ({
               <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-[11px] text-slate-400">{art.date}</span>
                 <button
-                  onClick={() => onSelectArticle(art)}
+                  onClick={() => handleArticleSelect(art)}
                   className="inline-flex items-center gap-1 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
                 >
                   <span>Read Guide</span>
