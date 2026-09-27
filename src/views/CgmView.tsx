@@ -107,7 +107,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
         <div className="lg:col-span-5">
           <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-white aspect-4/3 relative">
             <img
-              src="/assets/images/cgm_sensor_device_smart_1790358083075.webp"
+              src="/assets/images/cgm_upper_arm_sensor_1790517820663.webp"
               alt="Continuous Glucose Monitoring CGM sensor patch and smartphone"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
