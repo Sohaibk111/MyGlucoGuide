@@ -184,7 +184,230 @@ export const CgmView: React.FC<CgmViewProps> = ({
         </div>
       </section>
 
-      {/* 3. CGM VS TRADITIONAL FINGER-PRICK MONITORING */}
+      {/* 3. EVOCHECK PREMIUM LINX CGM — PRODUCT GUIDE */}
+      <section
+        id="evocheck-premium-linx"
+        className="space-y-8"
+        aria-labelledby="evocheck-linx-heading"
+      >
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 uppercase tracking-wider mb-2">
+            <Radio className="w-4 h-4 text-sky-600" />
+            EvoCheck Premium LinX CGM
+          </div>
+          <h2
+            id="evocheck-linx-heading"
+            className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Understanding the EvoCheck Premium LinX CGM
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+            A product-focused educational guide to the LinX continuous glucose monitoring system,
+            including sensor placement, app experience, water resistance, and key specifications.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
+            <div className="w-11 h-11 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center mb-4">
+              <Activity className="w-5 h-5" />
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">15-Day Continuous Monitoring</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              The LinX GX-01S sensor is designed for up to 15 days of continuous glucose monitoring,
+              with a 1-hour warm-up period.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4">
+              <Smartphone className="w-5 h-5" />
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">Smartphone App</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              The companion app is designed to display current glucose, trends, history and alerts
+              on a compatible smartphone, helping users see patterns rather than isolated readings.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
+            <div className="w-11 h-11 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center mb-4">
+              <Shield className="w-5 h-5" />
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">Water-Resistant Design</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Product guidance provided for this LinX system describes IP68 water resistance,
+              including exposure up to 2 metres of water for up to 30 minutes.
+            </p>
+          </div>
+        </div>
+
+        {/* Placement guidance */}
+        <div className="bg-slate-50 rounded-3xl p-7 sm:p-10 border border-slate-200/80">
+          <div className="max-w-3xl mb-7">
+            <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
+              Sensor Placement
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+              Placement Guidance for Different Body Types & Ages
+            </h3>
+            <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              Placement should follow the current product instructions and the guidance provided by
+              the healthcare professional or trained installer.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/70">
+              <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-2">
+                Ages 2–17
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Tummy / Abdomen</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                For children and adolescents aged 2–17 years, the tummy/abdomen is the recommended
+                placement according to the product-specific guidance provided for this site.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/70">
+              <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-2">
+                Adults 18+
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Upper Arm</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                For adults aged 18 years and above, the upper arm is the recommended placement
+                according to the product-specific guidance provided for this site.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/70">
+              <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-2">
+                Very Lean Patients
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Tummy / Abdomen May Be Preferred</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                In very lean individuals, abdominal placement may be preferred based on the
+                product-specific guidance and available tissue at the selected site.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* App experience */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="bg-white rounded-3xl p-7 sm:p-9 border border-slate-200/80 shadow-xs">
+            <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
+              Inside the LinX App
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+              See the Number — Then See the Pattern
+            </h3>
+            <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              The LinX app interface can present a current glucose value, the time since the latest
+              update, remaining sensor wear time, and a glucose graph that can be viewed across
+              different time windows.
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 mt-6">
+              <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                <div className="text-xs text-slate-500">Current glucose</div>
+                <div className="font-bold text-slate-900 mt-1">Live reading</div>
+              </div>
+              <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                <div className="text-xs text-slate-500">Trend history</div>
+                <div className="font-bold text-slate-900 mt-1">6 / 12 / 24 hours</div>
+              </div>
+              <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                <div className="text-xs text-slate-500">Sensor status</div>
+                <div className="font-bold text-slate-900 mt-1">Days remaining</div>
+              </div>
+              <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                <div className="text-xs text-slate-500">Navigation</div>
+                <div className="font-bold text-slate-900 mt-1">Home · Fingerstick BG · Event</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-slate-900 rounded-3xl p-7 sm:p-9 text-white">
+            <div className="text-xs font-semibold text-sky-300 uppercase tracking-wider mb-1">
+              Water & Everyday Activity
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+              Designed for Active Daily Life
+            </h3>
+            <p className="text-sm text-slate-300 mt-2 leading-relaxed">
+              According to the product guidance used for this page, the sensor is IP68 water
+              resistant and can tolerate water exposure up to 2 metres for up to 30 minutes.
+            </p>
+
+            <div className="mt-6 space-y-3 text-sm text-slate-200">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <span>Bathing and swimming can be performed within the stated water-resistance limits.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <span>After water exposure, allow the sensor and adhesive area to dry fully before another water activity.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Info className="w-5 h-5 text-sky-300 shrink-0 mt-0.5" />
+                <span>Always follow the latest product instructions for water exposure, skin care and sensor use.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Technical specifications */}
+        <div className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-xs">
+          <div className="p-7 sm:p-9 border-b border-slate-100">
+            <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
+              Technical Specifications
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+              LinX GX-01S at a Glance
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ['Sensor model', 'GX-01S'],
+              ['Wear duration', 'Up to 15 days'],
+              ['Warm-up', '1 hour'],
+              ['Sensor diameter', '22 mm'],
+              ['Sensor weight', 'Approx. 2.16–2.2 g'],
+              ['Sensor thickness', 'Approx. 4.2 mm'],
+              ['Monitoring range', '2.0–25.0 mmol/L'],
+              ['MARD', '8.66%'],
+              ['Reading interval', 'Every 60 seconds'],
+              ['Data volume', 'Up to 1,440 readings/day'],
+              ['Shelf life', '16 months'],
+              ['Operating temperature', '5°C–40°C'],
+              ['Operating humidity', '10–93% non-condensing'],
+              ['Water resistance', 'IP68'],
+              ['Connectivity', 'Compatible smartphone app'],
+              ['Calibration', 'Factory calibrated; follow current product instructions'],
+            ].map(([label, value]) => (
+              <div key={label} className="p-5 border-b sm:border-r border-slate-100">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                  {label}
+                </div>
+                <div className="text-sm font-bold text-slate-900 mt-1">{value}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-5 sm:p-7 bg-slate-50 border-t border-slate-100">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <strong className="text-slate-800">Educational note:</strong> Specifications and
+              placement guidance can change with product revisions, local labeling or updated
+              instructions. Use the current manufacturer/product instructions supplied with the
+              sensor for final application and safety decisions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CGM VS TRADITIONAL FINGER-PRICK MONITORING */}
       <section className="space-y-6">
         <div>
           <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
@@ -201,7 +424,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
         <CgmComparisonTable />
       </section>
 
-      {/* 4. UNDERSTANDING GLUCOSE TRENDS & ARROWS */}
+      {/* 5. UNDERSTANDING GLUCOSE TRENDS & ARROWS */}
       <section className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-xs">
         <div className="max-w-3xl mb-8">
           <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
@@ -266,7 +489,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
         </div>
       </section>
 
-      {/* 5. WHO MAY BENEFIT FROM CGM */}
+      {/* 6. WHO MAY BENEFIT FROM CGM */}
       <section className="space-y-6">
         <div>
           <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
@@ -355,7 +578,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
         </div>
       </section>
 
-      {/* 6. REALISTIC EXPECTATIONS & SENSOR NOTICE */}
+      {/* 7. REALISTIC EXPECTATIONS & SENSOR NOTICE */}
       <section className="p-6 sm:p-7 rounded-2xl bg-amber-50/70 border border-amber-200/80 text-amber-950">
         <div className="flex items-start gap-3">
           <HelpCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
@@ -378,7 +601,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
         </div>
       </section>
 
-      {/* 7. FREQUENTLY ASKED QUESTIONS ACCORDION */}
+      {/* 8. FREQUENTLY ASKED QUESTIONS ACCORDION */}
       <section className="space-y-4">
         <div>
           <div className="text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
@@ -425,7 +648,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
         </div>
       </section>
 
-      {/* 8. WHATSAPP CTA BANNER */}
+      {/* 9. WHATSAPP CTA BANNER */}
       <section className="bg-gradient-to-r from-emerald-800 to-teal-800 rounded-3xl p-8 sm:p-12 text-white shadow-xl text-center">
         <div className="max-w-2xl mx-auto space-y-4">
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
