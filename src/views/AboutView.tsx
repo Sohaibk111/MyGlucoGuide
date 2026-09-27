@@ -110,7 +110,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
         <div className="lg:col-span-5">
           <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-white aspect-4/3">
             <img
-              src="/assets/images/about_pakistani_family_health_1790358098847.jpg"
+              src="/assets/images/about_pakistani_family_health_1790358098847.webp"
               alt="Pakistani family learning about glucose health and lifestyle guidance together"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

@@ -9,7 +9,7 @@ export const ARTICLES: Article[] = [
     summary: 'An educational guide to understanding what HbA1c is, why it is evaluated alongside daily readings, and how it reflects average glucose exposure.',
     date: 'Sep 20, 2026',
     readTime: '5 min read',
-    imageUrl: '/assets/images/hero_pakistani_glucose_app_1790358065352.jpg',
+    imageUrl: '/assets/images/hero_pakistani_glucose_app_1790358065352.webp',
     keyTakeaways: [
       'HbA1c measures hemoglobin coated with glucose over the approximate 90–120 day lifespan of red blood cells.',
       'Unlike single blood tests, HbA1c provides an overarching reflection of average glucose levels.',
@@ -34,7 +34,7 @@ export const ARTICLES: Article[] = [
     summary: 'How carbohydrates from daily meals affect post-meal blood sugar, and evidence-based lifestyle concepts for understanding glucose responses.',
     date: 'Sep 18, 2026',
     readTime: '6 min read',
-    imageUrl: '/assets/images/pakistani_healthy_diet_plate_1790358112322.jpg',
+    imageUrl: '/assets/images/pakistani_healthy_diet_plate_1790358112322.webp',
     keyTakeaways: [
       'Carbohydrate digestion produces glucose that enters the bloodstream after eating.',
       'The speed and extent of post-meal glucose rise depends on carbohydrate type, portion size, fiber, and individual insulin response.',
@@ -59,7 +59,7 @@ export const ARTICLES: Article[] = [
     summary: 'An objective look at how Continuous Glucose Monitors and conventional blood glucose meters function, their physiological differences, and their roles in diabetes care.',
     date: 'Sep 15, 2026',
     readTime: '7 min read',
-    imageUrl: '/assets/images/cgm_sensor_device_smart_1790358083075.jpg',
+    imageUrl: '/assets/images/cgm_sensor_device_smart_1790358083075.webp',
     keyTakeaways: [
       'Blood glucose meters sample capillary whole blood to deliver a single point-in-time measurement.',
       'Continuous Glucose Monitors (CGM) sample interstitial fluid beneath the skin to record readings and directional trend arrows throughout the day.',
@@ -107,7 +107,7 @@ export const ARTICLES: Article[] = [
     summary: 'Understanding the relationship between metabolic health and cardiovascular wellness, with emphasis on comprehensive care.',
     date: 'Sep 08, 2026',
     readTime: '6 min read',
-    imageUrl: '/assets/images/about_pakistani_family_health_1790358098847.jpg',
+    imageUrl: '/assets/images/about_pakistani_family_health_1790358098847.webp',
     keyTakeaways: [
       'Cardiometabolic health encompasses blood glucose, blood pressure, and lipid management.',
       'Comprehensive diabetes care focuses on overall cardiovascular risk reduction.',

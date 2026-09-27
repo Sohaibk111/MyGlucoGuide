@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { MessageCircle, Mail, ShieldAlert, BarChart3, BookCheck } from 'lucide-react';
+import { MessageCircle, Mail, ShieldAlert, BookCheck } from 'lucide-react';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
   onOpenWhatsApp: (source: string) => void;
-  onToggleAnalyticsModal?: () => void;
   onToggleSourcesModal?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigate,
   onOpenWhatsApp,
-  onToggleAnalyticsModal,
   onToggleSourcesModal,
 }) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'disclaimer' | null>(null);
@@ -187,17 +185,6 @@ export const Footer: React.FC<FooterProps> = ({
                 >
                   <BookCheck className="w-3.5 h-3.5" />
                   <span>Clinical Sources & References</span>
-                </button>
-              )}
-
-              {onToggleAnalyticsModal && (
-                <button
-                  onClick={onToggleAnalyticsModal}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 text-[11px] font-medium transition cursor-pointer self-start"
-                  title="View tracked Meta Pixel and Custom events"
-                >
-                  <BarChart3 className="w-3.5 h-3.5" />
-                  <span>Meta Pixel & Event Inspector</span>
                 </button>
               )}
             </div>
