@@ -28,21 +28,6 @@ const CATEGORIES: CategoryFilter[] = [
   'Practical Tips',
 ];
 
-// The sprite contains 8 unique, relevant blog visuals arranged as a 4 × 2 grid.
-// Each article gets its own tile so no visual is repeated across the blog listing.
-const BLOG_VISUALS: Record<string, string> = {
-  'hba1c-explained': '0% 0%',
-  'why-glucose-rises-after-meals': '33.3333% 0%',
-  'cgm-vs-finger-prick-which-is-better': '66.6667% 0%',
-  'diabetes-and-eye-health': '100% 0%',
-  'diabetes-and-heart-health': '0% 100%',
-  'understanding-glucose-patterns': '33.3333% 100%',
-  'diabetes-myths-and-facts-pakistan': '66.6667% 100%',
-  'ramadan-fasting-diabetes-awareness': '100% 100%',
-};
-
-const BLOG_VISUAL_SPRITE = '/assets/images/blog-visuals-sprite.webp';
-
 export const BlogView: React.FC<BlogViewProps> = ({
   onSelectArticle,
   onOpenWhatsApp,
@@ -89,7 +74,6 @@ export const BlogView: React.FC<BlogViewProps> = ({
 
       {/* Search Bar & Category Controls */}
       <div className="space-y-4">
-        {/* Search Input */}
         <div className="relative max-w-xl">
           <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
           <input
@@ -109,7 +93,6 @@ export const BlogView: React.FC<BlogViewProps> = ({
           )}
         </div>
 
-        {/* Category Filter Buttons (Functional Segmented Buttons, zero-pill discipline) */}
         <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl overflow-x-auto">
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat;
@@ -131,14 +114,12 @@ export const BlogView: React.FC<BlogViewProps> = ({
         </div>
       </div>
 
-      {/* Article Results Count */}
       <div className="text-xs text-slate-500">
         Showing <span className="font-semibold text-slate-800">{filteredArticles.length}</span>{' '}
         {filteredArticles.length === 1 ? 'article' : 'articles'}
         {selectedCategory !== 'All' && ` in "${selectedCategory}"`}
       </div>
 
-      {/* Articles Grid */}
       {filteredArticles.length === 0 ? (
         <div className="p-12 text-center bg-white rounded-2xl border border-slate-200">
           <BookOpen className="w-8 h-8 text-slate-400 mx-auto mb-2" />
@@ -156,78 +137,63 @@ export const BlogView: React.FC<BlogViewProps> = ({
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {filteredArticles.map((art) => {
-            const visualPosition = BLOG_VISUALS[art.slug];
-
-            return (
-              <article
-                key={art.id}
-                className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-sky-300 transition-all overflow-hidden flex flex-col justify-between"
-              >
-                <div>
-                  {/* Featured Image — each blog receives one unique sprite tile */}
-                  {visualPosition ? (
-                    <div
-                      role="img"
-                      aria-label={art.title}
-                      className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100 bg-no-repeat"
-                      style={{
-                        backgroundImage: `url(${BLOG_VISUAL_SPRITE})`,
-                        backgroundSize: '400% 200%',
-                        backgroundPosition: visualPosition,
-                      }}
+          {filteredArticles.map((art) => (
+            <article
+              key={art.id}
+              className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-sky-300 transition-all overflow-hidden flex flex-col justify-between"
+            >
+              <div>
+                {/* Featured Image — render the original article asset directly at full resolution */}
+                {art.imageUrl ? (
+                  <div className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100">
+                    <img
+                      src={art.imageUrl}
+                      alt={art.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
                     />
-                  ) : art.imageUrl ? (
-                    <div className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100">
-                      <img
-                        src={art.imageUrl}
-                        alt={art.title}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  ) : (
-                    <div className="aspect-16/9 w-full bg-sky-50 flex items-center justify-center border-b border-slate-100 text-sky-300">
-                      <BookOpen className="w-10 h-10" />
-                    </div>
-                  )}
-
-                  <div className="p-5 sm:p-6 space-y-2.5">
-                    {/* Unboxed Metadata (Zero-pill discipline) */}
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <span className="text-sky-700 font-semibold">{art.category}</span>
-                      <span aria-hidden="true">·</span>
-                      <span>{art.readTime}</span>
-                    </div>
-
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
-                      {art.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
-                      {art.summary}
-                    </p>
                   </div>
-                </div>
+                ) : (
+                  <div className="aspect-16/9 w-full bg-sky-50 flex items-center justify-center border-b border-slate-100 text-sky-300">
+                    <BookOpen className="w-10 h-10" />
+                  </div>
+                )}
 
-                <div className="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400">{art.date}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleArticleClick(art)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
-                  >
-                    <span>Read More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                <div className="p-5 sm:p-6 space-y-2.5">
+                  <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <span className="text-sky-700 font-semibold">{art.category}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{art.readTime}</span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
+                    {art.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                    {art.summary}
+                  </p>
                 </div>
-              </article>
-            );
-          })}
+              </div>
+
+              <div className="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
+                <span className="text-[11px] text-slate-400">{art.date}</span>
+                <button
+                  type="button"
+                  onClick={() => handleArticleClick(art)}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
+                >
+                  <span>Read More</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
       )}
 
-      {/* Educational Inquiry Reassurance Banner */}
       <div className="p-6 sm:p-8 rounded-2xl bg-sky-50/70 border border-sky-100 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <h3 className="text-base font-bold text-sky-950">Looking for a specific diabetes topic?</h3>
