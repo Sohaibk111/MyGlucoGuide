@@ -28,6 +28,21 @@ const CATEGORIES: CategoryFilter[] = [
   'Practical Tips',
 ];
 
+// The sprite contains 8 unique, relevant blog visuals arranged as a 4 × 2 grid.
+// Each article gets its own tile so no visual is repeated across the blog listing.
+const BLOG_VISUALS: Record<string, string> = {
+  'hba1c-explained': '0% 0%',
+  'why-glucose-rises-after-meals': '33.3333% 0%',
+  'cgm-vs-finger-prick-which-is-better': '66.6667% 0%',
+  'diabetes-and-eye-health': '100% 0%',
+  'diabetes-and-heart-health': '0% 100%',
+  'understanding-glucose-patterns': '33.3333% 100%',
+  'diabetes-myths-and-facts-pakistan': '66.6667% 100%',
+  'ramadan-fasting-diabetes-awareness': '100% 100%',
+};
+
+const BLOG_VISUAL_SPRITE = '/assets/images/blog-visuals-sprite.webp';
+
 export const BlogView: React.FC<BlogViewProps> = ({
   onSelectArticle,
   onOpenWhatsApp,
@@ -141,59 +156,74 @@ export const BlogView: React.FC<BlogViewProps> = ({
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {filteredArticles.map((art) => (
-            <article
-              key={art.id}
-              className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-sky-300 transition-all overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                {/* Featured Image */}
-                {art.imageUrl ? (
-                  <div className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100">
-                    <img
-                      src={art.imageUrl}
-                      alt={art.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      referrerPolicy="no-referrer"
+          {filteredArticles.map((art) => {
+            const visualPosition = BLOG_VISUALS[art.slug];
+
+            return (
+              <article
+                key={art.id}
+                className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-sky-300 transition-all overflow-hidden flex flex-col justify-between"
+              >
+                <div>
+                  {/* Featured Image — each blog receives one unique sprite tile */}
+                  {visualPosition ? (
+                    <div
+                      role="img"
+                      aria-label={art.title}
+                      className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100 bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${BLOG_VISUAL_SPRITE})`,
+                        backgroundSize: '400% 200%',
+                        backgroundPosition: visualPosition,
+                      }}
                     />
-                  </div>
-                ) : (
-                  <div className="aspect-16/9 w-full bg-sky-50 flex items-center justify-center border-b border-slate-100 text-sky-300">
-                    <BookOpen className="w-10 h-10" />
-                  </div>
-                )}
+                  ) : art.imageUrl ? (
+                    <div className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100">
+                      <img
+                        src={art.imageUrl}
+                        alt={art.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-16/9 w-full bg-sky-50 flex items-center justify-center border-b border-slate-100 text-sky-300">
+                      <BookOpen className="w-10 h-10" />
+                    </div>
+                  )}
 
-                <div className="p-5 sm:p-6 space-y-2.5">
-                  {/* Unboxed Metadata (Zero-pill discipline) */}
-                  <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <span className="text-sky-700 font-semibold">{art.category}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{art.readTime}</span>
+                  <div className="p-5 sm:p-6 space-y-2.5">
+                    {/* Unboxed Metadata (Zero-pill discipline) */}
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                      <span className="text-sky-700 font-semibold">{art.category}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{art.readTime}</span>
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
+                      {art.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      {art.summary}
+                    </p>
                   </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
-                    {art.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
-                    {art.summary}
-                  </p>
                 </div>
-              </div>
 
-              <div className="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">{art.date}</span>
-                <button
-                  type="button"
-                  onClick={() => handleArticleClick(art)}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
-                >
-                  <span>Read More</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </article>
-          ))}
+                <div className="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
+                  <span className="text-[11px] text-slate-400">{art.date}</span>
+                  <button
+                    type="button"
+                    onClick={() => handleArticleClick(art)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
+                  >
+                    <span>Read More</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </article>
+            );
+          })}
         </div>
       )}
 
