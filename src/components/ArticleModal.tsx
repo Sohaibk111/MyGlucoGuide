@@ -9,6 +9,22 @@ interface ArticleModalProps {
   onOpenWhatsApp: (source: string) => void;
 }
 
+// Keep the article detail image consistent with the unique visual used on each
+// blog card. The sprite is a 4 × 2 grid, so every article keeps its own tile
+// instead of falling back to the older article.imageUrl assets.
+const BLOG_VISUALS: Record<string, string> = {
+  'hba1c-explained': '0% 0%',
+  'why-glucose-rises-after-meals': '33.3333% 0%',
+  'cgm-vs-finger-prick-which-is-better': '66.6667% 0%',
+  'diabetes-and-eye-health': '100% 0%',
+  'diabetes-and-heart-health': '0% 100%',
+  'understanding-glucose-patterns': '33.3333% 100%',
+  'diabetes-myths-and-facts-pakistan': '66.6667% 100%',
+  'ramadan-fasting-diabetes-awareness': '100% 100%',
+};
+
+const BLOG_VISUAL_SPRITE = '/assets/images/blog-visuals-sprite.webp';
+
 export const ArticleModal: React.FC<ArticleModalProps> = ({
   article,
   onClose,
@@ -37,6 +53,8 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
     });
     onOpenWhatsApp(`article_${article.slug}`);
   };
+
+  const visualPosition = BLOG_VISUALS[article.slug];
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
@@ -73,8 +91,19 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
           {article.title}
         </h2>
 
-        {/* Optional Article Image */}
-        {article.imageUrl && (
+        {/* Article Image — use the same unique sprite tile as the blog card */}
+        {visualPosition ? (
+          <div
+            role="img"
+            aria-label={article.title}
+            className="mb-6 rounded-xl overflow-hidden bg-slate-100 aspect-16/9 relative border border-slate-100 bg-no-repeat"
+            style={{
+              backgroundImage: `url(${BLOG_VISUAL_SPRITE})`,
+              backgroundSize: '400% 200%',
+              backgroundPosition: visualPosition,
+            }}
+          />
+        ) : article.imageUrl ? (
           <div className="mb-6 rounded-xl overflow-hidden bg-slate-100 aspect-16/9 relative border border-slate-100">
             <img
               src={article.imageUrl}
@@ -83,7 +112,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
               referrerPolicy="no-referrer"
             />
           </div>
-        )}
+        ) : null}
 
         {/* Key Takeaways Callout */}
         <div className="p-4 sm:p-5 rounded-xl bg-sky-50/70 border border-sky-100 mb-6">
