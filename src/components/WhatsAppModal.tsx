@@ -69,7 +69,6 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
 
   const handleLaunchWhatsApp = () => {
     if (!isNumberConfigured) {
-      // Fail loudly in dev/console rather than silently messaging a placeholder number.
       console.error(
         'MyGlucoGuide: VITE_WHATSAPP_NUMBER is not configured. Set it in your environment before deploying.'
       );
@@ -79,7 +78,6 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
     const encodedText = encodeURIComponent(customText);
     const whatsappUrl = `https://wa.me/${configuredNumber}?text=${encodedText}`;
 
-    // Robust WhatsApp click tracking with required properties
     trackWhatsAppClick({
       sourceLocation: sourceContext,
       page: currentPage,
@@ -95,8 +93,8 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div 
+    <div className="fixed inset-0 z-[60] overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
+      <div
         className="relative bg-white rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-100"
         role="dialog"
         aria-modal="true"
