@@ -8,6 +8,8 @@ import { SourcesModal } from './components/SourcesModal';
 import { HomeView } from './views/HomeView';
 import { MessageCircle } from 'lucide-react';
 import { initUtmTracking, initMetaPixel, trackWhatsAppClick } from './services/analytics';
+import { usePageSEO } from './hooks/usePageSEO';
+import { useStructuredData } from './hooks/useStructuredData';
 
 // Route-level code splitting: secondary views lazy-loaded on demand
 const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
@@ -56,6 +58,9 @@ export default function App() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
   const [isSourcesOpen, setIsSourcesOpen] = useState(false);
+
+  usePageSEO(currentPage, selectedArticle);
+  useStructuredData(currentPage, selectedArticle);
 
   useEffect(() => {
     // Preserve any UTM parameters from landing query string
