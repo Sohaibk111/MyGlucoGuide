@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { MessageCircle, Mail, ShieldAlert, BookCheck } from 'lucide-react';
+import { MessageCircle, Mail, ShieldAlert, BookCheck, Facebook, Instagram } from 'lucide-react';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
 interface FooterProps {
@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({
   onToggleSourcesModal,
 }) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'disclaimer' | null>(null);
-  const configuredWhatsAppNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
+  const configuredWhatsAppNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '923083280568').trim();
   const whatsappNumber = /^\d{8,15}$/.test(configuredWhatsAppNumber) ? configuredWhatsAppNumber : '';
 
   useEffect(() => {
@@ -64,6 +64,24 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.facebook.com/profile.php?id=61594088500635"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="MyGlucoGuide on Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-slate-200 hover:bg-sky-600 hover:text-white transition-colors"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.instagram.com/myglucoguide?cplk=MWdreHZxcHBpb3hlYQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="MyGlucoGuide on Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-slate-200 hover:bg-pink-600 hover:text-white transition-colors"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
               <button
                 id="footer-whatsapp-cta"
                 onClick={handleWhatsAppFooter}
