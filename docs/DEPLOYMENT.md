@@ -55,4 +55,4 @@ No production domain is currently confirmed in this repository.
 
 ## Current limitations
 
-A build, browser-based QA, and production smoke test have not yet been run from this environment. GitHub repository access worked, but cloning from the container failed because external DNS/network access was unavailable. No GitHub Actions workflow runs or production deployment were found during this audit.
+The GitHub Actions type-check and production build passed on commit `b7e70d38bc3bf3446e44abc257e48c65b3fbdeb9` (run [39577280513](https://github.com/Sohaibk111/MyGlucoGuide/actions/runs/39577280513)). Browser-based QA and production smoke tests have not been run. GitHub repository access worked, but cloning from the local container failed because external DNS/network access was unavailable. No production deployment or confirmed production URL was found during this audit.
