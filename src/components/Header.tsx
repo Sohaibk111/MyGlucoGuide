@@ -45,14 +45,14 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
+        <div className="flex items-center justify-between gap-2 min-h-[4.5rem] py-2">
           {/* Zone 1: Brand Wordmark (Display Face) */}
           <div className="flex items-center">
             <button
               onClick={() => handleNavClick('home')}
               className="text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg p-1 -m-1"
             >
-              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors">
+              <span className="text-lg min-[380px]:text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors whitespace-nowrap">
                 My<span className="text-sky-600">Gluco</span>Guide
               </span>
             </button>
@@ -82,12 +82,12 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Zone 3: Primary Action - Green WhatsApp Button */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               id="header-whatsapp-cta"
               onClick={() => handleWhatsAppClick('header_bar', 'header-whatsapp-cta')}
               aria-label="Chat on WhatsApp"
-              className="inline-flex items-center gap-2 px-3 min-[375px]:px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
+              className="inline-flex items-center justify-center gap-1.5 px-2 min-[380px]:px-3 sm:px-4 py-2.5 rounded-full text-[11px] min-[380px]:text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
               <span className="hidden min-[375px]:inline">Chat on WhatsApp</span>
