@@ -45,3 +45,44 @@ html:not(.dark) body { background: #ffffff; color: #0f172a; }
 }
 .dark [class*="from-sky-50"] { --tw-gradient-from: #111b2c !important; }
 .dark [class*="via-white"] { --tw-gradient-stops: #111b2c, #101a2b, #0f1726 !important; }
+
+
+/* Dark-mode readability: override light surfaces used by page components */
+.dark [class*="bg-gradient-to-"]:not([class*="from-emerald-"]):not([class*="from-sky-900"]):not([class*="from-slate-900"]) {
+  background-image: linear-gradient(135deg, #111b2c 0%, #0f1726 55%, #13243a 100%) !important;
+  background-color: #111b2c !important;
+  color: #e5edf7;
+}
+.dark [class*="from-slate-50"], .dark [class*="to-slate-50"],
+.dark [class*="from-gray-50"], .dark [class*="to-gray-50"],
+.dark [class*="from-sky-50"], .dark [class*="to-sky-50"],
+.dark [class*="from-white"], .dark [class*="via-white"], .dark [class*="to-white"] {
+  background-image: linear-gradient(135deg, #111b2c 0%, #0f1726 60%, #13243a 100%) !important;
+  background-color: #111b2c !important;
+  color: #e5edf7;
+}
+.dark .bg-white, .dark .bg-white\/95, .dark .bg-white\/90,
+.dark .bg-slate-50, .dark .bg-slate-100, .dark .bg-slate-200,
+.dark .bg-slate-50\/50 {
+  background-color: #111b2c !important;
+  color: #e5edf7;
+}
+.dark .text-white { color: #f8fafc; }
+.dark .text-slate-900, .dark .text-slate-800 { color: #f1f5f9 !important; }
+.dark .text-slate-700 { color: #dbe7f5 !important; }
+.dark .text-slate-600, .dark .text-slate-500 { color: #b6c5d8 !important; }
+.dark .border-slate-200, .dark .border-slate-200\/80,
+.dark .border-slate-100, .dark .border-slate-200\/70 { border-color: #2b3b52 !important; }
+.dark input, .dark textarea, .dark select { background-color: #0b1423 !important; color: #f1f5f9 !important; border-color: #34445b !important; }
+.dark input::placeholder, .dark textarea::placeholder { color: #a8b7ca !important; }
+.dark .bg-slate-100.text-slate-700, .dark .bg-slate-100.text-slate-600 { color: #dbe7f5 !important; }
+.dark .bg-white .text-slate-900, .dark .bg-slate-50 .text-slate-900 { color: #f1f5f9 !important; }
+.dark [class*="bg-gradient-to-"] p, .dark [class*="bg-gradient-to-"] h1,
+.dark [class*="bg-gradient-to-"] h2, .dark [class*="bg-gradient-to-"] h3 {
+  color: #f1f5f9;
+}
+/* Keep intentional brand CTA gradients vivid */
+.dark [class*="from-emerald-700"][class*="to-teal-900"] {
+  background-image: linear-gradient(135deg, #065f46, #134e4a 55%, #164e63) !important;
+  color: #f8fafc !important;
+}
