@@ -6,9 +6,6 @@ import {
   Clock,
   Send,
   CheckCircle2,
-  AlertCircle,
-  Sparkles,
-  Phone,
 } from 'lucide-react';
 import { ContactFormData } from '../types';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
@@ -28,7 +25,6 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-  const [submitting, setSubmitting] = useState(false);
 
   const validate = () => {
     const errs: Partial<Record<keyof ContactFormData, string>> = {};
@@ -44,8 +40,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
   };
 
   // This form has no backend: it cannot actually transmit data on its own.
-  // Rather than showing a fake "message sent" confirmation with nothing behind it,
-  // we hand the message to the user's own email client (pre-filled) to actually send.
+  // This opens a prefilled draft in the visitor's email app; it does not send the message.
   const buildMailtoUrl = () => {
     const subject = encodeURIComponent(`MyGlucoGuide Inquiry: ${formData.topic}`);
     const bodyLines = [
@@ -57,27 +52,23 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
       formData.message,
     ].filter((line): line is string => line !== null);
     const body = encodeURIComponent(bodyLines.join('\n'));
-    return `mailto:myglucoguide@gmail.com?subject=${subject}&body=${body}`;
+    return `mailto:info@myglucoguide.com.pk?subject=${subject}&body=${body}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
+    setSubmitted(true);
 
-      // Note: name/email are intentionally excluded from analytics params so
-      // personally identifiable contact details are never forwarded to Meta Pixel.
-      trackEvent('contact_form_submission', {
-        topic: formData.topic,
-        message_length: formData.message.length,
-      });
+    // Track only that an email draft was requested, not that a message was sent.
+    // Personal contact details are intentionally excluded from analytics.
+    trackEvent('contact_email_draft_opened', {
+      topic: formData.topic,
+      message_length: formData.message.length,
+    });
 
-      window.location.href = buildMailtoUrl();
-    }, 600);
+    window.location.href = buildMailtoUrl();
   };
 
   return (
@@ -145,13 +136,13 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
               <div>
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Inquiry</h4>
                 <a
-                  href="mailto:myglucoguide@gmail.com"
+                  href="mailto:info@myglucoguide.com.pk"
                   className="text-sm font-semibold text-slate-900 hover:text-sky-700 transition"
                 >
-                  myglucoguide@gmail.com
+                  info@myglucoguide.com.pk
                 </a>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Typical response within 24 hours.
+                  Response times may vary.
                 </p>
               </div>
             </div>
@@ -178,10 +169,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
               <div>
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Availability Hours</h4>
                 <p className="text-sm font-semibold text-slate-900">
-                  Monday – Saturday: 9:00 AM – 7:00 PM PKT
+                  Online educational inquiries
                 </p>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Inquiries received on Sundays are answered Monday morning.
+                  We will respond when a team member is available.
                 </p>
               </div>
             </div>
@@ -195,7 +186,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
               Send an Email Message
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 mb-6">
-              Fill in your details below and our team will get in touch with you.
+              Prepare an email draft in your email application. Your message is not sent by this website.
             </p>
 
             {submitted ? (
@@ -205,10 +196,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                 </div>
                 <div>
                   <h4 className="text-base font-bold text-emerald-950">
-                    Almost Done!
+                    Email Draft Prepared
                   </h4>
                   <p className="text-xs sm:text-sm text-emerald-800 mt-1 max-w-md mx-auto">
-                    Thank you, <strong>{formData.name}</strong>. We've opened your email app with your message pre-filled to <strong>myglucoguide@gmail.com</strong> — just hit send to complete your inquiry, and our educational coordinator will reply to <strong>{formData.email}</strong> shortly. If your email app didn't open, please email us directly or use WhatsApp instead.
+                    Your email application should open with a draft addressed to <strong>info@myglucoguide.com.pk</strong>. This website has not sent your message. Review the draft and press Send in your email app to complete your inquiry. If no email app opens, email us directly or use WhatsApp instead.
                   </p>
                 </div>
 
@@ -339,7 +330,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-slate-900 hover:bg-slate-800 active:scale-[0.98] transition cursor-pointer shadow-xs"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{submitting ? 'Sending...' : 'Send Message'}</span>
+                  <span>Prepare Email Draft</span>
                 </button>
 
                 <p className="text-[11px] text-center text-slate-400 pt-1">
