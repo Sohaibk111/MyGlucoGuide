@@ -119,7 +119,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-sky-100 selection:text-sky-900">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 dark:bg-[#0b1220] dark:text-slate-100 font-sans selection:bg-sky-100 selection:text-sky-900 dark:selection:bg-sky-900 dark:selection:text-sky-100">
       {/* Sticky Header */}
       <Header
         currentPage={currentPage}
