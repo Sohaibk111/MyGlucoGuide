@@ -23,7 +23,7 @@ Scope: repository structure, contact flow, WhatsApp configuration, SEO, analytic
 
 ## B. Incomplete, unverified, or needing attention
 
-- **Build and type checks:** not run in this environment. The available container could not clone GitHub because outbound DNS/network access was unavailable. GitHub reports no Actions workflow runs, so there is no repository CI result to rely on.
+- **Build and type checks:** GitHub Actions now runs `npm install`, `npm run lint` (TypeScript check), and `npm run build` on pushes and pull requests. After fixing the Vite 8 / esbuild peer-version conflict and malformed apostrophes in FAQ strings, run `39577280513` passed both type check and production build on commit `b7e70d38bc3bf3446e44abc257e48c65b3fbdeb9`. The local container still cannot clone GitHub because outbound DNS/network access is unavailable.
 - **Automated tests:** no test script or test suite is defined in `package.json`.
 - **Dependency reproducibility:** no `package-lock.json` or `pnpm-lock.yaml` is present. Add and commit a lockfile after installing dependencies in a working development environment.
 - **Production deployment:** no GitHub Actions workflows or deployment records were found through the accessible repository endpoints. GitHub Pages is not enabled in repository metadata. No production URL is confirmed.
