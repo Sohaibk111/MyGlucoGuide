@@ -55,14 +55,14 @@ export const Header: React.FC<HeaderProps> = ({
               className="text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg p-1 -m-1"
             >
               <img
-                src="/myglucoguide-logo.svg"
+                src="/myglucoguide-logo.svg?v=2"
                 alt="MyGlucoGuide"
                 className="block dark:hidden w-[170px] min-[380px]:w-[205px] sm:w-[250px] h-auto object-contain"
                 width="520"
                 height="116"
               />
               <img
-                src="/myglucoguide-logo-dark.svg"
+                src="/myglucoguide-logo-dark.svg?v=2"
                 alt="MyGlucoGuide"
                 className="hidden dark:block w-[170px] min-[380px]:w-[205px] sm:w-[250px] h-auto object-contain"
                 width="520"
