@@ -145,7 +145,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div id="mobile-navigation" className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top duration-200">
+        <div id="mobile-navigation" className="lg:hidden bg-white dark:bg-[#111d30] border-b border-slate-200 dark:border-slate-700 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top duration-200">
           <div className="flex flex-col space-y-2">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;
