@@ -326,7 +326,6 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
                 <button
                   type="submit"
-                  disabled={submitting}
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-slate-900 hover:bg-slate-800 active:scale-[0.98] transition cursor-pointer shadow-xs"
                 >
                   <Send className="w-4 h-4" />
