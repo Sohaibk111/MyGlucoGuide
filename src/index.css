@@ -33,3 +33,15 @@ html.dark { color-scheme: dark; background: #0b1220; }
 .dark .shadow, .dark .shadow-sm, .dark .shadow-md, .dark .shadow-lg, .dark .shadow-xl {
   --tw-shadow-color: rgb(0 0 0 / 25%);
 }
+
+/* Gradient contrast corrections for both themes */
+html:not(.dark) body { background: #ffffff; color: #0f172a; }
+.dark main { color: #e5edf7; }
+.dark [class*="from-white"], .dark [class*="via-white"], .dark [class*="to-white"],
+.dark [class*="from-sky-50"], .dark [class*="via-slate-50"], .dark [class*="to-slate-50"] {
+  background-color: #111b2c !important;
+  background-image: linear-gradient(135deg, #111b2c 0%, #0f1726 100%) !important;
+  border-color: #26354a !important;
+}
+.dark [class*="from-sky-50"] { --tw-gradient-from: #111b2c !important; }
+.dark [class*="via-white"] { --tw-gradient-stops: #111b2c, #101a2b, #0f1726 !important; }
