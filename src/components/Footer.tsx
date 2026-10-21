@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'disclaimer' | null>(null);
   const configuredWhatsAppNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
-  const whatsappNumber = /^\\d{8,15}$/.test(configuredWhatsAppNumber) ? configuredWhatsAppNumber : '';
+  const whatsappNumber = /^\d{8,15}$/.test(configuredWhatsAppNumber) ? configuredWhatsAppNumber : '';
 
   useEffect(() => {
     if (!showLegalModal) return;
