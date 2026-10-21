@@ -65,7 +65,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
 
   // Business WhatsApp number must be supplied via VITE_WHATSAPP_NUMBER (no fake/placeholder fallback).
   const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
-  const isNumberConfigured = /^\\d{8,15}$/.test(configuredNumber);
+  const isNumberConfigured = /^\d{8,15}$/.test(configuredNumber);
 
   const handleLaunchWhatsApp = () => {
     if (!isNumberConfigured) {
