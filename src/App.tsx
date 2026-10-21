@@ -115,7 +115,10 @@ export default function App() {
       page: currentPage,
       ctaIdentifier: 'floating-whatsapp-widget',
     });
-    handleOpenWhatsApp('floating_widget');
+    const message = encodeURIComponent(
+      'Assalam-o-Alaikum MyGlucoGuide, mujhe glucose awareness aur CGM options ke bare mein maloomat chahiye.'
+    );
+    window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -186,7 +189,7 @@ export default function App() {
       />
 
       {/* Floating WhatsApp Quick Action (Bottom-right) */}
-      <div className="hidden sm:flex fixed bottom-5 right-5 z-40">
+      <div className="flex fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
         <button
           id="floating-whatsapp-widget"
           onClick={handleFloatingWhatsApp}
