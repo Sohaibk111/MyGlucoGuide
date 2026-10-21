@@ -28,6 +28,15 @@ Do not add private API keys to variables prefixed with `VITE_`; Vite exposes tho
 
 The `.env.example` also mentions `GEMINI_API_KEY` and `APP_URL` for a Google AI Studio runtime. Verify whether those are needed for the chosen deployment before configuring them; do not paste private values into public files.
 
+### 2a. Current launch choices
+
+- Contact method: keep the existing email-draft flow. The site opens a prefilled draft; the visitor must review it and press Send in their email application.
+- Meta Pixel: disabled. Keep `VITE_META_PIXEL_ID` empty/unset.
+- WhatsApp number: the owner has supplied the real business number. Configure that value as `VITE_WHATSAPP_NUMBER` in the hosting provider's project environment settings for **Production** and **Preview** as needed, then trigger a fresh deployment. Do not commit the real number into application source or `.env.example`.
+- Production domain: not confirmed. Use the temporary host URL for initial QA; do not invent canonical URLs.
+
+The repository integration reads and validates `VITE_WHATSAPP_NUMBER` at build time. GitHub repository access does not provide the connected hosting provider's environment settings, so the variable still has to be entered in the host dashboard.
+
 ### 3. Domain and HTTPS
 
 1. Deploy to the temporary Vercel URL first.
