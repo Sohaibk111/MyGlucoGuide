@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MessageCircle, Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { MessageCircle, Menu, X, Moon, Sun } from 'lucide-react';
 import { PageId } from '../types';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
@@ -15,6 +15,24 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenWhatsApp,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('myglucoguide-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    setIsDarkMode(shouldUseDark);
+    document.documentElement.classList.toggle('dark', shouldUseDark);
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode((current) => {
+      const next = !current;
+      document.documentElement.classList.toggle('dark', next);
+      window.localStorage.setItem('myglucoguide-theme', next ? 'dark' : 'light');
+      return next;
+    });
+  };
 
   const navItems: { id: PageId; label: string }[] = [
     { id: 'home', label: 'Home' },
@@ -55,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
               <img
                 src="/myglucoguide-logo.svg"
                 alt="MyGlucoGuide"
-                className="block w-[205px] min-[380px]:w-[220px] sm:w-[250px] h-auto object-contain"
+                className="block w-[170px] min-[380px]:w-[205px] sm:w-[250px] h-auto object-contain"
                 width="520"
                 height="116"
               />
@@ -86,7 +104,16 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Zone 3: Primary Action - Green WhatsApp Button */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDarkMode ? 'Light mode' : 'Dark mode'}
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+            >
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
             <button
               id="header-whatsapp-cta"
               onClick={() => handleWhatsAppClick('header_bar', 'header-whatsapp-cta')}
