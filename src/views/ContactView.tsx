@@ -32,7 +32,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
     if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       errs.email = 'Please provide a valid email address';
     }
-    if (!formData.message.trim() || formData.message.length < 10) {
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
       errs.message = 'Please provide a message of at least 10 characters';
     }
     setErrors(errs);
@@ -333,7 +333,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                 </button>
 
                 <p className="text-[11px] text-center text-slate-400 pt-1">
-                  We respect your privacy. No marketing spam.
+                  Please avoid including medical records or sensitive health details. This website does not send the email for you.
                 </p>
               </form>
             )}
