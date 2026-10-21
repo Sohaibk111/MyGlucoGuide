@@ -52,9 +52,13 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => handleNavClick('home')}
               className="text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg p-1 -m-1"
             >
-              <span className="text-lg min-[380px]:text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors whitespace-nowrap">
-                My<span className="text-sky-600">Gluco</span>Guide
-              </span>
+              <img
+                src="/myglucoguide-logo.svg"
+                alt="MyGlucoGuide"
+                className="block w-[150px] min-[380px]:w-[170px] sm:w-[220px] h-auto object-contain"
+                width="520"
+                height="116"
+              />
             </button>
           </div>
 
