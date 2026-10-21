@@ -152,24 +152,23 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 {/* Subtle Floating Sensor Card Overlay */}
                 {/* Extra right-clearance below 414px keeps this clear of the fixed floating WhatsApp widget */}
-                <div className="absolute bottom-4 left-4 right-4 max-[413px]:right-16 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 font-bold text-xs shrink-0">
+                <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-lg border border-slate-100 grid grid-cols-[auto_minmax(0,1fr)] sm:flex sm:items-center sm:justify-between gap-x-2 gap-y-1.5 sm:gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 font-bold text-[10px] sm:text-xs shrink-0">
                       CGM
                     </div>
-                    <div>
-                      <div className="text-xs text-slate-500 font-medium">Illustrative Example</div>
-                      <div className="text-base font-extrabold text-slate-900 flex items-center gap-1.5 tabular-nums">
-                        112 <span className="text-xs font-normal text-slate-500">mg/dL</span>
-                        <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                          Demo only
-                        </span>
+                    <div className="min-w-0">
+                      <div className="text-[10px] sm:text-xs text-slate-500 font-medium leading-tight">Illustrative example</div>
+                      <div className="mt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 tabular-nums">
+                        <span className="text-sm sm:text-base font-extrabold text-slate-900">112</span>
+                        <span className="text-[10px] sm:text-xs font-normal text-slate-500">mg/dL</span>
+                        <span className="text-[10px] sm:text-xs font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Demo only</span>
                       </div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-[11px] text-slate-400 block">Sample value</span>
-                    <span className="text-xs font-semibold text-emerald-700">Not personal advice</span>
+                  <div className="col-span-2 sm:col-span-1 flex items-center justify-between sm:block sm:text-right border-t border-slate-100 sm:border-0 pt-1.5 sm:pt-0 gap-2">
+                    <span className="text-[10px] sm:text-[11px] text-slate-500">Sample value</span>
+                    <span className="text-[10px] sm:text-xs font-semibold text-emerald-700">Not personal advice</span>
                   </div>
                 </div>
               </div>
