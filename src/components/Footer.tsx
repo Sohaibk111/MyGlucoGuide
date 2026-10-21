@@ -15,7 +15,8 @@ export const Footer: React.FC<FooterProps> = ({
   onToggleSourcesModal,
 }) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'disclaimer' | null>(null);
-  const whatsappNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
+  const configuredWhatsAppNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
+  const whatsappNumber = /^\\d{8,15}$/.test(configuredWhatsAppNumber) ? configuredWhatsAppNumber : '';
 
   useEffect(() => {
     if (!showLegalModal) return;
@@ -73,11 +74,11 @@ export const Footer: React.FC<FooterProps> = ({
               </button>
 
               <a
-                href="mailto:myglucoguide@gmail.com"
+                href="mailto:info@myglucoguide.com.pk"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>myglucoguide@gmail.com</span>
+                <span>info@myglucoguide.com.pk</span>
               </a>
             </div>
           </div>
@@ -164,7 +165,7 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
             <div className="space-y-2 text-xs">
               <div className="text-slate-400">
-                Email: <span className="text-slate-200">myglucoguide@gmail.com</span>
+                Email: <span className="text-slate-200">info@myglucoguide.com.pk</span>
               </div>
               <div className="text-slate-400">
                 WhatsApp:{' '}
@@ -173,7 +174,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </span>
               </div>
               <div className="text-slate-400">
-                Hours: <span className="text-slate-200">Mon - Sat, 9:00 AM - 7:00 PM PKT</span>
+                Availability: <span className="text-slate-200">Online inquiries; response times may vary</span>
               </div>
             </div>
 
