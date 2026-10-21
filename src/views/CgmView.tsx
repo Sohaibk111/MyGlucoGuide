@@ -220,7 +220,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
             <div className="text-2xl font-bold text-red-600 mb-1">↑↑</div>
             <div className="text-xs font-bold text-slate-900">Rising Rapidly</div>
             <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-              Rising &gt; 2 mg/dL per minute (often after rapidly absorbed carbohydrates).
+              Indicates a rapid rise; the exact rate represented depends on the CGM system.
             </p>
           </div>
 
@@ -228,7 +228,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
             <div className="text-2xl font-bold text-amber-600 mb-1">↗</div>
             <div className="text-xs font-bold text-slate-900">Rising Moderately</div>
             <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-              Rising 1 to 2 mg/dL per minute (standard post-meal digestion pattern).
+              Indicates a moderate rise; interpretation is device-specific.
             </p>
           </div>
 
@@ -236,7 +236,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
             <div className="text-2xl font-bold text-emerald-700 mb-1">→</div>
             <div className="text-xs font-bold text-emerald-950">Steady & Stable</div>
             <p className="text-[11px] text-slate-600 mt-1 leading-snug">
-              Changing less than 1 mg/dL per minute. Indicates steady state.
+              Indicates little change over the device's trend interval; check the manufacturer's guide.
             </p>
           </div>
 
@@ -244,7 +244,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
             <div className="text-2xl font-bold text-amber-600 mb-1">↘</div>
             <div className="text-xs font-bold text-slate-900">Falling Moderately</div>
             <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-              Decreasing 1 to 2 mg/dL per minute (e.g., during light movement).
+              Indicates a moderate fall; interpretation is device-specific.
             </p>
           </div>
 
@@ -252,7 +252,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
             <div className="text-2xl font-bold text-red-600 mb-1">↓↓</div>
             <div className="text-xs font-bold text-slate-900">Falling Rapidly</div>
             <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-              Decreasing &gt; 2 mg/dL per minute. Important alert for clinical awareness.
+              Indicates a rapid fall; follow your device instructions and personal care plan.
             </p>
           </div>
         </div>
@@ -371,7 +371,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
                 <strong>Informational Tool:</strong> CGM is a monitoring tool, not a treatment, automated delivery system, or cure. Clinical management requires physician consultation.
               </li>
               <li>
-                <strong>Finger Prick Verification:</strong> Always confirm with a finger-prick blood test if symptoms do not match sensor readings or if you suspect rapid hypoglycemia.
+                <strong>Check unexpected readings:</strong> If symptoms do not match the sensor reading or you are unsure what to do, follow the manufacturer's instructions and your clinician's advice about checking blood glucose with a meter.
               </li>
             </ul>
           </div>
