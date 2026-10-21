@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({
               <button
                 id="footer-whatsapp-cta"
                 onClick={handleWhatsAppFooter}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors shadow-xs cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-600 transition-colors shadow-xs cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Chat on WhatsApp</span>
@@ -202,7 +202,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
             &copy; {new Date().getFullYear()} MyGlucoGuide. All rights reserved. Pakistan.
           </div>

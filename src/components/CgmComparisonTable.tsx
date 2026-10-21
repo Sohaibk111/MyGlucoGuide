@@ -48,12 +48,12 @@ export const CgmComparisonTable: React.FC = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden bg-white rounded-2xl border border-slate-200/90 shadow-sm">
-      <div className="p-5 sm:p-6 bg-slate-50 border-b border-slate-200/80">
-        <h3 className="text-lg font-bold text-slate-900 tracking-tight">
+    <div className="w-full overflow-hidden bg-surface rounded-2xl border border-line/90 shadow-sm">
+      <div className="p-5 sm:p-6 bg-surface-2 border-b border-line/80">
+        <h3 className="text-lg font-bold text-fg tracking-tight">
           Objective Educational Comparison: Blood Glucose Meter vs. Continuous Glucose Monitor (CGM)
         </h3>
-        <p className="text-xs sm:text-sm text-slate-600 mt-1">
+        <p className="text-xs sm:text-sm text-fg-3 mt-1">
           Both tools offer distinct clinical advantages. Understanding their complementary roles helps you have informed conversations with your healthcare provider.
         </p>
       </div>
@@ -61,29 +61,29 @@ export const CgmComparisonTable: React.FC = () => {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider bg-slate-50/50">
+            <tr className="border-b border-line text-xs font-semibold text-fg-4 uppercase tracking-wider bg-surface-2/50">
               <th className="py-3.5 px-4 sm:px-6 w-1/3">Factor / Capability</th>
-              <th className="py-3.5 px-4 sm:px-6 w-1/3 text-slate-700">
+              <th className="py-3.5 px-4 sm:px-6 w-1/3 text-fg-2">
                 Traditional Finger-Prick Meter
               </th>
-              <th className="py-3.5 px-4 sm:px-6 w-1/3 text-sky-900 bg-sky-50/50">
+              <th className="py-3.5 px-4 sm:px-6 w-1/3 text-sky-900 dark:text-sky-100 bg-sky-50/50 dark:bg-sky-400/10">
                 Continuous Glucose Monitor (CGM)
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+          <tbody className="divide-y divide-line-soft text-xs sm:text-sm text-fg-2">
             {comparisonRows.map((row, idx) => (
-              <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                <td className="py-3.5 px-4 sm:px-6 font-semibold text-slate-900 align-top">
+              <tr key={idx} className="hover:bg-surface-2/80 transition-colors">
+                <td className="py-3.5 px-4 sm:px-6 font-semibold text-fg align-top">
                   {row.feature}
                 </td>
-                <td className="py-3.5 px-4 sm:px-6 text-slate-600 align-top leading-relaxed">
+                <td className="py-3.5 px-4 sm:px-6 text-fg-3 align-top leading-relaxed">
                   {row.traditional}
                 </td>
-                <td className="py-3.5 px-4 sm:px-6 text-slate-900 bg-sky-50/30 font-medium align-top leading-relaxed">
+                <td className="py-3.5 px-4 sm:px-6 text-fg bg-sky-50/30 dark:bg-sky-400/10 font-medium align-top leading-relaxed">
                   <div className="flex items-start gap-2">
                     {row.advantage === 'cgm' && (
-                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-300 shrink-0 mt-0.5" />
                     )}
                     <span>{row.cgm}</span>
                   </div>
@@ -94,9 +94,9 @@ export const CgmComparisonTable: React.FC = () => {
         </table>
       </div>
 
-      <div className="p-4 sm:p-5 bg-slate-50/70 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-600">
+      <div className="p-4 sm:p-5 bg-surface-2/70 border-t border-line-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fg-3">
         <div className="flex items-start gap-2">
-          <HelpCircle className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+          <HelpCircle className="w-4 h-4 text-fg-5 shrink-0 mt-0.5" />
           <span>
             <strong>Clinical Notice:</strong> CGM does not universally replace blood glucose meters. Standard meters remain required for calibration, confirmation during rapid glucose shifts, or whenever symptoms differ from sensor readings. Discuss your personal monitoring approach with your physician.
           </span>

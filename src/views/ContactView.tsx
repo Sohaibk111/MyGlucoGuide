@@ -75,17 +75,17 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
     <div className="space-y-12 sm:space-y-16 py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="max-w-3xl">
-        <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 uppercase tracking-wider mb-2">
-          <Mail className="w-4 h-4 text-sky-600" />
+        <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 dark:text-sky-300 uppercase tracking-wider mb-2">
+          <Mail className="w-4 h-4 text-sky-600 dark:text-sky-300" />
           <span>Get in Touch</span>
         </div>
         <h1
-          className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight"
+          className="text-3xl sm:text-5xl font-extrabold text-fg tracking-tight"
           style={{ textWrap: 'balance' }}
         >
           We Are Here to Guide You
         </h1>
-        <p className="mt-3 text-base text-slate-600 leading-relaxed">
+        <p className="mt-3 text-base text-fg-3 leading-relaxed">
           Have questions about Continuous Glucose Monitoring, dietary patterns, or diabetes education? Reach out to us. For the fastest response, WhatsApp is our primary channel.
         </p>
       </div>
@@ -99,7 +99,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
               <MessageCircle className="w-7 h-7 fill-white" />
             </div>
 
-            <div className="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-300 mb-1">
+            <div className="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-100 mb-1">
               Primary Contact Method
             </div>
             <h3 className="text-xl font-bold tracking-tight text-white mb-2">
@@ -129,49 +129,49 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
           {/* Secondary Contact Info Cards */}
           <div className="space-y-3">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="bg-surface p-5 rounded-2xl border border-line/80 shadow-xs flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Inquiry</h4>
+                <h4 className="text-xs font-bold text-fg-4 uppercase tracking-wider">Email Inquiry</h4>
                 <a
                   href="mailto:info@myglucoguide.com.pk"
-                  className="text-sm font-semibold text-slate-900 hover:text-sky-700 transition"
+                  className="text-sm font-semibold text-fg hover:text-sky-700 dark:hover:text-sky-300 transition"
                 >
                   info@myglucoguide.com.pk
                 </a>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-fg-4 mt-0.5">
                   Response times may vary.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="bg-surface p-5 rounded-2xl border border-line/80 shadow-xs flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Geographic Reach</h4>
-                <p className="text-sm font-semibold text-slate-900">
+                <h4 className="text-xs font-bold text-fg-4 uppercase tracking-wider">Geographic Reach</h4>
+                <p className="text-sm font-semibold text-fg">
                   Online Educational Support Across Pakistan
                 </p>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-fg-4 mt-0.5">
                   Serving Karachi, Lahore, Islamabad, Rawalpindi, Peshawar, Multan, and all regions.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="bg-surface p-5 rounded-2xl border border-line/80 shadow-xs flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Availability Hours</h4>
-                <p className="text-sm font-semibold text-slate-900">
+                <h4 className="text-xs font-bold text-fg-4 uppercase tracking-wider">Availability Hours</h4>
+                <p className="text-sm font-semibold text-fg">
                   Online educational inquiries
                 </p>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-fg-4 mt-0.5">
                   We will respond when a team member is available.
                 </p>
               </div>
@@ -181,24 +181,24 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
         {/* Right Column: Contact Form (7 cols) */}
         <div className="lg:col-span-7">
-          <div className="bg-white rounded-3xl p-6 sm:p-9 border border-slate-200/80 shadow-xs">
-            <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-2">
+          <div className="bg-surface rounded-3xl p-6 sm:p-9 border border-line/80 shadow-xs">
+            <h3 className="text-xl font-bold text-fg tracking-tight mb-2">
               Send an Email Message
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 mb-6">
+            <p className="text-xs sm:text-sm text-fg-3 mb-6">
               Prepare an email draft in your email application. Your message is not sent by this website.
             </p>
 
             {submitted ? (
-              <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+              <div className="p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-400/10 border border-emerald-200 dark:border-emerald-400/25 text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-emerald-950">
+                  <h4 className="text-base font-bold text-emerald-950 dark:text-emerald-100">
                     Email Draft Prepared
                   </h4>
-                  <p className="text-xs sm:text-sm text-emerald-800 mt-1 max-w-md mx-auto">
+                  <p className="text-xs sm:text-sm text-emerald-800 dark:text-emerald-100 mt-1 max-w-md mx-auto">
                     Your email application should open with a draft addressed to <strong>info@myglucoguide.com.pk</strong>. This website has not sent your message. Review the draft and press Send in your email app to complete your inquiry. If no email app opens, email us directly or use WhatsApp instead.
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                         message: '',
                       });
                     }}
-                    className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline cursor-pointer"
+                    className="text-xs font-semibold text-emerald-800 dark:text-emerald-100 hover:text-emerald-950 dark:hover:text-emerald-100 underline cursor-pointer"
                   >
                     Send another message
                   </button>
@@ -225,7 +225,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 {/* Name */}
                 <div>
-                  <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-name" className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-1.5">
                     Your Name *
                   </label>
                   <input
@@ -238,16 +238,16 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Tariq Mehmood"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-line text-sm text-fg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-surface-2/50"
                   />
                   {errors.name && (
-                    <p id="contact-name-error" className="text-xs text-red-600 mt-1">{errors.name}</p>
+                    <p id="contact-name-error" className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.name}</p>
                   )}
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-email" className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-1.5">
                     Email Address *
                   </label>
                   <input
@@ -260,17 +260,17 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-line text-sm text-fg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-surface-2/50"
                   />
                   {errors.email && (
-                    <p id="contact-email-error" className="text-xs text-red-600 mt-1">{errors.email}</p>
+                    <p id="contact-email-error" className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.email}</p>
                   )}
                 </div>
 
                 {/* Phone / WhatsApp (Optional) */}
                 <div>
-                  <label htmlFor="contact-phone" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Phone / WhatsApp Number <span className="text-slate-400 font-normal">(Optional)</span>
+                  <label htmlFor="contact-phone" className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-1.5">
+                    Phone / WhatsApp Number <span className="text-fg-5 font-normal">(Optional)</span>
                   </label>
                   <input
                     id="contact-phone"
@@ -279,13 +279,13 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="0300-1234567"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-line text-sm text-fg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-surface-2/50"
                   />
                 </div>
 
                 {/* Topic */}
                 <div>
-                  <label htmlFor="contact-topic" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-topic" className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-1.5">
                     Inquiry Topic
                   </label>
                   <select
@@ -293,7 +293,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     name="topic"
                     value={formData.topic}
                     onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-line text-sm text-fg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-surface-2/50"
                   >
                     <option value="cgm_inquiry">CGM Sensor Guidance & Availability</option>
                     <option value="education">Diabetes Education & Post-Meal Spikes</option>
@@ -304,7 +304,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-1.5">
                     Message *
                   </label>
                   <textarea
@@ -317,22 +317,22 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe what you would like to know or how we can assist..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-xl border border-line text-sm text-fg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-surface-2/50"
                   />
                   {errors.message && (
-                    <p id="contact-message-error" className="text-xs text-red-600 mt-1">{errors.message}</p>
+                    <p id="contact-message-error" className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.message}</p>
                   )}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-slate-900 hover:bg-slate-800 active:scale-[0.98] transition cursor-pointer shadow-xs"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-slate-900 hover:bg-slate-800 dark:bg-sky-700 dark:hover:bg-sky-600 active:scale-[0.98] transition cursor-pointer shadow-xs"
                 >
                   <Send className="w-4 h-4" />
                   <span>Prepare Email Draft</span>
                 </button>
 
-                <p className="text-[11px] text-center text-slate-400 pt-1">
+                <p className="text-[11px] text-center text-fg-5 pt-1">
                   Please avoid including medical records or sensitive health details. This website does not send the email for you.
                 </p>
               </form>

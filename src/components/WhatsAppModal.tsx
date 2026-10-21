@@ -95,7 +95,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
   return (
     <div className="fixed inset-0 z-[60] overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
       <div
-        className="relative bg-white rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-100"
+        className="relative bg-surface rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-line-soft"
         role="dialog"
         aria-modal="true"
         aria-labelledby="whatsapp-modal-title"
@@ -103,7 +103,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-lg text-fg-5 hover:text-fg-2 hover:bg-surface-3 transition cursor-pointer"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -111,21 +111,21 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
 
         {/* Modal Header */}
         <div className="flex items-center gap-3.5 mb-5">
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+          <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-400/10 border border-emerald-100 dark:border-emerald-400/25 flex items-center justify-center text-emerald-600 dark:text-emerald-300 shrink-0">
             <MessageCircle className="w-6 h-6 fill-emerald-600" />
           </div>
           <div>
-            <h3 id="whatsapp-modal-title" className="text-xl font-bold text-slate-900 tracking-tight">
+            <h3 id="whatsapp-modal-title" className="text-xl font-bold text-fg tracking-tight">
               Connect on WhatsApp
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-fg-4">
               Educational and patient-focused diabetes and glucose awareness platform
             </p>
           </div>
         </div>
 
         {/* Informational reassurance */}
-        <div className="p-3.5 bg-sky-50/70 border border-sky-100 rounded-xl mb-5 text-xs text-sky-900">
+        <div className="p-3.5 bg-sky-50/70 dark:bg-sky-400/10 border border-sky-100 dark:border-sky-400/25 rounded-xl mb-5 text-xs text-sky-900 dark:text-sky-100">
           <p className="leading-relaxed">
             Our health communication team provides educational guidance to help you understand your glucose patterns and explore modern monitoring options.
           </p>
@@ -133,7 +133,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
 
         {/* Select Inquiry Topic */}
         <div className="mb-5">
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+          <label className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-2">
             Select Your Inquiry Topic
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -146,12 +146,12 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
                   onClick={() => handleSelectPreset(preset.id, preset.message)}
                   className={`text-left p-3 rounded-xl border text-xs transition cursor-pointer ${
                     isSelected
-                      ? 'border-emerald-500 bg-emerald-50/50 text-emerald-950 ring-1 ring-emerald-500'
-                      : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
+                      ? 'border-emerald-500 bg-emerald-50/50 dark:bg-emerald-400/10 text-emerald-950 dark:text-emerald-100 ring-1 ring-emerald-500'
+                      : 'border-line hover:border-line-strong bg-surface text-fg-2'
                   }`}
                 >
                   <div className="font-semibold">{preset.title}</div>
-                  <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                  <div className="text-[11px] text-fg-4 mt-0.5 line-clamp-1">
                     {preset.description}
                   </div>
                 </button>
@@ -162,20 +162,20 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
 
         {/* Custom Message preview */}
         <div className="mb-6">
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+          <label className="block text-xs font-semibold text-fg-2 uppercase tracking-wider mb-2">
             Message Preview (You can edit before sending)
           </label>
           <textarea
             rows={3}
             value={customText}
             onChange={(e) => setCustomText(e.target.value)}
-            className="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-slate-800 bg-slate-50/50"
+            className="w-full text-xs sm:text-sm p-3 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-fg-2 bg-surface-2/50"
             placeholder="Type your message here..."
           />
         </div>
 
         {!isNumberConfigured && (
-          <div className="mb-4 p-3 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-800">
+          <div className="mb-4 p-3 rounded-xl border border-amber-200 dark:border-amber-400/25 bg-amber-50 dark:bg-amber-400/10 text-xs text-amber-800 dark:text-amber-100">
             A valid WhatsApp number is not configured. Set <code>VITE_WHATSAPP_NUMBER</code> to 8–15 digits in international format, without + or spaces.
           </div>
         )}
@@ -186,7 +186,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
             type="button"
             onClick={handleLaunchWhatsApp}
             disabled={!isNumberConfigured}
-            className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-emerald-600"
+            className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] shadow transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-emerald-600"
           >
             <Send className="w-4 h-4" />
             <span>Open in WhatsApp</span>
@@ -194,14 +194,14 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition cursor-pointer"
+            className="px-4 py-3 rounded-xl text-sm font-medium text-fg-3 hover:text-fg-2 hover:bg-surface-3 transition cursor-pointer"
           >
             Cancel
           </button>
         </div>
 
         {/* Medical disclaimer subtext */}
-        <p className="mt-4 text-[11px] text-center text-slate-400">
+        <p className="mt-4 text-[11px] text-center text-fg-5">
           This conversation provides educational information and does not provide individual medical diagnosis or prescriptions. Always consult your personal physician.
         </p>
       </div>

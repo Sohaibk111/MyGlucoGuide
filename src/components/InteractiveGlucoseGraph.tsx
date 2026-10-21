@@ -133,24 +133,24 @@ export const InteractiveGlucoseGraph: React.FC = () => {
   const fillD = `${pathD} L ${getX(lastPoint.hour)} ${getY(minVal)} L ${getX(firstPoint.hour)} ${getY(minVal)} Z`;
 
   return (
-    <div className="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-7">
+    <div className="w-full bg-surface rounded-2xl border border-line/90 shadow-sm p-5 sm:p-7">
       {/* Header and Interactive Selector */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-line-soft">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-sky-700 uppercase tracking-wider mb-1">
-            <Activity className="w-4 h-4 text-sky-600" />
+          <div className="flex items-center gap-2 text-xs font-semibold text-sky-700 dark:text-sky-300 uppercase tracking-wider mb-1">
+            <Activity className="w-4 h-4 text-sky-600 dark:text-sky-300" />
             <span>Glucose Pattern Education</span>
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-bold text-fg tracking-tight">
             Understand Your Glucose Patterns
           </h3>
-          <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+          <p className="text-sm text-fg-3 mt-1 max-w-2xl">
             Continuous monitoring illustrates dynamic 24-hour trends. Select illustrative patterns below to observe how curves vary.
           </p>
         </div>
 
         {/* Scenario Buttons */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl self-start lg:self-auto">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-surface-3 rounded-xl self-start lg:self-auto">
           {SCENARIOS.map((s) => {
             const isSelected = s.id === selectedScenarioId;
             return (
@@ -162,8 +162,8 @@ export const InteractiveGlucoseGraph: React.FC = () => {
                 }}
                 className={`px-3.5 py-2 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap ${
                   isSelected
-                    ? 'bg-white text-slate-900 shadow-xs font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-surface text-fg shadow-xs font-semibold'
+                    : 'text-fg-3 hover:text-fg'
                 }`}
               >
                 {s.label}
@@ -174,8 +174,8 @@ export const InteractiveGlucoseGraph: React.FC = () => {
       </div>
 
       {/* Mandatory Reference Range Notice Banner */}
-      <div className="my-5 p-3.5 sm:p-4 rounded-xl bg-sky-50/80 border border-sky-200/80 flex items-start gap-3 text-xs sm:text-sm text-sky-950">
-        <Info className="w-4 h-4 text-sky-700 shrink-0 mt-0.5" />
+      <div className="my-5 p-3.5 sm:p-4 rounded-xl bg-sky-50/80 dark:bg-sky-400/10 border border-sky-200/80 dark:border-sky-400/25 flex items-start gap-3 text-xs sm:text-sm text-sky-950 dark:text-sky-100">
+        <Info className="w-4 h-4 text-sky-700 dark:text-sky-300 shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           <strong>Clinical Reference Note:</strong> 70–180 mg/dL is a commonly used Time in Range reference for many people with diabetes. Individual targets may vary. Discuss your glucose targets with your healthcare professional.
         </p>
@@ -183,32 +183,32 @@ export const InteractiveGlucoseGraph: React.FC = () => {
 
       {/* Metric Summaries */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-          <div className="text-[11px] font-medium text-slate-500">Selected Pattern</div>
-          <div className="text-sm font-bold text-slate-900 truncate mt-0.5">{scenario.name}</div>
+        <div className="p-3.5 rounded-xl bg-surface-2 border border-line-soft">
+          <div className="text-[11px] font-medium text-fg-4">Selected Pattern</div>
+          <div className="text-sm font-bold text-fg truncate mt-0.5">{scenario.name}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-          <div className="text-[11px] font-medium text-slate-500">In Reference (70–180)</div>
-          <div className="text-sm font-bold text-emerald-700 mt-0.5 tabular-nums">
+        <div className="p-3.5 rounded-xl bg-surface-2 border border-line-soft">
+          <div className="text-[11px] font-medium text-fg-4">In Reference (70–180)</div>
+          <div className="text-sm font-bold text-emerald-700 dark:text-emerald-300 mt-0.5 tabular-nums">
             {scenario.timeInRange}% in Reference Band
           </div>
         </div>
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-          <div className="text-[11px] font-medium text-slate-500">Pattern Average</div>
-          <div className="text-sm font-bold text-slate-900 mt-0.5 tabular-nums">
+        <div className="p-3.5 rounded-xl bg-surface-2 border border-line-soft">
+          <div className="text-[11px] font-medium text-fg-4">Pattern Average</div>
+          <div className="text-sm font-bold text-fg mt-0.5 tabular-nums">
             {scenario.averageGlucose} mg/dL
           </div>
         </div>
-        <div className="p-3.5 rounded-xl bg-sky-50/70 border border-sky-100">
-          <div className="text-[11px] font-medium text-sky-800">Inspected Reading</div>
-          <div className="text-sm font-bold text-sky-950 mt-0.5 tabular-nums">
-            {activePoint.value} mg/dL <span className="text-xs font-normal text-sky-700">at {activePoint.time}</span>
+        <div className="p-3.5 rounded-xl bg-sky-50/70 dark:bg-sky-400/10 border border-sky-100 dark:border-sky-400/25">
+          <div className="text-[11px] font-medium text-sky-800 dark:text-sky-100">Inspected Reading</div>
+          <div className="text-sm font-bold text-sky-950 dark:text-sky-100 mt-0.5 tabular-nums">
+            {activePoint.value} mg/dL <span className="text-xs font-normal text-sky-700 dark:text-sky-300">at {activePoint.time}</span>
           </div>
         </div>
       </div>
 
       {/* SVG Chart Container */}
-      <div className="relative w-full overflow-x-auto overflow-y-hidden bg-slate-950/2 rounded-xl border border-slate-100 p-2 sm:p-4">
+      <div className="relative w-full overflow-x-auto overflow-y-hidden bg-surface-2/60 rounded-xl border border-line-soft p-2 sm:p-4">
         <svg
           viewBox={`0 0 ${svgWidth} ${svgHeight}`}
           className="w-full h-auto min-w-[560px] select-none"
@@ -244,9 +244,9 @@ export const InteractiveGlucoseGraph: React.FC = () => {
             x={paddingLeft - 8}
             y={targetTopY + 4}
             fontSize="10"
-            fill="#059669"
+            
             textAnchor="end"
-            className="font-mono tabular-nums font-semibold"
+            className="fill-emerald-700 dark:fill-emerald-400 font-mono tabular-nums font-semibold"
           >
             180
           </text>
@@ -254,9 +254,9 @@ export const InteractiveGlucoseGraph: React.FC = () => {
             x={svgWidth - paddingRight - 6}
             y={targetTopY - 6}
             fontSize="9"
-            fill="#059669"
+            
             textAnchor="end"
-            className="font-medium"
+            className="fill-emerald-700 dark:fill-emerald-400 font-medium"
           >
             Common Reference Upper (180 mg/dL)
           </text>
@@ -275,9 +275,9 @@ export const InteractiveGlucoseGraph: React.FC = () => {
             x={paddingLeft - 8}
             y={targetBottomY + 4}
             fontSize="10"
-            fill="#d97706"
+            
             textAnchor="end"
-            className="font-mono tabular-nums font-semibold"
+            className="fill-amber-700 dark:fill-amber-400 font-mono tabular-nums font-semibold"
           >
             70
           </text>
@@ -285,9 +285,9 @@ export const InteractiveGlucoseGraph: React.FC = () => {
             x={svgWidth - paddingRight - 6}
             y={targetBottomY + 14}
             fontSize="9"
-            fill="#d97706"
+            
             textAnchor="end"
-            className="font-medium"
+            className="fill-amber-700 dark:fill-amber-400 font-medium"
           >
             Common Reference Lower (70 mg/dL)
           </text>
@@ -298,7 +298,7 @@ export const InteractiveGlucoseGraph: React.FC = () => {
             y1={getY(240)}
             x2={svgWidth - paddingRight}
             y2={getY(240)}
-            stroke="#cbd5e1"
+            className="stroke-chart-grid"
             strokeDasharray="2 4"
             strokeWidth="0.8"
           />
@@ -306,9 +306,9 @@ export const InteractiveGlucoseGraph: React.FC = () => {
             x={paddingLeft - 8}
             y={getY(240) + 4}
             fontSize="10"
-            fill="#94a3b8"
+            
             textAnchor="end"
-            className="font-mono tabular-nums"
+            className="fill-chart-axis font-mono tabular-nums"
           >
             240
           </text>
@@ -357,7 +357,7 @@ export const InteractiveGlucoseGraph: React.FC = () => {
                   cy={y}
                   r={isSelected ? '5.5' : '4'}
                   fill={isAboveRef ? '#d97706' : '#0284c7'}
-                  stroke="#ffffff"
+                  className="stroke-chart-ring"
                   strokeWidth="2"
                 />
 
@@ -365,9 +365,9 @@ export const InteractiveGlucoseGraph: React.FC = () => {
                   x={x}
                   y={svgHeight - 12}
                   fontSize="10"
-                  fill="#64748b"
+                  
                   textAnchor="middle"
-                  className="font-mono tabular-nums"
+                  className="fill-chart-axis font-mono tabular-nums"
                 >
                   {pt.time}
                 </text>
@@ -378,72 +378,72 @@ export const InteractiveGlucoseGraph: React.FC = () => {
       </div>
 
       {/* Selected Data Point Highlight Card */}
-      <div className="mt-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="mt-4 p-4 rounded-xl bg-surface-2 border border-line/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center text-sky-700 shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-400/15 flex items-center justify-center text-sky-700 dark:text-sky-300 shrink-0">
             <Clock className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs text-slate-500 font-medium">
-              Time Point: <span className="font-semibold text-slate-800">{activePoint.time}</span>
+            <div className="text-xs text-fg-4 font-medium">
+              Time Point: <span className="font-semibold text-fg-2">{activePoint.time}</span>
               {activePoint.event && (
-                <span className="ml-2 px-2 py-0.5 rounded bg-slate-200/70 text-slate-800 text-[11px] font-medium">
+                <span className="ml-2 px-2 py-0.5 rounded bg-surface-4/70 text-fg-2 text-[11px] font-medium">
                   {activePoint.event}
                 </span>
               )}
             </div>
-            <div className="text-sm font-semibold text-slate-900 mt-0.5">
+            <div className="text-sm font-semibold text-fg mt-0.5">
               {activePoint.note}
             </div>
           </div>
         </div>
 
         <div className="text-right shrink-0">
-          <div className="text-[11px] text-slate-500">Glucose Reading</div>
-          <div className={`text-lg font-bold tabular-nums ${activePoint.value > 180 ? 'text-amber-700' : 'text-sky-700'}`}>
-            {activePoint.value} <span className="text-xs font-normal text-slate-500">mg/dL</span>
+          <div className="text-[11px] text-fg-4">Glucose Reading</div>
+          <div className={`text-lg font-bold tabular-nums ${activePoint.value > 180 ? 'text-amber-700 dark:text-amber-300' : 'text-sky-700 dark:text-sky-300'}`}>
+            {activePoint.value} <span className="text-xs font-normal text-fg-4">mg/dL</span>
           </div>
         </div>
       </div>
 
       {/* Educational 4 Pillars */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-7 pt-7 border-t border-slate-100">
-        <div className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-sky-200 transition">
-          <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center mb-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-7 pt-7 border-t border-line-soft">
+        <div className="p-4 rounded-xl bg-surface border border-line/80 hover:border-sky-200 dark:hover:border-sky-400/25 transition">
+          <div className="w-8 h-8 rounded-lg bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-3">
             <Clock className="w-4 h-4" />
           </div>
-          <h4 className="text-sm font-bold text-slate-900">Before-Meal Glucose</h4>
-          <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+          <h4 className="text-sm font-bold text-fg">Before-Meal Glucose</h4>
+          <p className="text-xs text-fg-3 mt-1.5 leading-relaxed">
             The starting baseline before meals. General clinical guidelines often cite 80–130 mg/dL for non-pregnant adults; individual goals must be set with your physician.
           </p>
         </div>
 
-        <div className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-sky-200 transition">
-          <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
+        <div className="p-4 rounded-xl bg-surface border border-line/80 hover:border-sky-200 dark:hover:border-sky-400/25 transition">
+          <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-400/10 text-emerald-600 dark:text-emerald-300 flex items-center justify-center mb-3">
             <Utensils className="w-4 h-4" />
           </div>
-          <h4 className="text-sm font-bold text-slate-900">After-Meal Changes</h4>
-          <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+          <h4 className="text-sm font-bold text-fg">After-Meal Changes</h4>
+          <p className="text-xs text-fg-3 mt-1.5 leading-relaxed">
             Glucose naturally rises and peaks 1 to 2 hours after meals. Many guidelines reference keeping post-meal levels under 180 mg/dL. Personal goals vary.
           </p>
         </div>
 
-        <div className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-sky-200 transition">
-          <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3">
+        <div className="p-4 rounded-xl bg-surface border border-line/80 hover:border-sky-200 dark:hover:border-sky-400/25 transition">
+          <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-400/10 text-indigo-600 dark:text-indigo-300 flex items-center justify-center mb-3">
             <Activity className="w-4 h-4" />
           </div>
-          <h4 className="text-sm font-bold text-slate-900">Daily Patterns</h4>
-          <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+          <h4 className="text-sm font-bold text-fg">Daily Patterns</h4>
+          <p className="text-xs text-fg-3 mt-1.5 leading-relaxed">
             Circadian hormones, the early morning Dawn Phenomenon, and sleep quality naturally shape glucose rhythms over 24 hours.
           </p>
         </div>
 
-        <div className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-sky-200 transition">
-          <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-3">
+        <div className="p-4 rounded-xl bg-surface border border-line/80 hover:border-sky-200 dark:hover:border-sky-400/25 transition">
+          <div className="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-400/10 text-amber-600 dark:text-amber-300 flex items-center justify-center mb-3">
             <Footprints className="w-4 h-4" />
           </div>
-          <h4 className="text-sm font-bold text-slate-900">Lifestyle Factors</h4>
-          <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+          <h4 className="text-sm font-bold text-fg">Lifestyle Factors</h4>
+          <p className="text-xs text-fg-3 mt-1.5 leading-relaxed">
             Food sequencing, hydration, stress management, and light post-meal movement can help moderate post-prandial glucose curves.
           </p>
         </div>

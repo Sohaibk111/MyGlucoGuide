@@ -72,17 +72,17 @@ export const BlogView: React.FC<BlogViewProps> = ({
     <div className="space-y-12 sm:space-y-16 py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Page Header */}
       <div className="max-w-3xl">
-        <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 uppercase tracking-wider mb-2">
-          <BookOpen className="w-4 h-4 text-sky-600" />
+        <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 dark:text-sky-300 uppercase tracking-wider mb-2">
+          <BookOpen className="w-4 h-4 text-sky-600 dark:text-sky-300" />
           <span>Educational Resources</span>
         </div>
         <h1
-          className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight"
+          className="text-3xl sm:text-5xl font-extrabold text-fg tracking-tight"
           style={{ textWrap: 'balance' }}
         >
           Learning Center
         </h1>
-        <p className="mt-3 text-base text-slate-600 leading-relaxed">
+        <p className="mt-3 text-base text-fg-3 leading-relaxed">
           Useful articles, tips and guides to help you understand diabetes, glucose numbers, and live a healthier life in Pakistan.
         </p>
       </div>
@@ -90,25 +90,25 @@ export const BlogView: React.FC<BlogViewProps> = ({
       {/* Search Bar & Category Controls */}
       <div className="space-y-4">
         <div className="relative max-w-xl">
-          <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+          <Search className="w-5 h-5 text-fg-5 absolute left-4 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search articles (e.g. HbA1c, roti, CGM, spikes, dawn phenomenon)..."
-            className="w-full pl-11 pr-4 py-3 bg-white rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-sm text-slate-800 placeholder-slate-400 shadow-xs"
+            className="w-full pl-11 pr-4 py-3 bg-surface rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-sm text-fg-2 placeholder-fg-5 shadow-xs"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-fg-5 hover:text-fg-3 cursor-pointer"
             >
               Clear
             </button>
           )}
         </div>
 
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl overflow-x-auto">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-surface-3 rounded-xl overflow-x-auto">
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
@@ -118,8 +118,8 @@ export const BlogView: React.FC<BlogViewProps> = ({
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all whitespace-nowrap cursor-pointer ${
                   isSelected
-                    ? 'bg-white text-slate-900 shadow-xs font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-surface text-fg shadow-xs font-semibold'
+                    : 'text-fg-3 hover:text-fg'
                 }`}
               >
                 {cat}
@@ -129,23 +129,23 @@ export const BlogView: React.FC<BlogViewProps> = ({
         </div>
       </div>
 
-      <div className="text-xs text-slate-500">
-        Showing <span className="font-semibold text-slate-800">{filteredArticles.length}</span>{' '}
+      <div className="text-xs text-fg-4">
+        Showing <span className="font-semibold text-fg-2">{filteredArticles.length}</span>{' '}
         {filteredArticles.length === 1 ? 'article' : 'articles'}
         {selectedCategory !== 'All' && ` in "${selectedCategory}"`}
       </div>
 
       {filteredArticles.length === 0 ? (
-        <div className="p-12 text-center bg-white rounded-2xl border border-slate-200">
-          <BookOpen className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-          <p className="text-sm font-semibold text-slate-700">No articles found matching your search</p>
-          <p className="text-xs text-slate-500 mt-1">Try searching for broader terms like "glucose", "meal", or "CGM".</p>
+        <div className="p-12 text-center bg-surface rounded-2xl border border-line">
+          <BookOpen className="w-8 h-8 text-fg-5 mx-auto mb-2" />
+          <p className="text-sm font-semibold text-fg-2">No articles found matching your search</p>
+          <p className="text-xs text-fg-4 mt-1">Try searching for broader terms like "glucose", "meal", or "CGM".</p>
           <button
             onClick={() => {
               setSearchQuery('');
               setSelectedCategory('All');
             }}
-            className="mt-4 px-4 py-2 rounded-lg text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer"
+            className="mt-4 px-4 py-2 rounded-lg text-xs font-medium bg-surface-3 text-fg-2 hover:bg-surface-4 transition cursor-pointer"
           >
             Reset Filters
           </button>
@@ -158,7 +158,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
             return (
               <article
                 key={art.id}
-                className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-sky-300 transition-all overflow-hidden flex flex-col justify-between"
+                className="bg-surface rounded-2xl border border-line/80 shadow-xs hover:shadow-md hover:border-sky-300 dark:hover:border-sky-400/40 transition-all overflow-hidden flex flex-col justify-between"
               >
                 <div>
                   {/* Featured Image — exact approved sprite tile */}
@@ -166,7 +166,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
                     <div
                       role="img"
                       aria-label={art.title}
-                      className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100 bg-no-repeat"
+                      className="aspect-16/9 w-full bg-surface-3 overflow-hidden relative border-b border-line-soft bg-no-repeat"
                       style={{
                         backgroundImage: `url(${BLOG_VISUAL_SPRITE})`,
                         backgroundSize: '400% 200%',
@@ -174,7 +174,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
                       }}
                     />
                   ) : art.imageUrl ? (
-                    <div className="aspect-16/9 w-full bg-slate-100 overflow-hidden relative border-b border-slate-100">
+                    <div className="aspect-16/9 w-full bg-surface-3 overflow-hidden relative border-b border-line-soft">
                       <img
                         src={art.imageUrl}
                         alt={art.title}
@@ -185,34 +185,34 @@ export const BlogView: React.FC<BlogViewProps> = ({
                       />
                     </div>
                   ) : (
-                    <div className="aspect-16/9 w-full bg-sky-50 flex items-center justify-center border-b border-slate-100 text-sky-300">
+                    <div className="aspect-16/9 w-full bg-sky-50 dark:bg-sky-400/10 flex items-center justify-center border-b border-line-soft text-sky-300">
                       <BookOpen className="w-10 h-10" />
                     </div>
                   )}
 
                   <div className="p-5 sm:p-6 space-y-2.5">
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <span className="text-sky-700 font-semibold">{art.category}</span>
+                    <div className="flex items-center gap-2 text-xs text-fg-4">
+                      <span className="text-sky-700 dark:text-sky-300 font-semibold">{art.category}</span>
                       <span aria-hidden="true">·</span>
                       <span>{art.readTime}</span>
                     </div>
 
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
+                    <h3 className="text-base sm:text-lg font-bold text-fg leading-snug line-clamp-2">
                       {art.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                    <p className="text-xs sm:text-sm text-fg-3 leading-relaxed line-clamp-3">
                       {art.summary}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400">{art.date}</span>
+                <div className="p-5 sm:p-6 pt-0 border-t border-line-soft mt-2 flex items-center justify-between">
+                  <span className="text-[11px] text-fg-5">{art.date}</span>
                   <button
                     type="button"
                     onClick={() => handleArticleClick(art)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 transition cursor-pointer"
                   >
                     <span>Read More</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -224,10 +224,10 @@ export const BlogView: React.FC<BlogViewProps> = ({
         </div>
       )}
 
-      <div className="p-6 sm:p-8 rounded-2xl bg-sky-50/70 border border-sky-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="p-6 sm:p-8 rounded-2xl bg-sky-50/70 dark:bg-sky-400/10 border border-sky-100 dark:border-sky-400/25 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h3 className="text-base font-bold text-sky-950">Looking for a specific diabetes topic?</h3>
-          <p className="text-xs sm:text-sm text-sky-900 mt-0.5">
+          <h3 className="text-base font-bold text-sky-950 dark:text-sky-100">Looking for a specific diabetes topic?</h3>
+          <p className="text-xs sm:text-sm text-sky-900 dark:text-sky-100 mt-0.5">
             Suggest a topic or ask our health educator team on WhatsApp.
           </p>
         </div>
@@ -241,7 +241,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
             });
             onOpenWhatsApp('blog_suggest');
           }}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition cursor-pointer shrink-0"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 transition cursor-pointer shrink-0"
         >
           <MessageCircle className="w-4 h-4 fill-white" />
           <span>Ask on WhatsApp</span>
