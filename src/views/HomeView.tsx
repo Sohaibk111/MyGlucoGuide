@@ -142,17 +142,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Right Visual (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border border-line/80 bg-surface">
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-line/80 bg-surface">
                 <img
                   src="/assets/images/hero_pakistani_glucose_app_1790358065352.webp"
                   alt="Pakistani adult with smartphone showing glucose insights and trend patterns"
                   className="w-full h-auto object-cover aspect-4/3"
                   referrerPolicy="no-referrer"
                 />
+                </div>
 
-                {/* Subtle Floating Sensor Card Overlay */}
-                {/* Extra right-clearance below 414px keeps this clear of the fixed floating WhatsApp widget */}
-                <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 bg-surface/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-lg border border-line-soft grid grid-cols-[auto_minmax(0,1fr)] sm:flex sm:items-center sm:justify-between gap-x-2 gap-y-1.5 sm:gap-3">
+                {/* On mobile, keep the demo card below the image so the person stays visible. On larger screens, overlay it as before. */}
+                <div className="relative mt-3 sm:mt-0 sm:absolute sm:bottom-4 sm:left-4 sm:right-4 bg-surface/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-lg border border-line-soft grid grid-cols-[auto_minmax(0,1fr)] sm:flex sm:items-center sm:justify-between gap-x-2 gap-y-1.5 sm:gap-3">
                   <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                     <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-sky-50 dark:bg-sky-400/10 border border-sky-100 dark:border-sky-400/25 flex items-center justify-center text-sky-700 dark:text-sky-300 font-bold text-[10px] sm:text-xs shrink-0">
                       CGM
