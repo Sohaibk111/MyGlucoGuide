@@ -17,13 +17,13 @@ export const FAQS: FaqItem[] = [
     id: 'faq-3',
     category: 'CGM',
     question: 'Is CGM available in Pakistan and what smartphones are compatible?',
-    answer: 'Leading CGM systems are increasingly available in Pakistan through specialized medical distributors, authorized healthcare providers, and accredited pharmacy channels. Compatibility depends on the specific system; most modern iOS and Android smartphones with Bluetooth or NFC support companion monitoring applications. Check your specific smartphone model against manufacturer compatibility lists.'
+    answer: 'CGM availability in Pakistan varies by brand, model, and supplier. Smartphone compatibility also depends on the specific CGM system, phone model, operating system, and app requirements. Before purchasing, check the manufacturer's current compatibility list and confirm the product's authorized supply channel.'
   },
   {
     id: 'faq-4',
     category: 'CGM',
     question: 'How long does a CGM sensor typically last?',
-    answer: 'Sensor wear duration is product-dependent, commonly ranging between 10 to 14 days according to the manufacturer’s approved labeling and specifications. After the designated operating window, the sensor stops recording and can be removed and replaced according to user instructions.'
+    answer: 'Sensor wear duration varies by product. Follow the specific sensor's current instructions for use for its approved wear period, replacement timing, and removal.'
   },
   {
     id: 'faq-5',
@@ -35,7 +35,7 @@ export const FAQS: FaqItem[] = [
     id: 'faq-6',
     category: 'Monitoring',
     question: 'Why does my CGM reading sometimes differ from my finger-prick glucometer?',
-    answer: 'CGM devices sample interstitial fluid (between cells), whereas traditional glucometers test capillary blood. When glucose levels are changing rapidly—such as after meals or during exercise—a normal biological lag time of roughly 5 to 10 minutes occurs before interstitial glucose reflects blood glucose shifts. Blood glucose meters remain the clinical reference standard whenever symptoms differ from sensor readings or when calibration is required.'
+    answer: 'CGM systems estimate glucose from interstitial fluid, while a finger-prick meter measures glucose in capillary blood. The readings can differ, especially when glucose is changing quickly, and the size of the difference varies. Follow the specific device instructions and use a blood glucose meter when recommended by the manufacturer or healthcare professional, including when symptoms do not match the sensor reading.'
   },
   {
     id: 'faq-7',
@@ -47,7 +47,7 @@ export const FAQS: FaqItem[] = [
     id: 'faq-8',
     category: 'Diet & Lifestyle',
     question: 'Do I have to eliminate traditional foods like roti and rice to manage glucose?',
-    answer: 'Severe dietary restriction is often difficult to sustain and should only be undertaken under clinical guidance. Nutritional awareness emphasizes grain quality (such as stone-ground whole wheat or multigrain atta), mindful portion sizes, and meal composition. Consuming fiber-rich vegetables and protein sources before carbohydrates can help moderate post-meal glucose absorption.'
+    answer: 'You do not automatically need to eliminate roti or rice. Portion size, the overall meal, medicines, activity, and individual response all matter. Choose a sustainable eating pattern with guidance from a qualified healthcare professional or dietitian; avoid major dietary changes that could affect medication-related glucose risks without clinical advice.'
   },
   {
     id: 'faq-9',
