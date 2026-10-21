@@ -158,18 +158,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       CGM
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500 font-medium">Continuous Reading</div>
+                      <div className="text-xs text-slate-500 font-medium">Illustrative Example</div>
                       <div className="text-base font-extrabold text-slate-900 flex items-center gap-1.5 tabular-nums">
                         112 <span className="text-xs font-normal text-slate-500">mg/dL</span>
                         <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                          Steady →
+                          Demo only
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-[11px] text-slate-400 block">Reference (70–180)</span>
-                    <span className="text-xs font-semibold text-emerald-700">Within Range</span>
+                    <span className="text-[11px] text-slate-400 block">Sample value</span>
+                    <span className="text-xs font-semibold text-emerald-700">Not personal advice</span>
                   </div>
                 </div>
               </div>
@@ -249,7 +249,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 1. Diabetes Education
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Clear, evidence-grounded insights explaining HbA1c, insulin function, and how food directly impacts daily blood sugar.
+                Clear, evidence-informed explanations of HbA1c, insulin, and how meals can affect glucose levels.
               </p>
             </div>
 
@@ -273,7 +273,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 3. Practical Guidance
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Culturally resonant guidance for Pakistani diets: balancing roti, daal, and rice, managing tea, and safe fasting practices.
+                Practical education around familiar Pakistani foods, sweetened tea, and questions to discuss with a clinician before fasting.
               </p>
             </div>
 
