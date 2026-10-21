@@ -1,88 +1,215 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Site-wide dark theme for existing utility classes */
-html { color-scheme: light; }
-html.dark { color-scheme: dark; background: #0b1220; }
-.dark body { background-color: #0b1220; color: #e5edf7; }
-.dark .bg-white { background-color: #111b2c !important; }
-.dark .bg-white\/95 { background-color: rgb(17 27 44 / 95%) !important; }
-.dark .bg-white\/90 { background-color: rgb(17 27 44 / 90%) !important; }
-.dark .bg-slate-50 { background-color: #0f1726 !important; }
-.dark .bg-slate-100 { background-color: #1a2639 !important; }
-.dark .bg-slate-200 { background-color: #26354a !important; }
-.dark .bg-sky-50 { background-color: #10263d !important; }
-.dark .bg-emerald-50 { background-color: #103329 !important; }
-.dark .text-slate-900 { color: #f1f5f9 !important; }
-.dark .text-slate-800 { color: #e5edf7 !important; }
-.dark .text-slate-700 { color: #d4deeb !important; }
-.dark .text-slate-600 { color: #bdc9d9 !important; }
-.dark .text-slate-500 { color: #a4b2c5 !important; }
-.dark .text-slate-400 { color: #8b9bb1 !important; }
-.dark .border-slate-100 { border-color: #26354a !important; }
-.dark .border-slate-200, .dark .border-slate-200\/80 { border-color: #2a3a50 !important; }
-.dark .divide-slate-200 > :not(:last-child) { border-color: #2a3a50 !important; }
-.dark .hover\:bg-slate-50:hover { background-color: #1a2639 !important; }
-.dark .hover\:bg-slate-100:hover { background-color: #24344b !important; }
-.dark input, .dark textarea, .dark select {
-  background-color: #0f1726;
-  color: #e5edf7;
-  border-color: #34445b;
-}
-.dark input::placeholder, .dark textarea::placeholder { color: #91a0b4; }
-.dark .shadow, .dark .shadow-sm, .dark .shadow-md, .dark .shadow-lg, .dark .shadow-xl {
-  --tw-shadow-color: rgb(0 0 0 / 25%);
+/*
+ * MyGlucoGuide theme compatibility layer.
+ * The app uses Tailwind color utilities in its views; these tokens and
+ * narrowly-scoped utility mappings keep those existing components themed
+ * without changing the Light Mode design.
+ */
+:root {
+  color-scheme: light;
+  --page-bg: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --surface-raised: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --brand-blue: #0284c7;
+  --brand-cyan: #06b6d4;
 }
 
-/* Gradient contrast corrections for both themes */
-html:not(.dark) body { background: #ffffff; color: #0f172a; }
-.dark main { color: #e5edf7; }
-.dark [class*="from-white"], .dark [class*="via-white"], .dark [class*="to-white"],
-.dark [class*="from-sky-50"], .dark [class*="via-slate-50"], .dark [class*="to-slate-50"] {
-  background-color: #111b2c !important;
-  background-image: linear-gradient(135deg, #111b2c 0%, #0f1726 100%) !important;
-  border-color: #26354a !important;
+html {
+  color-scheme: light;
+  background: var(--page-bg);
+  scroll-behavior: smooth;
 }
-.dark [class*="from-sky-50"] { --tw-gradient-from: #111b2c !important; }
-.dark [class*="via-white"] { --tw-gradient-stops: #111b2c, #101a2b, #0f1726 !important; }
 
+html.dark {
+  color-scheme: dark;
+  --page-bg: #0b1220;
+  --surface: #111d30;
+  --surface-muted: #101a2b;
+  --surface-raised: #18263b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #a7b5c8;
+  --border: #2b3b52;
+  --brand-blue: #38bdf8;
+  --brand-cyan: #22d3ee;
+  background: var(--page-bg);
+}
 
-/* Dark-mode readability: override light surfaces used by page components */
-.dark [class*="bg-gradient-to-"]:not([class*="from-emerald-"]):not([class*="from-sky-900"]):not([class*="from-slate-900"]) {
-  background-image: linear-gradient(135deg, #111b2c 0%, #0f1726 55%, #13243a 100%) !important;
-  background-color: #111b2c !important;
-  color: #e5edf7;
+body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
 }
-.dark [class*="from-slate-50"], .dark [class*="to-slate-50"],
-.dark [class*="from-gray-50"], .dark [class*="to-gray-50"],
-.dark [class*="from-sky-50"], .dark [class*="to-sky-50"],
-.dark [class*="from-white"], .dark [class*="via-white"], .dark [class*="to-white"] {
-  background-image: linear-gradient(135deg, #111b2c 0%, #0f1726 60%, #13243a 100%) !important;
-  background-color: #111b2c !important;
-  color: #e5edf7;
+
+.dark body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
 }
-.dark .bg-white, .dark .bg-white\/95, .dark .bg-white\/90,
-.dark .bg-slate-50, .dark .bg-slate-100, .dark .bg-slate-200,
-.dark .bg-slate-50\/50 {
-  background-color: #111b2c !important;
-  color: #e5edf7;
+
+/* Common hard-coded light surfaces used throughout the views. */
+.dark .bg-white,
+.dark .bg-white\/95,
+.dark .bg-white\/90,
+.dark .bg-white\/80 { background-color: var(--surface) !important; }
+
+.dark .bg-slate-50,
+.dark .bg-slate-50\/50,
+.dark .bg-slate-50\/70,
+.dark .bg-gray-50 { background-color: var(--surface-muted) !important; }
+
+.dark .bg-slate-100,
+.dark .bg-gray-100 { background-color: var(--surface-raised) !important; }
+
+.dark .bg-slate-200,
+.dark .bg-gray-200 { background-color: #26354a !important; }
+
+.dark .bg-sky-50,
+.dark .bg-blue-50 { background-color: #10263d !important; }
+
+.dark .bg-cyan-50 { background-color: #102b37 !important; }
+.dark .bg-emerald-50,
+.dark .bg-green-50 { background-color: #103329 !important; }
+.dark .bg-amber-50,
+.dark .bg-yellow-50 { background-color: #332814 !important; }
+.dark .bg-rose-50,
+.dark .bg-red-50 { background-color: #351e2a !important; }
+
+/* Text utilities: keep muted text readable without turning every label white. */
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-gray-900,
+.dark .text-gray-800 { color: #f1f5f9 !important; }
+
+.dark .text-slate-700,
+.dark .text-gray-700 { color: #dbe7f5 !important; }
+
+.dark .text-slate-600,
+.dark .text-gray-600 { color: #cbd5e1 !important; }
+
+.dark .text-slate-500,
+.dark .text-gray-500 { color: #a7b5c8 !important; }
+
+.dark .text-slate-400,
+.dark .text-gray-400 { color: #94a3b8 !important; }
+
+/* Brand text remains distinguishable on dark surfaces. */
+.dark .text-sky-700,
+.dark .text-sky-800,
+.dark .text-blue-700,
+.dark .text-blue-800 { color: #7dd3fc !important; }
+
+.dark .text-cyan-700,
+.dark .text-cyan-800 { color: #67e8f9 !important; }
+
+/* Borders, dividers, and interaction states. */
+.dark .border-slate-50,
+.dark .border-slate-100,
+.dark .border-gray-100 { border-color: #233249 !important; }
+
+.dark .border-slate-200,
+.dark .border-slate-200\/70,
+.dark .border-slate-200\/80,
+.dark .border-gray-200,
+.dark .border-slate-300 { border-color: var(--border) !important; }
+
+.dark .divide-slate-200 > :not(:last-child),
+.dark .divide-gray-200 > :not(:last-child) { border-color: var(--border) !important; }
+
+.dark .hover\\:bg-slate-50:hover,
+.dark .hover\\:bg-gray-50:hover { background-color: var(--surface-raised) !important; }
+
+.dark .hover\\:bg-slate-100:hover,
+.dark .hover\\:bg-gray-100:hover { background-color: #24344b !important; }
+
+.dark .hover\\:text-slate-900:hover,
+.dark .hover\\:text-gray-900:hover { color: #ffffff !important; }
+
+/* Form controls and their focus/placeholder states. */
+.dark input,
+.dark textarea,
+.dark select {
+  color: #f1f5f9 !important;
+  background-color: #0b1423 !important;
+  border-color: #34445b !important;
 }
-.dark .text-white { color: #f8fafc; }
-.dark .text-slate-900, .dark .text-slate-800 { color: #f1f5f9 !important; }
-.dark .text-slate-700 { color: #dbe7f5 !important; }
-.dark .text-slate-600, .dark .text-slate-500 { color: #b6c5d8 !important; }
-.dark .border-slate-200, .dark .border-slate-200\/80,
-.dark .border-slate-100, .dark .border-slate-200\/70 { border-color: #2b3b52 !important; }
-.dark input, .dark textarea, .dark select { background-color: #0b1423 !important; color: #f1f5f9 !important; border-color: #34445b !important; }
-.dark input::placeholder, .dark textarea::placeholder { color: #a8b7ca !important; }
-.dark .bg-slate-100.text-slate-700, .dark .bg-slate-100.text-slate-600 { color: #dbe7f5 !important; }
-.dark .bg-white .text-slate-900, .dark .bg-slate-50 .text-slate-900 { color: #f1f5f9 !important; }
-.dark [class*="bg-gradient-to-"] p, .dark [class*="bg-gradient-to-"] h1,
-.dark [class*="bg-gradient-to-"] h2, .dark [class*="bg-gradient-to-"] h3 {
+
+.dark input::placeholder,
+.dark textarea::placeholder,
+.dark select:invalid { color: #a7b5c8 !important; }
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  outline-color: #38bdf8;
+  border-color: #38bdf8 !important;
+}
+
+/* Convert only light-themed gradients; preserve deliberate brand/CTA gradients. */
+.dark [class*="from-white"],
+.dark [class*="via-white"],
+.dark [class*="to-white"],
+.dark [class*="from-slate-50"],
+.dark [class*="via-slate-50"],
+.dark [class*="to-slate-50"],
+.dark [class*="from-gray-50"],
+.dark [class*="via-gray-50"],
+.dark [class*="to-gray-50"],
+.dark [class*="from-sky-50"],
+.dark [class*="via-sky-50"],
+.dark [class*="to-sky-50"],
+.dark [class*="from-blue-50"],
+.dark [class*="via-blue-50"],
+.dark [class*="to-blue-50"] {
+  --tw-gradient-from: #111d30 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(17 29 48 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #101a2b, #13243a !important;
+  background-color: var(--surface-muted) !important;
+  border-color: var(--border);
+}
+
+/* General light gradient utility fallback for components with custom stops. */
+.dark [class*="bg-gradient-to-"][class*="from-white"],
+.dark [class*="bg-gradient-to-"][class*="from-slate-50"],
+.dark [class*="bg-gradient-to-"][class*="from-gray-50"],
+.dark [class*="bg-gradient-to-"][class*="from-sky-50"],
+.dark [class*="bg-gradient-to-"][class*="from-blue-50"] {
+  background-image: linear-gradient(135deg, #111d30 0%, #101a2b 58%, #13243a 100%) !important;
+}
+
+/* Do not let light-colored headings disappear inside converted light gradients. */
+.dark [class*="from-white"] h1,
+.dark [class*="from-white"] h2,
+.dark [class*="from-white"] h3,
+.dark [class*="from-slate-50"] h1,
+.dark [class*="from-slate-50"] h2,
+.dark [class*="from-slate-50"] h3,
+.dark [class*="from-sky-50"] h1,
+.dark [class*="from-sky-50"] h2,
+.dark [class*="from-sky-50"] h3 {
   color: #f1f5f9;
 }
-/* Keep intentional brand CTA gradients vivid */
-.dark [class*="from-emerald-700"][class*="to-teal-900"] {
-  background-image: linear-gradient(135deg, #065f46, #134e4a 55%, #164e63) !important;
-  color: #f8fafc !important;
+
+/* Keep the app's green WhatsApp actions and white button labels intact. */
+.dark .bg-emerald-600,
+.dark .bg-emerald-700,
+.dark .bg-green-600,
+.dark .bg-green-700 { color: #ffffff !important; }
+
+.dark .text-white { color: #ffffff; }
+
+/* Comfortable theme change without an exaggerated animation. */
+html, body {
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html, body { transition: none; }
 }
