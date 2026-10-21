@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 116" role="img" aria-labelledby="title">
+  <title id="title">MyGlucoGuide</title>
+  <g transform="translate(4 7)">
+    <path d="M48 2 C39 20 10 48 10 67 A38 38 0 0 0 86 67 C86 48 57 20 48 2Z" fill="#087df0" stroke="#08b8d7" stroke-width="3"/>
+    <path d="M24 66 C24 51 37 35 48 20 C59 35 72 51 72 66 A24 24 0 0 1 24 66Z" fill="#031b3b"/>
+    <path d="M20 60 H39 L47 43 L56 77 L65 55 L72 60 H79" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="104" y="57" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="800" letter-spacing="-2" fill="#0b1c3a">My<tspan fill="#087df0">Gluco</tspan><tspan fill="#0b1c3a">Guide</tspan></text>
+  <text x="107" y="85" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="3.2" fill="#142b50">LEARN  |  UNDERSTAND  |  TAKE CONTROL</text>
+</svg>
