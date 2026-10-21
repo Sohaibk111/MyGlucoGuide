@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
               <img
                 src="/myglucoguide-logo.svg"
                 alt="MyGlucoGuide"
-                className="block w-[150px] min-[380px]:w-[170px] sm:w-[220px] h-auto object-contain"
+                className="block w-[205px] min-[380px]:w-[220px] sm:w-[250px] h-auto object-contain"
                 width="520"
                 height="116"
               />
@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="inline-flex items-center justify-center gap-1.5 px-2 min-[380px]:px-3 sm:px-4 py-2.5 rounded-full text-[11px] min-[380px]:text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
-              <span className="hidden min-[375px]:inline">Chat on WhatsApp</span>
+              <span className="hidden min-[430px]:inline">Chat on WhatsApp</span>
             </button>
 
             {/* Mobile Hamburger Button */}
