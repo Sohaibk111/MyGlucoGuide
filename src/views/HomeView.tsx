@@ -91,21 +91,21 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content (7 cols) */}
             <div className="lg:col-span-7 space-y-6 sm:space-y-7">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 tracking-wide uppercase">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 dark:text-sky-300 tracking-wide uppercase">
                 <span className="w-2 h-2 rounded-full bg-sky-600" />
                 <span>Diabetes Education & Glucose Awareness</span>
               </div>
 
               <h1
-                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]"
+                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-fg tracking-tight leading-[1.12]"
                 style={{ textWrap: 'balance' }}
               >
                 Understand Your Diabetes.{' '}
-                <span className="text-sky-600">Make Better Decisions.</span>
+                <span className="text-sky-600 dark:text-sky-300">Make Better Decisions.</span>
               </h1>
 
               <p
-                className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl"
+                className="text-base sm:text-lg text-fg-3 leading-relaxed max-w-2xl"
                 style={{ textWrap: 'balance' }}
               >
                 Simple, practical diabetes education and glucose awareness to help you understand your numbers, your patterns and your options.
@@ -116,7 +116,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <button
                   id="hero-whatsapp-btn"
                   onClick={handlePrimaryWhatsApp}
-                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
                   <MessageCircle className="w-5 h-5 fill-white" />
                   <span>Chat on WhatsApp</span>
@@ -124,16 +124,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 <button
                   onClick={handleEducationCta}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 active:scale-[0.98] transition cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-fg-2 hover:text-fg bg-surface-3 hover:bg-surface-4/80 active:scale-[0.98] transition cursor-pointer"
                 >
                   <span>Explore Diabetes Education</span>
-                  <ArrowRight className="w-4 h-4 text-slate-500" />
+                  <ArrowRight className="w-4 h-4 text-fg-4" />
                 </button>
               </div>
 
               {/* Patient-focused trust reassurance */}
-              <div className="pt-3 flex items-center gap-2 text-xs text-slate-500">
-                <ShieldCheck className="w-4 h-4 text-sky-600 shrink-0" />
+              <div className="pt-3 flex items-center gap-2 text-xs text-fg-4">
+                <ShieldCheck className="w-4 h-4 text-sky-600 dark:text-sky-300 shrink-0" />
                 <span>
                   Educational and patient-focused diabetes and glucose awareness platform
                 </span>
@@ -142,7 +142,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Right Visual (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
+              <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border border-line/80 bg-surface">
                 <img
                   src="/assets/images/hero_pakistani_glucose_app_1790358065352.webp"
                   alt="Pakistani adult with smartphone showing glucose insights and trend patterns"
@@ -152,23 +152,23 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 {/* Subtle Floating Sensor Card Overlay */}
                 {/* Extra right-clearance below 414px keeps this clear of the fixed floating WhatsApp widget */}
-                <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-lg border border-slate-100 grid grid-cols-[auto_minmax(0,1fr)] sm:flex sm:items-center sm:justify-between gap-x-2 gap-y-1.5 sm:gap-3">
+                <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 bg-surface/95 backdrop-blur-md rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-lg border border-line-soft grid grid-cols-[auto_minmax(0,1fr)] sm:flex sm:items-center sm:justify-between gap-x-2 gap-y-1.5 sm:gap-3">
                   <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 font-bold text-[10px] sm:text-xs shrink-0">
+                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-sky-50 dark:bg-sky-400/10 border border-sky-100 dark:border-sky-400/25 flex items-center justify-center text-sky-700 dark:text-sky-300 font-bold text-[10px] sm:text-xs shrink-0">
                       CGM
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[10px] sm:text-xs text-slate-500 font-medium leading-tight">Illustrative example</div>
+                      <div className="text-[10px] sm:text-xs text-fg-4 font-medium leading-tight">Illustrative example</div>
                       <div className="mt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 tabular-nums">
-                        <span className="text-sm sm:text-base font-extrabold text-slate-900">112</span>
-                        <span className="text-[10px] sm:text-xs font-normal text-slate-500">mg/dL</span>
-                        <span className="text-[10px] sm:text-xs font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Demo only</span>
+                        <span className="text-sm sm:text-base font-extrabold text-fg">112</span>
+                        <span className="text-[10px] sm:text-xs font-normal text-fg-4">mg/dL</span>
+                        <span className="text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-400/10 px-1.5 py-0.5 rounded">Demo only</span>
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-2 sm:col-span-1 flex items-center justify-between sm:block sm:text-right border-t border-slate-100 sm:border-0 pt-1.5 sm:pt-0 gap-2">
-                    <span className="text-[10px] sm:text-[11px] text-slate-500">Sample value</span>
-                    <span className="text-[10px] sm:text-xs font-semibold text-emerald-700">Not personal advice</span>
+                  <div className="col-span-2 sm:col-span-1 flex items-center justify-between sm:block sm:text-right border-t border-line-soft sm:border-0 pt-1.5 sm:pt-0 gap-2">
+                    <span className="text-[10px] sm:text-[11px] text-fg-4">Sample value</span>
+                    <span className="text-[10px] sm:text-xs font-semibold text-emerald-700 dark:text-emerald-300">Not personal advice</span>
                   </div>
                 </div>
               </div>
@@ -176,44 +176,44 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           {/* 4 Pillars Under Hero */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12 pt-10 border-t border-slate-200/80">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12 pt-10 border-t border-line/80">
+            <div className="p-4 rounded-2xl bg-surface border border-line/70 shadow-xs flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <Radio className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900">Continuous Monitoring</h4>
-                <p className="text-[11px] text-slate-500">Day and night trend tracking</p>
+                <h4 className="text-xs sm:text-sm font-bold text-fg">Continuous Monitoring</h4>
+                <p className="text-[11px] text-fg-4">Day and night trend tracking</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="p-4 rounded-2xl bg-surface border border-line/70 shadow-xs flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900">Trends & Patterns</h4>
-                <p className="text-[11px] text-slate-500">Directional trend arrows</p>
+                <h4 className="text-xs sm:text-sm font-bold text-fg">Trends & Patterns</h4>
+                <p className="text-[11px] text-fg-4">Directional trend arrows</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="p-4 rounded-2xl bg-surface border border-line/70 shadow-xs flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <Heart className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900">Better Decisions</h4>
-                <p className="text-[11px] text-slate-500">Food, movement & rest</p>
+                <h4 className="text-xs sm:text-sm font-bold text-fg">Better Decisions</h4>
+                <p className="text-[11px] text-fg-4">Food, movement & rest</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="p-4 rounded-2xl bg-surface border border-line/70 shadow-xs flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center shrink-0">
                 <Smile className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900">Patient Confidence</h4>
-                <p className="text-[11px] text-slate-500">Through education</p>
+                <h4 className="text-xs sm:text-sm font-bold text-fg">Patient Confidence</h4>
+                <p className="text-[11px] text-fg-4">Through education</p>
               </div>
             </div>
           </div>
@@ -221,69 +221,69 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 2. WHAT IS MYGLUCOGUIDE? */}
-      <section className="bg-slate-50/80 py-16 border-y border-slate-200/70">
+      <section className="bg-surface-2/80 py-16 border-y border-line/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="text-xs font-semibold text-sky-700 tracking-wider uppercase mb-1">
+            <div className="text-xs font-semibold text-sky-700 dark:text-sky-300 tracking-wider uppercase mb-1">
               About Our Platform
             </div>
             <h2
-              className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+              className="text-2xl sm:text-4xl font-extrabold text-fg tracking-tight"
               style={{ textWrap: 'balance' }}
             >
               What is MyGlucoGuide?
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-fg-3 leading-relaxed">
               MyGlucoGuide is an educational and patient-focused diabetes and glucose awareness platform. We provide evidence-grounded information about diabetes, glucose monitoring, lifestyle, and modern monitoring options to help Pakistani families understand their numbers.
             </p>
           </div>
 
           {/* 4 Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:border-sky-300 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+            <div className="bg-surface rounded-2xl p-6 border border-line/80 shadow-xs hover:border-sky-300 dark:hover:border-sky-400/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
+              <h3 className="text-base font-bold text-fg mb-2">
                 1. Diabetes Education
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Clear, evidence-informed explanations of HbA1c, insulin, and how meals can affect glucose levels.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:border-sky-300 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+            <div className="bg-surface rounded-2xl p-6 border border-line/80 shadow-xs hover:border-sky-300 dark:hover:border-sky-400/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                 <LineChart className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
+              <h3 className="text-base font-bold text-fg mb-2">
                 2. Glucose Awareness
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Understanding morning baseline readings, post-meal curves, and why point-in-time finger pricks show only part of the daily story.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:border-sky-300 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+            <div className="bg-surface rounded-2xl p-6 border border-line/80 shadow-xs hover:border-sky-300 dark:hover:border-sky-400/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
+              <h3 className="text-base font-bold text-fg mb-2">
                 3. Practical Guidance
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Practical education around familiar Pakistani foods, sweetened tea, and questions to discuss with a clinician before fasting.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:border-sky-300 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+            <div className="bg-surface rounded-2xl p-6 border border-line/80 shadow-xs hover:border-sky-300 dark:hover:border-sky-400/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
                 <Radio className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
+              <h3 className="text-base font-bold text-fg mb-2">
                 4. Modern Monitoring
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Demystifying Continuous Glucose Monitors (CGM) so you know how sensors work, practical considerations, and who may benefit.
               </p>
             </div>
@@ -298,11 +298,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* 4. WHAT IS CGM? SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-sky-50/70 via-white to-slate-50 rounded-3xl border border-sky-100 p-6 sm:p-10 lg:p-12">
+        <div className="bg-gradient-to-br from-sky-50/70 via-white to-slate-50 dark:from-sky-400/10 dark:via-surface dark:to-surface-2 rounded-3xl border border-sky-100 dark:border-sky-400/25 p-6 sm:p-10 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Visual (5 cols) */}
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white aspect-4/3 relative">
+              <div className="rounded-2xl overflow-hidden shadow-lg border border-line bg-surface aspect-4/3 relative">
                 <img
                   src="/assets/images/cgm_upper_arm_sensor_1790517820663.webp"
                   alt="Person wearing a continuous glucose monitor sensor on the upper arm with glucose readings displayed on a smartphone"
@@ -314,33 +314,33 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Description (7 cols) */}
             <div className="lg:col-span-7 order-1 lg:order-2 space-y-5">
-              <div className="text-xs font-semibold text-sky-700 tracking-wider uppercase">
+              <div className="text-xs font-semibold text-sky-700 dark:text-sky-300 tracking-wider uppercase">
                 Modern Diabetes Technology
               </div>
 
               <h2
-                className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+                className="text-2xl sm:text-4xl font-extrabold text-fg tracking-tight"
                 style={{ textWrap: 'balance' }}
               >
                 What is Continuous Glucose Monitoring (CGM)?
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-fg-2 leading-relaxed">
                 A Continuous Glucose Monitor (CGM) is a small, water-resistant sensor typically worn on the arm or abdomen. It samples glucose in the interstitial fluid continuously, transmitting readings and directional trend arrows to a compatible smartphone.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <div className="text-xs font-bold text-slate-900">1. Wear the Sensor</div>
-                  <div className="text-[11px] text-slate-500 mt-1">A compact sensor is applied to the skin. Wear duration is product-dependent (commonly 10–14 days).</div>
+                <div className="p-3 bg-surface rounded-xl border border-line/80">
+                  <div className="text-xs font-bold text-fg">1. Wear the Sensor</div>
+                  <div className="text-[11px] text-fg-4 mt-1">A compact sensor is applied to the skin. Wear duration is product-dependent (commonly 10–14 days).</div>
                 </div>
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <div className="text-xs font-bold text-slate-900">2. Get Real-Time Data</div>
-                  <div className="text-[11px] text-slate-500 mt-1">Wireless transmission updates your smartphone automatically according to device intervals.</div>
+                <div className="p-3 bg-surface rounded-xl border border-line/80">
+                  <div className="text-xs font-bold text-fg">2. Get Real-Time Data</div>
+                  <div className="text-[11px] text-fg-4 mt-1">Wireless transmission updates your smartphone automatically according to device intervals.</div>
                 </div>
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <div className="text-xs font-bold text-slate-900">3. Observe Trends</div>
-                  <div className="text-[11px] text-slate-500 mt-1">Directional arrows show whether glucose is rising, falling, or remaining steady.</div>
+                <div className="p-3 bg-surface rounded-xl border border-line/80">
+                  <div className="text-xs font-bold text-fg">3. Observe Trends</div>
+                  <div className="text-[11px] text-fg-4 mt-1">Directional arrows show whether glucose is rising, falling, or remaining steady.</div>
                 </div>
               </div>
 
@@ -356,9 +356,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <button
                   id="home-cgm-spotlight-whatsapp-btn"
                   onClick={handleSpotlightWhatsApp}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold text-emerald-800 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold text-emerald-800 dark:text-emerald-100 hover:text-emerald-900 dark:hover:text-emerald-100 bg-emerald-50 dark:bg-emerald-400/10 hover:bg-emerald-100 dark:hover:bg-emerald-400/15 border border-emerald-200 dark:border-emerald-400/25 transition cursor-pointer"
                 >
-                  <MessageCircle className="w-4 h-4 text-emerald-600 fill-emerald-600" />
+                  <MessageCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-300 fill-emerald-600" />
                   <span>Ask About CGM in Pakistan</span>
                 </button>
               </div>
@@ -371,13 +371,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section id="diabetes-education-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <div className="text-xs font-semibold text-sky-700 tracking-wider uppercase mb-1">
+            <div className="text-xs font-semibold text-sky-700 dark:text-sky-300 tracking-wider uppercase mb-1">
               Knowledge Base
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-fg tracking-tight">
               Diabetes Education
             </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl">
+            <p className="text-sm text-fg-3 mt-1 max-w-xl">
               Essential health literacy explained simply. Click any guide to read practical takeaways.
             </p>
           </div>
@@ -388,7 +388,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               onNavigate('blog');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-sky-700 hover:text-sky-900 transition self-start sm:self-auto cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 transition self-start sm:self-auto cursor-pointer"
           >
             <span>View All Articles</span>
             <ChevronRight className="w-4 h-4" />
@@ -400,29 +400,29 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {ARTICLES.slice(0, 6).map((art) => (
             <article
               key={art.id}
-              className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between p-5 sm:p-6"
+              className="bg-surface rounded-2xl border border-line/80 shadow-xs hover:shadow-md hover:border-sky-300 dark:hover:border-sky-400/40 transition-all flex flex-col justify-between p-5 sm:p-6"
             >
               <div>
-                <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
-                  <span className="text-sky-700 font-semibold">{art.category}</span>
+                <div className="flex items-center gap-2 text-xs text-fg-4 mb-2">
+                  <span className="text-sky-700 dark:text-sky-300 font-semibold">{art.category}</span>
                   <span aria-hidden="true">·</span>
                   <span>{art.readTime}</span>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 line-clamp-2">
+                <h3 className="text-base sm:text-lg font-bold text-fg leading-snug mb-2 line-clamp-2">
                   {art.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                <p className="text-xs sm:text-sm text-fg-3 leading-relaxed line-clamp-3">
                   {art.summary}
                 </p>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">{art.date}</span>
+              <div className="mt-5 pt-4 border-t border-line-soft flex items-center justify-between">
+                <span className="text-[11px] text-fg-5">{art.date}</span>
                 <button
                   onClick={() => handleArticleSelect(art)}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-sky-700 hover:text-sky-900 transition cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 transition cursor-pointer"
                 >
                   <span>Read Guide</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -434,47 +434,47 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 6. HOW MYGLUCOGUIDE CAN HELP (3 Steps) */}
-      <section className="bg-slate-50 py-16 border-y border-slate-200/70">
+      <section className="bg-surface-2 py-16 border-y border-line/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-xs font-semibold text-sky-700 tracking-wider uppercase mb-1">
+            <div className="text-xs font-semibold text-sky-700 dark:text-sky-300 tracking-wider uppercase mb-1">
               Your Educational Pathway
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-fg tracking-tight">
               How MyGlucoGuide Can Help
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
+            <p className="text-sm text-fg-3 mt-2">
               Our 3-step approach provides the clarity needed to navigate daily life with diabetes.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            <div className="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-xs relative">
-              <div className="w-12 h-12 rounded-full bg-sky-100 text-sky-800 font-extrabold text-lg flex items-center justify-center mb-5">
+            <div className="bg-surface rounded-2xl p-7 border border-line/80 shadow-xs relative">
+              <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-400/15 text-sky-800 dark:text-sky-100 font-extrabold text-lg flex items-center justify-center mb-5">
                 1
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">1. Learn</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold text-fg mb-2">1. Learn</h3>
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Discover what blood sugar spikes mean, how traditional Pakistani foods behave, and how your body responds to daily meals.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-xs relative">
-              <div className="w-12 h-12 rounded-full bg-sky-100 text-sky-800 font-extrabold text-lg flex items-center justify-center mb-5">
+            <div className="bg-surface rounded-2xl p-7 border border-line/80 shadow-xs relative">
+              <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-400/15 text-sky-800 dark:text-sky-100 font-extrabold text-lg flex items-center justify-center mb-5">
                 2
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">2. Understand</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold text-fg mb-2">2. Understand</h3>
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Look beyond isolated morning checks. Understand post-meal curves, circadian patterns, and how continuous data illustrates the full 24-hour cycle.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-xs relative">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-lg flex items-center justify-center mb-5">
+            <div className="bg-surface rounded-2xl p-7 border border-line/80 shadow-xs relative">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-400/15 text-emerald-800 dark:text-emerald-100 font-extrabold text-lg flex items-center justify-center mb-5">
                 3
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">3. Make Better Decisions</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <h3 className="text-lg font-bold text-fg mb-2">3. Make Better Decisions</h3>
+              <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
                 Have constructive conversations with your doctor, adapt family meals with practical food sequencing, and build sustainable lifestyle habits.
               </p>
             </div>
@@ -486,8 +486,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-200 uppercase tracking-wider">
-              <MessageCircle className="w-4 h-4 fill-emerald-200 text-emerald-800" />
+            <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-100 uppercase tracking-wider">
+              <MessageCircle className="w-4 h-4 fill-emerald-200 text-emerald-800 dark:text-emerald-100" />
               <span>Direct WhatsApp Inquiry</span>
             </div>
 

@@ -29,8 +29,8 @@ function ViewLoadingFallback() {
       aria-label="Loading page content"
       className="min-h-[50vh] flex flex-col items-center justify-center p-8"
     >
-      <div className="w-9 h-9 border-3 border-emerald-200 border-t-emerald-600 rounded-full animate-spin mb-3" />
-      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      <div className="w-9 h-9 border-3 border-emerald-200 dark:border-emerald-400/25 border-t-emerald-600 rounded-full animate-spin mb-3" />
+      <p className="text-xs font-semibold uppercase tracking-wider text-fg-5">
         Loading...
       </p>
     </div>
@@ -119,7 +119,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-sky-100 selection:text-sky-900">
+    <div className="min-h-screen flex flex-col bg-surface text-fg font-sans selection:bg-sky-100 dark:selection:bg-sky-400/15 selection:text-sky-900 dark:selection:text-sky-100">
       {/* Sticky Header */}
       <Header
         currentPage={currentPage}
@@ -190,7 +190,7 @@ export default function App() {
         <button
           id="floating-whatsapp-widget"
           onClick={handleFloatingWhatsApp}
-          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm shadow-xl active:scale-95 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
+          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs sm:text-sm shadow-xl active:scale-95 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500"
           aria-label="Chat with MyGlucoGuide on WhatsApp"
         >
           <div className="relative">
