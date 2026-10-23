@@ -3,7 +3,7 @@ import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react'
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
   const order = () => {
-    const message = encodeURIComponent('Assalam-o-Alaikum MyGlucoGuide, mujhe EvoCheck Premium LinX CGM order karna hai. Price PKR 12,900 hai. Free doorstep delivery aur installation included hain.\n\nPatient Name: \nAge: \nDiabetes Type: \nMedication: \nMobile: \nAddress: \nCity / Location: \n\nPlease order process guide kar dein.');
+    const message = encodeURIComponent('Assalam-o-Alaikum! 👋\n\nMyGlucoGuide mein welcome.\n\nAap EvoCheck Premium LinX CGM order karne ke liye interested hain.\n\n💰 Price: PKR 12,900\n🚚 Free Doorstep Delivery\n🩺 Free Installation\n\nOrder process aur delivery ke liye please neeche di gayi details share kar dein:\n\n1. Patient Name:\n2. Patient Age:\n3. Diabetes Type: Type 1 / Type 2 / Gestational / Other\n4. Current Medication:\n5. Mobile Number:\n6. Complete Address:\n7. City / Location:\n\nDetails receive hone ke baad hum aapko order process aur next steps guide kar dein ge.\n\nShukriya! ❤️\nMyGlucoGuide');
     window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
