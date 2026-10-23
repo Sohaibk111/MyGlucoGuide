@@ -18,6 +18,7 @@ const CgmView = lazy(() => import('./views/CgmView').then((m) => ({ default: m.C
 const BlogView = lazy(() => import('./views/BlogView').then((m) => ({ default: m.BlogView })));
 const FaqView = lazy(() => import('./views/FaqView').then((m) => ({ default: m.FaqView })));
 const ContactView = lazy(() => import('./views/ContactView').then((m) => ({ default: m.ContactView })));
+const PurchaseView = lazy(() => import('./views/PurchaseView').then((m) => ({ default: m.PurchaseView })));
 
 // Lazy-load QA/Developer tool only
 const AnalyticsInspector = lazy(() => import('./components/AnalyticsInspector').then((m) => ({ default: m.AnalyticsInspector })));
@@ -40,7 +41,7 @@ function ViewLoadingFallback() {
 function getInitialPage(): PageId {
   if (typeof window === 'undefined') return 'home';
   const hash = window.location.hash.replace('#', '').toLowerCase();
-  const validPages: PageId[] = ['home', 'about', 'education', 'cgm', 'blog', 'faq', 'contact'];
+  const validPages: PageId[] = ['home', 'about', 'education', 'cgm', 'blog', 'faq', 'contact', 'purchase'];
   if (validPages.includes(hash as PageId)) {
     return hash as PageId;
   }
