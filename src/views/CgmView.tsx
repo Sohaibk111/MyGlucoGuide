@@ -282,6 +282,30 @@ export const CgmView: React.FC<CgmViewProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-400/10 text-violet-600 dark:text-violet-300 flex items-center justify-center mb-3">
+              <Activity className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-fg mb-1.5">
+              Athletes & High-Intensity Workout Enthusiasts
+            </h4>
+            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
+              People doing intense workouts, gym training, or sports may discuss CGM with a healthcare professional to learn how glucose trends relate to exercise, meals, and recovery. CGM readings can lag during rapid glucose changes and should not replace an individualized exercise, fueling, or diabetes care plan.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-400/10 text-amber-600 dark:text-amber-300 flex items-center justify-center mb-3">
+              <TrendingUp className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-fg mb-1.5">
+              People with Prediabetes
+            </h4>
+            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
+              People with prediabetes may discuss a short-term CGM assessment with their healthcare professional to explore glucose patterns around meals and activity as part of education and lifestyle planning. CGM does not diagnose prediabetes; diagnosis and follow-up should rely on appropriate clinical testing and professional guidance.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-pink-50 dark:bg-pink-400/10 text-pink-600 dark:text-pink-300 flex items-center justify-center mb-3">
               <Activity className="w-5 h-5" />
             </div>
