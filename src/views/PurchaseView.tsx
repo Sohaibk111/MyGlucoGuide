@@ -1,32 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react';
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
-  const order = () => {
-    const message = encodeURIComponent('Assalam-o-Alaikum! 👋\n\nWelcome to MyGlucoGuide.\n\nAap EvoCheck Premium LinX CGM order karne ke liye interested hain.\n\n💰 Price: PKR 12,900\n🚚 Free Doorstep Delivery\n🩺 Free Installation\n\nOrder process aur delivery ke liye please neeche di gayi details share kar dein:\n\n1. Patient Name:\n2. Patient Age:\n3. Diabetes Type:\n4. Current Medication:\n5. Mobile Number:\n6. Complete Address:\n7. City / Location:\n\nDetails receive hone ke baad hum aapko order process aur next steps guide kar dein ge.\n\nShukriya! ❤️\nMyGlucoGuide');
+  const [form, setForm] = useState({ name: '', age: '', diabetesType: '', medication: '', mobile: '', address: '', city: '' });
+  const update = (field: keyof typeof form, value: string) => setForm(prev => ({ ...prev, [field]: value }));
+  const order = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const message = encodeURIComponent(`Assalam-o-Alaikum! 👋
+
+Welcome to MyGlucoGuide.
+
+Aap EvoCheck Premium LinX CGM order karna chahte hain.
+
+💰 Price: PKR 12,900
+🚚 Free Doorstep Delivery
+🩺 Free Installation
+
+Order Details:
+1. Patient Name: ${form.name}
+2. Patient Age: ${form.age}
+3. Diabetes Type: ${form.diabetesType}
+4. Current Medication: ${form.medication}
+5. Mobile Number: ${form.mobile}
+6. Complete Address: ${form.address}
+7. City / Location: ${form.city}
+
+Details receive hone ke baad hum aapko order process aur next steps guide kar dein ge.
+
+Shukriya! ❤️
+MyGlucoGuide`);
     window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
+  const fieldClass = "w-full rounded-xl border border-line bg-surface px-4 py-3 text-fg placeholder:text-fg-3 focus:outline-none focus:ring-2 focus:ring-sky-500";
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-10">
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div className="space-y-5">
           <p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Purchase & Availability</p>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-fg">EvoCheck Premium LinX CGM</h1>
-          <p className="text-fg-2 leading-relaxed">Continuous glucose monitoring to help you understand glucose trends and patterns. Available with free doorstep delivery and installation. Contact us on WhatsApp to place your order.</p>
+          <p className="text-fg-2 leading-relaxed">Continuous glucose monitoring to help you understand glucose trends and patterns. Available with free doorstep delivery and installation. Fill in the order form below to continue on WhatsApp.</p>
           <div className="inline-flex flex-col gap-1 rounded-2xl border-2 border-sky-500 bg-sky-50 dark:bg-sky-950/40 px-5 py-4 shadow-sm"><span className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Price</span><span className="text-4xl sm:text-5xl font-black text-slate-950 dark:text-white">PKR 12,900</span><span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Free doorstep delivery + installation</span></div>
           <div className="flex flex-wrap gap-2"><div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-400/10 text-emerald-800 dark:text-emerald-200 px-3 py-2 text-sm font-semibold"><CheckCircle2 className="w-4 h-4"/> Available</div><div className="inline-flex items-center gap-2 rounded-full bg-sky-50 dark:bg-sky-400/10 text-sky-800 dark:text-sky-200 px-3 py-2 text-sm font-semibold"><Package className="w-4 h-4"/> Free Doorstep Delivery</div><div className="inline-flex items-center gap-2 rounded-full bg-sky-50 dark:bg-sky-400/10 text-sky-800 dark:text-sky-200 px-3 py-2 text-sm font-semibold"><CheckCircle2 className="w-4 h-4"/> Free Installation</div></div>
-          <button onClick={order} className="inline-flex items-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> Order on WhatsApp</button>
         </div>
         <div className="rounded-3xl overflow-hidden border border-line bg-surface aspect-[4/3]">
-          <img src="/assets/images/EVOcheck%20CGM%20Product%20Hero%20Scene.png" alt="EvoCheck Premium LinX CGM original product box, sensor and applicator in a premium product scene" className="w-full h-full object-contain"/>
+          <img src="/assets/images/EVOcheck%20CGM%20Product%20Hero%20Scene.png" alt="EvoCheck Premium LinX CGM product box and sensor" className="w-full h-full object-contain"/>
         </div>
       </section>
+      <section id="order-form" className="rounded-3xl border border-line bg-surface p-5 sm:p-8 space-y-5">
+        <div><p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Direct Order</p><h2 className="text-2xl sm:text-3xl font-extrabold text-fg mt-1">Order EvoCheck CGM</h2><p className="text-sm text-fg-3 mt-2">Apni details fill karein. Submit karne par WhatsApp par order message open ho jayega.</p></div>
+        <form onSubmit={order} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label className="space-y-1 text-sm font-semibold text-fg">Patient Name *<input className={fieldClass} value={form.name} onChange={e=>update('name',e.target.value)} placeholder="Patient ka naam" required /></label>
+          <label className="space-y-1 text-sm font-semibold text-fg">Patient Age<input className={fieldClass} value={form.age} onChange={e=>update('age',e.target.value)} placeholder="Age" /></label>
+          <label className="space-y-1 text-sm font-semibold text-fg">Diabetes Type<input className={fieldClass} value={form.diabetesType} onChange={e=>update('diabetesType',e.target.value)} placeholder="Diabetes type (optional)" /></label>
+          <label className="space-y-1 text-sm font-semibold text-fg">Current Medication<input className={fieldClass} value={form.medication} onChange={e=>update('medication',e.target.value)} placeholder="Current medication (optional)" /></label>
+          <label className="space-y-1 text-sm font-semibold text-fg">Mobile Number *<input type="tel" className={fieldClass} value={form.mobile} onChange={e=>update('mobile',e.target.value)} placeholder="03XXXXXXXXX" required /></label>
+          <label className="space-y-1 text-sm font-semibold text-fg">City / Location *<input className={fieldClass} value={form.city} onChange={e=>update('city',e.target.value)} placeholder="City" required /></label>
+          <label className="space-y-1 text-sm font-semibold text-fg sm:col-span-2">Complete Address *<textarea className={fieldClass} rows={3} value={form.address} onChange={e=>update('address',e.target.value)} placeholder="House, street, area..." required /></label>
+          <div className="sm:col-span-2"><button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> Submit Order on WhatsApp</button><p className="text-xs text-fg-3 mt-2">Order WhatsApp par share karne se pehle aap details check kar sakte hain.</p></div>
+        </form>
+      </section>
       <section className="grid sm:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-line bg-surface p-6 space-y-3"><Package className="w-6 h-6 text-sky-600"/><h2 className="font-bold text-lg text-fg">Order & Delivery</h2><p className="text-sm text-fg-3 leading-relaxed">Free doorstep delivery and installation are included. WhatsApp us to place your order; our team will confirm your details and payment information before finalizing.</p></div>
+        <div className="rounded-2xl border border-line bg-surface p-6 space-y-3"><Package className="w-6 h-6 text-sky-600"/><h2 className="font-bold text-lg text-fg">Order & Delivery</h2><p className="text-sm text-fg-3 leading-relaxed">Free doorstep delivery and installation are included. Our team will confirm your details and payment information before finalizing.</p></div>
         <div className="rounded-2xl border border-line bg-surface p-6 space-y-3"><ShieldCheck className="w-6 h-6 text-sky-600"/><h2 className="font-bold text-lg text-fg">Important Information</h2><p className="text-sm text-fg-3 leading-relaxed">CGM is a glucose monitoring tool, not a diagnostic test or treatment. Please consult your healthcare professional for personal medical decisions and follow product instructions.</p></div>
       </section>
-      <section className="rounded-2xl bg-surface-2 border border-line p-6 sm:p-8"><h2 className="text-xl font-bold text-fg mb-2">Ready to Order?</h2><p className="text-sm text-fg-3 mb-5">Free doorstep delivery and installation included. Send your order on WhatsApp and we will confirm the next steps.</p><button onClick={order} className="inline-flex items-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-3 font-semibold"><MessageCircle className="w-4 h-4"/> Order on WhatsApp</button></section>
     </div>
   );
 };
