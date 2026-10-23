@@ -178,7 +178,7 @@ export const BlogView: React.FC<BlogViewProps> = ({
                       <img
                         src={art.imageUrl}
                         alt={art.title}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-contain bg-white transition-transform duration-300 hover:scale-[1.02]"
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
