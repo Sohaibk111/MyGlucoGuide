@@ -52,7 +52,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
       formData.message,
     ].filter((line): line is string => line !== null);
     const body = encodeURIComponent(bodyLines.join('\n'));
-    return `mailto:info@myglucoguide.com.pk?subject=${subject}&body=${body}`;
+    return `mailto:myglucoguide@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -136,10 +136,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
               <div>
                 <h4 className="text-xs font-bold text-fg-4 uppercase tracking-wider">Email Inquiry</h4>
                 <a
-                  href="mailto:info@myglucoguide.com.pk"
+                  href="mailto:myglucoguide@gmail.com"
                   className="text-sm font-semibold text-fg hover:text-sky-700 dark:hover:text-sky-300 transition"
                 >
-                  info@myglucoguide.com.pk
+                  myglucoguide@gmail.com
                 </a>
                 <p className="text-xs text-fg-4 mt-0.5">
                   Response times may vary.
@@ -199,7 +199,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenWhatsApp }) => {
                     Email Draft Prepared
                   </h4>
                   <p className="text-xs sm:text-sm text-emerald-800 dark:text-emerald-100 mt-1 max-w-md mx-auto">
-                    Your email application should open with a draft addressed to <strong>info@myglucoguide.com.pk</strong>. This website has not sent your message. Review the draft and press Send in your email app to complete your inquiry. If no email app opens, email us directly or use WhatsApp instead.
+                    Your email application should open with a draft addressed to <strong>myglucoguide@gmail.com</strong>. This website has not sent your message. Review the draft and press Send in your email app to complete your inquiry. If no email app opens, email us directly or use WhatsApp instead.
                   </p>
                 </div>
 
