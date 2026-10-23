@@ -19,7 +19,7 @@ export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }
           <button onClick={order} className="inline-flex items-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> Order on WhatsApp</button>
         </div>
         <div className="rounded-3xl overflow-hidden border border-line bg-surface aspect-[4/3]">
-          <img src="/assets/images/cgm_upper_arm_sensor_1790517820663.webp" alt="CGM sensor on upper arm" className="w-full h-full object-cover"/>
+          <img src="/assets/images/wide_clean_professional_marketing_banner_style_i.png" alt="EvoCheck Premium LinX CGM original product box, sensor and applicator in a premium product scene" className="w-full h-full object-contain"/>
         </div>
       </section>
       <section className="grid sm:grid-cols-2 gap-5">
