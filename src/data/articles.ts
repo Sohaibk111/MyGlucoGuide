@@ -203,6 +203,7 @@ export const ARTICLES: Article[] = [
     title: "Best CGM in Pakistan 2026: EvoCheck Premium LinX CGM vs Libre 2, Libre 2 Plus, SIBIONICS GS1 & iCan i3",
     category: 'CGM',
     summary: "Compare EvoCheck Premium LinX CGM, FreeStyle Libre 2 and 2 Plus, SIBIONICS GS1, and Sinocare iCan i3—including specifications, price, exercise, warranty, and monitoring considerations.",
+    imageUrl: '/assets/images/wide_clean_professional_marketing_banner_style_i.png',
     date: 'Oct 24, 2026',
     readTime: '12 min read',
     keyTakeaways: ["Compare CGM features, local price, compatibility, and warranty before choosing.","CGM readings reflect interstitial glucose and may lag during rapid changes.","Discuss device suitability and glucose-management decisions with a healthcare professional."],
