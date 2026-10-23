@@ -209,39 +209,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
         </div>
       </section>
 
-      {/* 4. GESTATIONAL DIABETES AWARENESS */}
-      <section className="bg-surface-2 rounded-3xl p-8 sm:p-12 border border-line/80">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-700 dark:text-sky-300 uppercase tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-sky-600" />
-            <span>Pregnancy & Glucose Health</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-fg tracking-tight">
-            Gestational Diabetes Awareness
-          </h2>
-          <p className="text-sm sm:text-base text-fg-2 leading-relaxed">
-            Gestational diabetes (GDM) is diabetes first diagnosed during pregnancy. It can affect both the mother and baby, but timely screening, regular prenatal care, and a care plan made with the obstetrician or diabetes team can help manage glucose levels and support a healthy pregnancy.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl bg-surface p-5 border border-line/70">
-              <h3 className="font-bold text-fg mb-2">Know the next steps</h3>
-              <p className="text-sm text-fg-3 leading-relaxed">Ask your healthcare professional when screening is recommended, how to monitor glucose, and what targets are appropriate for your pregnancy.</p>
-            </div>
-            <div className="rounded-2xl bg-surface p-5 border border-line/70">
-              <h3 className="font-bold text-fg mb-2">Personalized pregnancy care</h3>
-              <p className="text-sm text-fg-3 leading-relaxed">Nutrition, activity, glucose checks, and treatment should be individualized by your maternity and diabetes care team. Do not start or change medicines without their advice.</p>
-            </div>
-          </div>
-          <p className="text-xs text-fg-3 leading-relaxed">
-            MyGlucoGuide shares educational information only. It does not diagnose gestational diabetes or replace antenatal visits, testing, or advice from your healthcare professional.
-          </p>
-          <button onClick={() => onNavigate('diabetes-education')} className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-300 hover:underline cursor-pointer">
-            Explore Diabetes Education <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      </section>
-
-      {/* 5. BANNER QUOTE: "Better Knowledge. Better Choices. A Healthier You." */}
+      {/* 4. BANNER QUOTE: "Better Knowledge. Better Choices. A Healthier You." */}
       <section className="bg-gradient-to-r from-sky-900 to-slate-900 rounded-3xl p-8 sm:p-14 text-white text-center shadow-lg relative overflow-hidden">
         <div className="max-w-3xl mx-auto space-y-4">
           <p className="text-xs uppercase tracking-widest text-sky-300 font-semibold">
