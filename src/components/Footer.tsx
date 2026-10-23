@@ -92,11 +92,11 @@ export const Footer: React.FC<FooterProps> = ({
               </button>
 
               <a
-                href="mailto:info@myglucoguide.com.pk"
+                href="mailto:myglucoguide@gmail.com"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>info@myglucoguide.com.pk</span>
+                <span>myglucoguide@gmail.com</span>
               </a>
             </div>
           </div>
@@ -183,7 +183,7 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
             <div className="space-y-2 text-xs">
               <div className="text-slate-400">
-                Email: <span className="text-slate-200">info@myglucoguide.com.pk</span>
+                Email: <span className="text-slate-200">myglucoguide@gmail.com</span>
               </div>
               <div className="text-slate-400">
                 WhatsApp:{' '}
