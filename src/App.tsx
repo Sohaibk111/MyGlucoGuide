@@ -179,6 +179,10 @@ export default function App() {
           {currentPage === 'contact' && (
             <ContactView onOpenWhatsApp={handleOpenWhatsApp} />
           )}
+
+          {currentPage === 'purchase' && (
+            <PurchaseView onOpenWhatsApp={handleOpenWhatsApp} />
+          )}
         </Suspense>
       </main>
 
