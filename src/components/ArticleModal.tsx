@@ -132,9 +132,17 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
 
         {/* Article Body */}
         <div className="prose prose-slate max-w-none space-y-4 text-sm sm:text-base leading-relaxed text-fg-2">
-          {article.content.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {article.content.map((block, index) => {
+            const lines = block.split('\\n').map(line => line.trim()).filter(Boolean);
+            const isTable = lines.length > 1 && lines.every(line => line.startsWith('|'));
+            if (isTable) {
+              const rows = lines.filter(line => !/^\\|?\\s*:?-+:?\\s*(\\|\\s*:?-+:?\\s*)+\\|?$/.test(line)).map(line => line.split('|').slice(1, -1).map(cell => cell.trim()));
+              return <div key={index} className="overflow-x-auto my-5"><table className="w-full border-collapse text-sm"><tbody>{rows.map((row, ri) => <tr key={ri} className={ri === 0 ? 'bg-sky-50 dark:bg-sky-900/30 font-semibold' : ''}>{row.map((cell, ci) => <td key={ci} className="border border-slate-300 dark:border-slate-600 px-3 py-2 align-top">{cell}</td>)}</tr>)}</tbody></table></div>;
+            }
+            if (/^#{1,3}\\s/.test(block)) { const level = block.match(/^#+/)[0].length; const text = block.replace(/^#+\\s*/, ''); return level === 1 ? <h3 key={index} className="text-xl font-bold mt-7 mb-3">{text}</h3> : level === 2 ? <h4 key={index} className="text-lg font-bold mt-6 mb-2">{text}</h4> : <h5 key={index} className="text-base font-semibold mt-4 mb-2">{text}</h5>; }
+            if (lines.every(line => /^[-*]\\s/.test(line))) return <ul key={index} className="list-disc pl-6 space-y-1">{lines.map((line, i) => <li key={i}>{line.replace(/^[-*]\\s*/, '')}</li>)}</ul>;
+            return <p key={index}>{block}</p>;
+          })}
         </div>
 
         {/* Sources / References if available */}
