@@ -282,6 +282,18 @@ export const CgmView: React.FC<CgmViewProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-pink-50 dark:bg-pink-400/10 text-pink-600 dark:text-pink-300 flex items-center justify-center mb-3">
+              <Activity className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-fg mb-1.5">
+              Gestational Diabetes During Pregnancy
+            </h4>
+            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
+              Pregnant individuals diagnosed with gestational diabetes may discuss CGM with their obstetrician or diabetes care team to understand glucose patterns alongside prescribed monitoring. CGM is not a stand-alone diagnostic test for gestational diabetes, and pregnancy-specific targets and treatment decisions must be set by the healthcare team.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-3">
               <Users className="w-5 h-5" />
             </div>
