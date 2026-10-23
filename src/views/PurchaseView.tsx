@@ -3,7 +3,7 @@ import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react'
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
   const order = () => {
-    const message = encodeURIComponent('Assalam-o-Alaikum MyGlucoGuide, mujhe EvoCheck Premium LinX CGM ke order ke liye maloomat chahiye. Price PKR 12,900 hai aur free doorstep delivery aur installation included hain. Order process ke liye meri details yeh hain:\n\nPatient Name: \nPatient Age: \nDiabetes Type (Type 1 / Type 2 / Gestational / Other): \nCurrent Medication: \nMobile Number: \nComplete Address: \nCity / Location: \n\nPlease mujhe order process aur next steps guide kar dein.');
+    const message = encodeURIComponent('Assalam-o-Alaikum MyGlucoGuide, mujhe EvoCheck Premium LinX CGM order karna hai. Price PKR 12,900 hai. Free doorstep delivery aur installation included hain.\n\nPatient Name: \nAge: \nDiabetes Type: \nMedication: \nMobile: \nAddress: \nCity / Location: \n\nPlease order process guide kar dein.');
     window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
