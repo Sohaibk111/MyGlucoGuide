@@ -289,7 +289,7 @@ export const CgmView: React.FC<CgmViewProps> = ({
               Gestational Diabetes During Pregnancy
             </h4>
             <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
-              Pregnant individuals diagnosed with gestational diabetes may discuss CGM with their obstetrician or diabetes care team to understand glucose patterns alongside prescribed monitoring. CGM is not a stand-alone diagnostic test for gestational diabetes, and pregnancy-specific targets and treatment decisions must be set by the healthcare team.
+              Women diagnosed with gestational diabetes may discuss CGM with their obstetrician or diabetes care team to understand glucose patterns alongside prescribed monitoring. CGM is not a stand-alone diagnostic test for gestational diabetes, and pregnancy-specific targets and treatment decisions must be set by the healthcare team.
             </p>
           </div>
 
