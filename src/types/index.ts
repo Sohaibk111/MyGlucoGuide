@@ -1,4 +1,4 @@
-export type PageId = 'home' | 'about' | 'education' | 'cgm' | 'blog' | 'faq' | 'contact';
+export type PageId = 'home' | 'about' | 'education' | 'cgm' | 'blog' | 'faq' | 'contact' | 'purchase';
 
 export interface Article {
   id: string;
