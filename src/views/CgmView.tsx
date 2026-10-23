@@ -280,7 +280,30 @@ export const CgmView: React.FC<CgmViewProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-3">
+              <Users className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-fg mb-1.5">
+              People with Type 1 Diabetes
+            </h4>
+            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
+              Provides continuous trend awareness that can help notify users of potential hypoglycemia, supporting safety during sleep, exercise, and daily activities.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-3">
+              <Activity className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-fg mb-1.5">
+              People with Type 2 Diabetes on Insulin
+            </h4>
+            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
+              Assists clinicians in evaluating whether insulin dosing timings align with meal schedules and overnight basal stability.
+            </p>
+          </div>
+
           <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-400/10 text-violet-600 dark:text-violet-300 flex items-center justify-center mb-3">
               <Activity className="w-5 h-5" />
@@ -314,30 +337,6 @@ export const CgmView: React.FC<CgmViewProps> = ({
             </h4>
             <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
               Women diagnosed with gestational diabetes may discuss CGM with their obstetrician or diabetes care team to understand glucose patterns alongside prescribed monitoring. CGM is not a stand-alone diagnostic test for gestational diabetes, and pregnancy-specific targets and treatment decisions must be set by the healthcare team.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-3">
-              <Users className="w-5 h-5" />
-            </div>
-            <h4 className="text-base font-bold text-fg mb-1.5">
-              People with Type 1 Diabetes
-            </h4>
-            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
-              Provides continuous trend awareness that can help notify users of potential hypoglycemia, supporting safety during sleep, exercise, and daily activities.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-surface border border-line/80 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-400/10 text-sky-600 dark:text-sky-300 flex items-center justify-center mb-3">
-              <Activity className="w-5 h-5" />
-            </div>
-            <h4 className="text-base font-bold text-fg mb-1.5">
-              People with Type 2 Diabetes on Insulin
-            </h4>
-            <p className="text-xs sm:text-sm text-fg-3 leading-relaxed">
-              Assists clinicians in evaluating whether insulin dosing timings align with meal schedules and overnight basal stability.
             </p>
           </div>
 
