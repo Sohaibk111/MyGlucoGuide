@@ -63,8 +63,8 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
     setCustomText(message);
   };
 
-  // Business WhatsApp number must be supplied via VITE_WHATSAPP_NUMBER (no fake/placeholder fallback).
-  const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
+  // MyGlucoGuide's confirmed business WhatsApp number; env override remains available.
+  const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '923083280568').trim();
   const isNumberConfigured = /^\d{8,15}$/.test(configuredNumber);
 
   const handleLaunchWhatsApp = () => {
@@ -176,7 +176,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
 
         {!isNumberConfigured && (
           <div className="mb-4 p-3 rounded-xl border border-amber-200 dark:border-amber-400/25 bg-amber-50 dark:bg-amber-400/10 text-xs text-amber-800 dark:text-amber-100">
-            A valid WhatsApp number is not configured. Set <code>VITE_WHATSAPP_NUMBER</code> to 8–15 digits in international format, without + or spaces.
+            WhatsApp number is not configured correctly. Please contact the MyGlucoGuide team.
           </div>
         )}
 
