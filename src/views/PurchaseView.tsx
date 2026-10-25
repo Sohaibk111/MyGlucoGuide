@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react';
+import { trackWhatsAppClick } from '../services/analytics';
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
   const [form, setForm] = useState({ name: '', age: '', diabetesType: '', medication: '', mobile: '', address: '', city: '' });
@@ -29,6 +30,12 @@ Once we receive your details, we will guide you through the order process and ne
 
 Thank you! ❤️
 MyGlucoGuide`);
+    // Track the order-form WhatsApp inquiry without sending patient details to Meta.
+    trackWhatsAppClick({
+      sourceLocation: 'purchase_order_form',
+      page: 'purchase',
+      ctaIdentifier: 'submit-order-whatsapp',
+    });
     window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
