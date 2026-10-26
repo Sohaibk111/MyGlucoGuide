@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react';
-import { trackWhatsAppClick } from '../services/analytics';
+import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
   const [form, setForm] = useState({ name: '', age: '', diabetesType: '', medication: '', mobile: '', address: '', city: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const update = (field: keyof typeof form, value: string) => setForm(prev => ({ ...prev, [field]: value }));
   const order = (e?: React.FormEvent) => {
     e?.preventDefault();
+    if (isSubmitting) return;
+    // The form is HTML-validated before submit. This is COD order intent, not confirmed payment.
+    setIsSubmitting(true);
     const message = encodeURIComponent(`Assalam-o-Alaikum! 👋
 
 Welcome to MyGlucoGuide.
@@ -30,13 +34,21 @@ Once we receive your details, we will guide you through the order process and ne
 
 Thank you! ❤️
 MyGlucoGuide`);
-    // Track the order-form WhatsApp inquiry without sending patient details to Meta.
+    // Track only generic order metadata. Never send form fields or health information to Meta.
+    trackEvent('purchase_order_submitted', {
+      value: 12900,
+      currency: 'PKR',
+      content_name: 'EvoCheck Premium LinX CGM',
+      content_type: 'product',
+    });
+    // Keep WhatsApp inquiry separate from Purchase and exclude patient data from event params.
     trackWhatsAppClick({
       sourceLocation: 'purchase_order_form',
       page: 'purchase',
       ctaIdentifier: 'submit-order-whatsapp',
     });
     window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
+    window.setTimeout(() => setIsSubmitting(false), 1500);
   };
 
   const fieldClass = "w-full rounded-xl border border-line bg-surface px-4 py-3 text-fg placeholder:text-fg-3 focus:outline-none focus:ring-2 focus:ring-sky-500";
@@ -64,7 +76,7 @@ MyGlucoGuide`);
           <label className="space-y-1 text-sm font-semibold text-fg">Mobile Number *<input type="tel" className={fieldClass} value={form.mobile} onChange={e=>update('mobile',e.target.value)} placeholder="03XXXXXXXXX" required /></label>
           <label className="space-y-1 text-sm font-semibold text-fg">City / Location *<input className={fieldClass} value={form.city} onChange={e=>update('city',e.target.value)} placeholder="City" required /></label>
           <label className="space-y-1 text-sm font-semibold text-fg sm:col-span-2">Complete Address *<textarea className={fieldClass} rows={3} value={form.address} onChange={e=>update('address',e.target.value)} placeholder="House, street, area..." required /></label>
-          <div className="sm:col-span-2"><button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> Submit Order on WhatsApp</button><p className="text-xs text-fg-3 mt-2">You can review your details before sharing them on WhatsApp.</p></div>
+          <div className="sm:col-span-2"><button type="submit" disabled={isSubmitting} className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 disabled:opacity-60 disabled:cursor-not-allowed text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> {isSubmitting ? 'Opening WhatsApp…' : 'Submit Order on WhatsApp'}</button><p className="text-xs text-fg-3 mt-2">You can review your details before sharing them on WhatsApp.</p></div>
         </form>
       </section>
       <section className="grid sm:grid-cols-2 gap-5">
