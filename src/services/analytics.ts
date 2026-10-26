@@ -163,6 +163,14 @@ export function trackEvent(
             content_name: mergedParams?.article_title,
             ...mergedParams,
           });
+        } else if (eventName === 'purchase_order_submitted') {
+          // Generic order-intent signal only. Never pass patient form data to Meta.
+          window.fbq('track', 'Purchase', {
+            value: mergedParams.value,
+            currency: mergedParams.currency,
+            content_name: mergedParams.content_name,
+            content_type: 'product',
+          });
         } else {
           window.fbq('trackCustom', eventName, mergedParams);
         }
