@@ -30,7 +30,7 @@ export interface ContactFormData {
 }
 
 export interface TrackingEvent {
-  eventName: 'whatsapp_click' | 'contact_form_submission' | 'contact_email_draft_opened' | 'cgm_page_view' | 'article_view' | 'cta_click';
+  eventName: 'whatsapp_click' | 'contact_form_submission' | 'contact_email_draft_opened' | 'cgm_page_view' | 'article_view' | 'cta_click' | 'purchase_order_submitted';
   params?: Record<string, any>;
   timestamp: string;
 }
