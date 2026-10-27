@@ -63,41 +63,61 @@ export function usePageSEO(currentPage: PageId, selectedArticle: Article | null)
     const targetDescription = isCgmPakistanGuide
       ? 'Explore CGM prices in Pakistan, sensor features, wear time, compatibility, and buying questions. Verify current specifications and consult your healthcare professional.'
       : selectedArticle?.summary || pageMeta.description;
+    const canonicalUrl = selectedArticle
+      ? new URL(`/${selectedArticle.slug}`, window.location.origin).href
+      : new URL(window.location.pathname, window.location.origin).href;
 
     document.title = targetTitle;
 
-    const setMetaContent = (selector: string, attribute: string, content: string, createTag: 'name' | 'property' = 'name') => {
-      let element = document.querySelector(selector);
+    const setMetaContent = (
+      selector: string,
+      content: string,
+      keyAttribute: 'name' | 'property',
+      key: string,
+    ) => {
+      let element = document.querySelector<HTMLMetaElement>(selector);
       if (!element) {
         element = document.createElement('meta');
-        element.setAttribute(createTag, selector.includes('og:') || selector.includes('twitter:') ? selector.match(/["']([^"']+)["']/)?.[1] || '' : selector.match(/["']([^"']+)["']/)?.[1] || '');
+        element.setAttribute(keyAttribute, key);
         document.head.appendChild(element);
       }
-      element.setAttribute(attribute, content);
+      element.setAttribute('content', content);
     };
 
-    setMetaContent('meta[name="description"]', 'content', targetDescription);
-    setMetaContent('meta[property="og:title"]', 'content', targetTitle, 'property');
-    setMetaContent('meta[property="og:description"]', 'content', targetDescription, 'property');
-    setMetaContent('meta[name="twitter:title"]', 'content', targetTitle);
-    setMetaContent('meta[name="twitter:description"]', 'content', targetDescription);
+    setMetaContent('meta[name="description"]', targetDescription, 'name', 'description');
+    setMetaContent('meta[property="og:type"]', selectedArticle ? 'article' : 'website', 'property', 'og:type');
+    setMetaContent('meta[property="og:title"]', targetTitle, 'property', 'og:title');
+    setMetaContent('meta[property="og:description"]', targetDescription, 'property', 'og:description');
+    setMetaContent('meta[property="og:url"]', canonicalUrl, 'property', 'og:url');
+    setMetaContent('meta[name="twitter:card"]', 'summary_large_image', 'name', 'twitter:card');
+    setMetaContent('meta[name="twitter:title"]', targetTitle, 'name', 'twitter:title');
+    setMetaContent('meta[name="twitter:description"]', targetDescription, 'name', 'twitter:description');
 
-    const canonicalUrl = `${window.location.origin}${window.location.pathname}`;
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    const socialImage = new URL(
+      selectedArticle?.imageUrl || '/assets/images/cgm_monitoring.png',
+      window.location.origin,
+    ).href;
+    setMetaContent('meta[property="og:image"]', socialImage, 'property', 'og:image');
+    setMetaContent(
+      'meta[property="og:image:alt"]',
+      selectedArticle?.title || 'MyGlucoGuide diabetes education and glucose awareness',
+      'property',
+      'og:image:alt',
+    );
+    setMetaContent('meta[name="twitter:image"]', socialImage, 'name', 'twitter:image');
+    setMetaContent(
+      'meta[name="twitter:image:alt"]',
+      selectedArticle?.title || 'MyGlucoGuide diabetes education and glucose awareness',
+      'name',
+      'twitter:image:alt',
+    );
+
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
+      canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', canonicalUrl);
-
-    if (isCgmPakistanGuide) {
-      setMetaContent('meta[property="og:url"]', 'content', canonicalUrl, 'property');
-      const socialImage = new URL('/assets/images/cgm_monitoring.png', window.location.origin).href;
-      setMetaContent('meta[property="og:image"]', 'content', socialImage, 'property');
-      setMetaContent('meta[name="twitter:image"]', 'content', socialImage);
-      setMetaContent('meta[property="og:image:alt"]', 'content', 'Continuous glucose monitoring educational guide for Pakistan', 'property');
-      setMetaContent('meta[name="twitter:image:alt"]', 'content', 'Continuous glucose monitoring educational guide for Pakistan');
-    }
+    canonical.href = canonicalUrl;
   }, [currentPage, selectedArticle]);
 }
