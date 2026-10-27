@@ -19,6 +19,7 @@ import { PageId, Article } from '../types';
 import { ARTICLES } from '../data/articles';
 import { InteractiveGlucoseGraph } from '../components/InteractiveGlucoseGraph';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
+import { PurchaseView } from './PurchaseView';
 
 interface HomeViewProps {
   onNavigate: (page: PageId) => void;
@@ -481,6 +482,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Direct CGM order form integrated into the homepage */}
+      <section id="home-order-cgm" aria-label="Order EvoCheck CGM" className="scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Order Directly</p>
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-fg mt-2">Order EvoCheck Premium LinX CGM</h2>
+          <p className="text-sm sm:text-base text-fg-3 mt-3 max-w-2xl mx-auto">No need to open a separate purchase page. Complete the order form here and continue on WhatsApp.</p>
+        </div>
+        <PurchaseView onOpenWhatsApp={onOpenWhatsApp} />
       </section>
 
       {/* 7. LARGE WHATSAPP CTA */}
