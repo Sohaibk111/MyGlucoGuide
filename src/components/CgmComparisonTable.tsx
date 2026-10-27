@@ -18,13 +18,13 @@ export const CgmComparisonTable: React.FC = () => {
     {
       feature: 'Trend Direction & Velocity',
       traditional: 'Displays current numerical reading without directional trend indication',
-      cgm: 'Real-time arrows indicate whether glucose is rising, falling, or remaining stable',
+      cgm: 'Some devices display trend arrows to indicate whether glucose is rising, falling, or remaining stable',
       advantage: 'cgm',
     },
     {
       feature: 'Overnight & Sleep Observation',
       traditional: 'Requires waking up and manual blood testing',
-      cgm: 'Monitors continuously during sleep; customizable alerts can signal high or low thresholds',
+      cgm: 'Can provide overnight readings; alert availability and settings depend on the specific device',
       advantage: 'cgm',
     },
     {
@@ -36,7 +36,7 @@ export const CgmComparisonTable: React.FC = () => {
     {
       feature: 'Pattern Insights',
       traditional: 'Provides discrete data points requiring manual logging and interpretation',
-      cgm: 'Generates comprehensive 24-hour ambulatory glucose profile (AGP) curves and time in range',
+      cgm: 'May provide glucose pattern reports and time-in-range summaries, depending on device and app',
       advantage: 'cgm',
     },
     {
@@ -54,7 +54,7 @@ export const CgmComparisonTable: React.FC = () => {
           Objective Educational Comparison: Blood Glucose Meter vs. Continuous Glucose Monitor (CGM)
         </h3>
         <p className="text-xs sm:text-sm text-fg-3 mt-1">
-          Both tools offer distinct clinical advantages. Understanding their complementary roles helps you have informed conversations with your healthcare provider.
+          Both tools provide different kinds of information. Features vary by CGM model; consult its current instructions and your healthcare professional.
         </p>
       </div>
 
