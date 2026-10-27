@@ -98,7 +98,7 @@ export default function App() {
     const message = encodeURIComponent(
       'Assalam-o-Alaikum MyGlucoGuide, mujhe glucose awareness aur CGM options ke bare mein maloomat chahiye.'
     );
-    const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '923083280568').trim();
+    const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
     if (/^\\d{8,15}$/.test(configuredNumber)) {
       window.open(`https://wa.me/${configuredNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
     }
