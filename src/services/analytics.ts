@@ -164,13 +164,7 @@ export function trackEvent(
     // or event parameters to Meta from this educational health website.
     // If enabled for an approved configuration, only a generic PageView is sent at init.
 
-    // Trigger standard dataLayer push for GTM if available
-    if (isMetaTrackingEnabled() && Array.isArray(window.dataLayer)) {
-      window.dataLayer.push({
-        event: eventName,
-        ...mergedParams,
-      });
-    }
+    // Do not forward website interaction events to third-party tag managers.
 
     // Dispatch DOM event for custom integrations
     window.dispatchEvent(
