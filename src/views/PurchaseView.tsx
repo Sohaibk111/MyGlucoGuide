@@ -3,7 +3,7 @@ import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react'
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
-  const [form, setForm] = useState({ name: '', age: '', diabetesType: '', medication: '', mobile: '', address: '', city: '' });
+  const [form, setForm] = useState({ name: '', mobile: '', address: '', city: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const update = (field: keyof typeof form, value: string) => setForm(prev => ({ ...prev, [field]: value }));
   const order = (e?: React.FormEvent) => {
@@ -23,12 +23,9 @@ I would like to order EvoCheck Premium LinX CGM.
 
 Order Details:
 1. Patient Name: ${form.name}
-2. Patient Age: ${form.age}
-3. Diabetes Type: ${form.diabetesType}
-4. Current Medication: ${form.medication}
-5. Mobile Number: ${form.mobile}
-6. Complete Address: ${form.address}
-7. City / Location: ${form.city}
+2. Mobile Number: ${form.mobile}
+3. Complete Address: ${form.address}
+4. City / Location: ${form.city}
 
 Once we receive your details, we will guide you through the order process and next steps.
 
@@ -70,9 +67,6 @@ MyGlucoGuide`);
         <div><p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Direct Order</p><h2 className="text-2xl sm:text-3xl font-extrabold text-fg mt-1">Order EvoCheck CGM</h2><p className="text-sm text-fg-3 mt-2">Enter your details below. Your order message will open on WhatsApp when you submit the form.</p></div>
         <form onSubmit={order} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label className="space-y-1 text-sm font-semibold text-fg">Patient Name *<input className={fieldClass} value={form.name} onChange={e=>update('name',e.target.value)} placeholder="Patient name" required /></label>
-          <label className="space-y-1 text-sm font-semibold text-fg">Patient Age<input className={fieldClass} value={form.age} onChange={e=>update('age',e.target.value)} placeholder="Age" /></label>
-          <label className="space-y-1 text-sm font-semibold text-fg">Diabetes Type<input className={fieldClass} value={form.diabetesType} onChange={e=>update('diabetesType',e.target.value)} placeholder="Diabetes type (optional)" /></label>
-          <label className="space-y-1 text-sm font-semibold text-fg">Current Medication<input className={fieldClass} value={form.medication} onChange={e=>update('medication',e.target.value)} placeholder="Current medication (optional)" /></label>
           <label className="space-y-1 text-sm font-semibold text-fg">Mobile Number *<input type="tel" className={fieldClass} value={form.mobile} onChange={e=>update('mobile',e.target.value)} placeholder="03XXXXXXXXX" required /></label>
           <label className="space-y-1 text-sm font-semibold text-fg">City / Location *<input className={fieldClass} value={form.city} onChange={e=>update('city',e.target.value)} placeholder="City" required /></label>
           <label className="space-y-1 text-sm font-semibold text-fg sm:col-span-2">Complete Address *<textarea className={fieldClass} rows={3} value={form.address} onChange={e=>update('address',e.target.value)} placeholder="House, street, area..." required /></label>
