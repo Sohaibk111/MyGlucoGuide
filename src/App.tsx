@@ -63,6 +63,7 @@ export default function App() {
     return ARTICLES.find((article) => article.slug === path) || null;
   });
   const [isSourcesOpen, setIsSourcesOpen] = useState(false);
+  const [articleReturnUrl, setArticleReturnUrl] = useState<string | null>(null);
 
   usePageSEO(currentPage, selectedArticle);
   useStructuredData(currentPage, selectedArticle);
@@ -80,6 +81,7 @@ export default function App() {
       const article = ARTICLES.find((item) => item.slug === path) || null;
       setCurrentPage(page);
       setSelectedArticle(article);
+      setArticleReturnUrl(null);
     };
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleLocationChange);
@@ -131,8 +133,9 @@ export default function App() {
             onNavigate={handleNavigate}
             onOpenWhatsApp={handleOpenWhatsApp}
             onSelectArticle={(art) => {
+              setArticleReturnUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
               setSelectedArticle(art);
-              window.history.pushState(null, '', `/${art.slug}`);
+              window.history.pushState({ articleSlug: art.slug }, '', `/${art.slug}`);
             }}
           />
         )}
@@ -151,8 +154,9 @@ export default function App() {
               onNavigate={handleNavigate}
               onOpenWhatsApp={handleOpenWhatsApp}
               onSelectArticle={(art) => {
+                setArticleReturnUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
                 setSelectedArticle(art);
-                window.history.pushState(null, '', `/${art.slug}`);
+                window.history.pushState({ articleSlug: art.slug }, '', `/${art.slug}`);
               }}
             />
           )}
@@ -167,8 +171,9 @@ export default function App() {
           {currentPage === 'blog' && (
             <BlogView
               onSelectArticle={(art) => {
+                setArticleReturnUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
                 setSelectedArticle(art);
-                window.history.pushState(null, '', `/${art.slug}`);
+                window.history.pushState({ articleSlug: art.slug }, '', `/${art.slug}`);
               }}
               onOpenWhatsApp={handleOpenWhatsApp}
             />
@@ -225,7 +230,9 @@ export default function App() {
         article={selectedArticle}
         onClose={() => {
           setSelectedArticle(null);
-          window.history.pushState(null, '', '/blog');
+          const returnUrl = articleReturnUrl || '/blog';
+          setArticleReturnUrl(null);
+          window.history.pushState(null, '', returnUrl);
         }}
         onOpenWhatsApp={handleOpenWhatsApp}
       />
