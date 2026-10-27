@@ -80,13 +80,25 @@ export function useStructuredData(currentPage: PageId, selectedArticle: Article 
     }
 
     if (selectedArticle) {
+      const articleUrl = `${window.location.origin}/${selectedArticle.slug}`;
       const articleSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: selectedArticle.title,
         description: selectedArticle.summary,
         datePublished: formatIsoDate(selectedArticle.date),
+        dateModified: formatIsoDate(selectedArticle.date),
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': articleUrl,
+        },
+        url: articleUrl,
+        inLanguage: 'en-PK',
         articleSection: selectedArticle.category,
+        author: {
+          '@type': 'Organization',
+          name: 'MyGlucoGuide Editorial Team',
+        },
         publisher: {
           '@type': 'Organization',
           name: 'MyGlucoGuide',
@@ -94,7 +106,7 @@ export function useStructuredData(currentPage: PageId, selectedArticle: Article 
       };
 
       if (selectedArticle.imageUrl) {
-        articleSchema.image = [selectedArticle.imageUrl];
+        articleSchema.image = [new URL(selectedArticle.imageUrl, window.location.origin).href];
       }
 
       setOrUpdateScript(ARTICLE_SCHEMA_ID, articleSchema);
