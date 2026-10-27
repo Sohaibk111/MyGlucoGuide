@@ -100,6 +100,14 @@ export const CgmView: React.FC<CgmViewProps> = ({
               <span>How It Works</span>
               <ArrowRight className="w-4 h-4 text-fg-4" />
             </button>
+
+            <button
+              onClick={() => onNavigate('purchase')}
+              className="inline-flex items-center gap-1.5 px-5 py-3.5 rounded-full text-sm font-semibold text-white bg-sky-700 hover:bg-sky-800 transition cursor-pointer"
+            >
+              <span>View Product & Order</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
