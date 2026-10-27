@@ -91,8 +91,10 @@ export default function App() {
 
   const handleNavigate = (page: PageId) => {
     setCurrentPage(page);
-    if (window.location.hash !== (page === 'home' ? '' : `#${page}`)) {
-      window.history.pushState(null, '', page === 'home' ? window.location.pathname : `#${page}`);
+    const targetPath = page === 'home' ? '/' : `/${page}`;
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    if (currentPath !== targetPath || window.location.hash) {
+      window.history.pushState(null, '', targetPath);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
