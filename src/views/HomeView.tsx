@@ -233,6 +233,40 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </section>
 
+      {/* CGM awareness box for visitors arriving from educational ads */}
+      <section aria-labelledby="glucose-awareness-title" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+        <div className="rounded-3xl border border-sky-200 dark:border-sky-400/25 bg-sky-50/80 dark:bg-sky-400/10 p-6 sm:p-9">
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Glucose Awareness</p>
+            <h2 id="glucose-awareness-title" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-fg">
+              Understand Glucose Trends with CGM
+            </h2>
+            <p className="text-sm sm:text-base text-fg-2 leading-relaxed">
+              Learn how continuous glucose monitoring works and how glucose trends may support informed conversations with a healthcare professional. Explore the basics or ask our team a question on WhatsApp.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 pt-1">
+              <button
+                onClick={handleCgmLearnMore}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-sky-700 hover:bg-sky-800 transition cursor-pointer"
+              >
+                <span>Learn How CGM Works</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handlePrimaryWhatsApp}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-emerald-800 dark:text-emerald-100 bg-white dark:bg-surface border border-emerald-200 dark:border-emerald-400/25 hover:bg-emerald-50 dark:hover:bg-emerald-400/10 transition cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Ask on WhatsApp</span>
+              </button>
+            </div>
+            <p className="text-xs text-fg-4">
+              Educational information only. CGM suitability depends on the device’s approved indication and advice from a qualified healthcare professional.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 2. WHAT IS MYGLUCOGUIDE? */}
       <section className="bg-surface-2/80 py-16 border-y border-line/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
