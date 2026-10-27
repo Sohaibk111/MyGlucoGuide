@@ -54,21 +54,32 @@ export function usePageSEO(currentPage: PageId, selectedArticle: Article | null)
     if (typeof document === 'undefined') return;
 
     const pageMeta = PAGE_SEO_METADATA[currentPage] || PAGE_SEO_METADATA.home;
-    const targetTitle = selectedArticle
-      ? `${selectedArticle.title} | MyGlucoGuide`
-      : pageMeta.title;
-    const targetDescription = selectedArticle?.summary || pageMeta.description;
+    const isCgmPakistanGuide = selectedArticle?.slug === 'cgm-pakistan-price-comparison';
+    const targetTitle = isCgmPakistanGuide
+      ? 'CGM in Pakistan: Prices, Features & Buying Guide | MyGlucoGuide'
+      : selectedArticle
+        ? `${selectedArticle.title} | MyGlucoGuide`
+        : pageMeta.title;
+    const targetDescription = isCgmPakistanGuide
+      ? 'Explore CGM prices in Pakistan, sensor features, wear time, compatibility, and buying questions. Verify current specifications and consult your healthcare professional.'
+      : selectedArticle?.summary || pageMeta.description;
 
     document.title = targetTitle;
 
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', targetDescription);
-    } else {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', targetDescription);
-      document.head.appendChild(metaDescription);
-    }
+    const setMetaContent = (selector: string, attribute: string, content: string, createTag: 'name' | 'property' = 'name') => {
+      let element = document.querySelector(selector);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(createTag, selector.includes('og:') || selector.includes('twitter:') ? selector.match(/["']([^"']+)["']/)?.[1] || '' : selector.match(/["']([^"']+)["']/)?.[1] || '');
+        document.head.appendChild(element);
+      }
+      element.setAttribute(attribute, content);
+    };
+
+    setMetaContent('meta[name="description"]', 'content', targetDescription);
+    setMetaContent('meta[property="og:title"]', 'content', targetTitle, 'property');
+    setMetaContent('meta[property="og:description"]', 'content', targetDescription, 'property');
+    setMetaContent('meta[name="twitter:title"]', 'content', targetTitle);
+    setMetaContent('meta[name="twitter:description"]', 'content', targetDescription);
   }, [currentPage, selectedArticle]);
 }
