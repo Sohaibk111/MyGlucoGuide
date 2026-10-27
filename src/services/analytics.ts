@@ -13,6 +13,16 @@ declare global {
 const UTM_STORAGE_KEY = 'myglucoguide_utm_params';
 
 /**
+ * Meta tracking is deliberately opt-in. Keep it disabled while the dataset
+ * category/restriction review is pending and until outbound events are audited.
+ * Set VITE_META_PIXEL_ENABLED="true" only after reviewing Meta's decision and
+ * confirming that all events/parameters comply with the restrictions shown.
+ */
+function isMetaTrackingEnabled(): boolean {
+  return import.meta.env.VITE_META_PIXEL_ENABLED === 'true';
+}
+
+/**
  * Extract and preserve UTM parameters from current URL into sessionStorage
  */
 export function initUtmTracking(): UtmParameters {
@@ -76,7 +86,7 @@ export function getPreservedUtms(): UtmParameters {
  * If absent, functions normally as a no-op without errors.
  */
 export function initMetaPixel(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || !isMetaTrackingEnabled()) return;
 
   const pixelId = import.meta.env.VITE_META_PIXEL_ID;
   if (!pixelId || typeof pixelId !== 'string' || pixelId.trim() === '') {
@@ -114,7 +124,7 @@ export function initMetaPixel(): void {
   }
 
   try {
-    if (typeof window.fbq === 'function') {
+    if (isMetaTrackingEnabled() && typeof window.fbq === 'function') {
       window.fbq('init', cleanId);
       window.fbq('track', 'PageView');
     }
@@ -180,7 +190,7 @@ export function trackEvent(
     }
 
     // Trigger standard dataLayer push for GTM if available
-    if (Array.isArray(window.dataLayer)) {
+    if (isMetaTrackingEnabled() && Array.isArray(window.dataLayer)) {
       window.dataLayer.push({
         event: eventName,
         ...mergedParams,
