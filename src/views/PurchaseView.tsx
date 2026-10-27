@@ -45,7 +45,7 @@ MyGlucoGuide`);
       ctaIdentifier: 'submit-order-whatsapp',
     });
     const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '').trim();
-    if (/^\\d{8,15}$/.test(configuredNumber)) {
+    if (/^\d{8,15}$/.test(configuredNumber)) {
       window.open(`https://wa.me/${configuredNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
     } else {
       onOpenWhatsApp('purchase_order_form');
