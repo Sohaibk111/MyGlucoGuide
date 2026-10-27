@@ -44,7 +44,12 @@ MyGlucoGuide`);
       page: 'purchase',
       ctaIdentifier: 'submit-order-whatsapp',
     });
-    window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
+    const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '923083280568').trim();
+    if (/^\\d{8,15}$/.test(configuredNumber)) {
+      window.open(`https://wa.me/${configuredNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    } else {
+      onOpenWhatsApp('purchase_order_form');
+    }
     window.setTimeout(() => setIsSubmitting(false), 1500);
   };
 
@@ -70,7 +75,11 @@ MyGlucoGuide`);
           <label className="space-y-1 text-sm font-semibold text-fg">Mobile Number *<input type="tel" className={fieldClass} value={form.mobile} onChange={e=>update('mobile',e.target.value)} placeholder="03XXXXXXXXX" required /></label>
           <label className="space-y-1 text-sm font-semibold text-fg">City / Location *<input className={fieldClass} value={form.city} onChange={e=>update('city',e.target.value)} placeholder="City" required /></label>
           <label className="space-y-1 text-sm font-semibold text-fg sm:col-span-2">Complete Address *<textarea className={fieldClass} rows={3} value={form.address} onChange={e=>update('address',e.target.value)} placeholder="House, street, area..." required /></label>
-          <div className="sm:col-span-2"><button type="submit" disabled={isSubmitting} className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 disabled:opacity-60 disabled:cursor-not-allowed text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> {isSubmitting ? 'Opening WhatsApp…' : 'Submit Order on WhatsApp'}</button><p className="text-xs text-fg-3 mt-2">You can review your details before sharing them on WhatsApp.</p></div>
+          <div className="sm:col-span-2 rounded-xl border border-sky-200 dark:border-sky-400/20 bg-sky-50/70 dark:bg-sky-400/5 p-4">
+            <p className="text-sm font-semibold text-fg">Your privacy</p>
+            <p className="text-xs text-fg-3 mt-1 leading-relaxed">Submitting opens WhatsApp with the details you entered. This website does not store these form details. Please do not include medical history or other sensitive health information in your order message. Review the message before choosing to send it.</p>
+          </div>
+          <div className="sm:col-span-2"><button type="submit" disabled={isSubmitting} className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-800 disabled:opacity-60 disabled:cursor-not-allowed text-white px-6 py-3.5 font-semibold shadow-sm"><MessageCircle className="w-5 h-5"/> {isSubmitting ? 'Opening WhatsApp…' : 'Continue on WhatsApp'}</button><p className="text-xs text-fg-3 mt-2">No order is confirmed until our team confirms availability, delivery, and payment details.</p></div>
         </form>
       </section>
       <section className="grid sm:grid-cols-2 gap-5">
