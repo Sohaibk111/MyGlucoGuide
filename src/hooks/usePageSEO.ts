@@ -81,5 +81,18 @@ export function usePageSEO(currentPage: PageId, selectedArticle: Article | null)
     setMetaContent('meta[property="og:description"]', 'content', targetDescription, 'property');
     setMetaContent('meta[name="twitter:title"]', 'content', targetTitle);
     setMetaContent('meta[name="twitter:description"]', 'content', targetDescription);
+
+    const canonicalUrl = `${window.location.origin}${window.location.pathname}`;
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
+
+    if (isCgmPakistanGuide) {
+      setMetaContent('meta[property="og:url"]', 'content', canonicalUrl, 'property');
+    }
   }, [currentPage, selectedArticle]);
 }
