@@ -60,9 +60,9 @@ MyGlucoGuide`);
         <div className="space-y-5">
           <p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Purchase & Availability</p>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-fg">EvoCheck Premium LinX CGM</h1>
-          <p className="text-fg-2 leading-relaxed">Continuous glucose monitoring to help you understand glucose trends and patterns. Available with free doorstep delivery and installation. Fill in the order form below to continue on WhatsApp.</p>
-          <div className="inline-flex flex-col gap-1 rounded-2xl border-2 border-sky-500 bg-sky-50 dark:bg-sky-950/40 px-5 py-4 shadow-sm"><span className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Price</span><span className="text-4xl sm:text-5xl font-black text-slate-950 dark:text-white">PKR 12,900</span><span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Free doorstep delivery + installation</span></div>
-          <div className="flex flex-wrap gap-2"><div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-400/10 text-emerald-800 dark:text-emerald-200 px-3 py-2 text-sm font-semibold"><CheckCircle2 className="w-4 h-4"/> Available</div><div className="inline-flex items-center gap-2 rounded-full bg-sky-50 dark:bg-sky-400/10 text-sky-800 dark:text-sky-200 px-3 py-2 text-sm font-semibold"><Package className="w-4 h-4"/> Free Doorstep Delivery</div><div className="inline-flex items-center gap-2 rounded-full bg-sky-50 dark:bg-sky-400/10 text-sky-800 dark:text-sky-200 px-3 py-2 text-sm font-semibold"><CheckCircle2 className="w-4 h-4"/> Free Installation</div></div>
+          <p className="text-fg-2 leading-relaxed">Continuous glucose monitoring to help you understand glucose trends and patterns. The current price shown is PKR 12,900. Confirm availability, delivery, installation, and final terms with the team before completing your order.</p>
+          <div className="inline-flex flex-col gap-1 rounded-2xl border-2 border-sky-500 bg-sky-50 dark:bg-sky-950/40 px-5 py-4 shadow-sm"><span className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Price</span><span className="text-4xl sm:text-5xl font-black text-slate-950 dark:text-white">PKR 12,900</span><span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Confirm delivery and installation with the team</span></div>
+          <div className="flex flex-wrap gap-2"></div>
         </div>
         <div className="rounded-3xl overflow-hidden border border-line bg-surface aspect-[4/3]">
           <img src="/assets/images/EVOcheck%20CGM%20Product%20Hero%20Scene.png" alt="EvoCheck Premium LinX CGM product box and sensor" className="w-full h-full object-contain"/>
@@ -83,7 +83,7 @@ MyGlucoGuide`);
         </form>
       </section>
       <section className="grid sm:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-line bg-surface p-6 space-y-3"><Package className="w-6 h-6 text-sky-600"/><h2 className="font-bold text-lg text-fg">Order & Delivery</h2><p className="text-sm text-fg-3 leading-relaxed">Free doorstep delivery and installation are included. Our team will confirm your details and payment information before finalizing.</p></div>
+        <div className="rounded-2xl border border-line bg-surface p-6 space-y-3"><Package className="w-6 h-6 text-sky-600"/><h2 className="font-bold text-lg text-fg">Order & Delivery</h2><p className="text-sm text-fg-3 leading-relaxed">Our team will confirm availability, delivery arrangements, installation options, and payment information before finalizing.</p></div>
         <div className="rounded-2xl border border-line bg-surface p-6 space-y-3"><ShieldCheck className="w-6 h-6 text-sky-600"/><h2 className="font-bold text-lg text-fg">Important Information</h2><p className="text-sm text-fg-3 leading-relaxed">CGM is a glucose monitoring tool, not a diagnostic test or treatment. Please consult your healthcare professional for personal medical decisions and follow product instructions.</p></div>
       </section>
     </div>
