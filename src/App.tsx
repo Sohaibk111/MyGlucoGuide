@@ -166,7 +166,10 @@ export default function App() {
 
           {currentPage === 'blog' && (
             <BlogView
-              onSelectArticle={(art) => setSelectedArticle(art)}
+              onSelectArticle={(art) => {
+                setSelectedArticle(art);
+                window.history.pushState(null, '', `/${art.slug}`);
+              }}
               onOpenWhatsApp={handleOpenWhatsApp}
             />
           )}
