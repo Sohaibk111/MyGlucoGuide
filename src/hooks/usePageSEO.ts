@@ -93,6 +93,11 @@ export function usePageSEO(currentPage: PageId, selectedArticle: Article | null)
 
     if (isCgmPakistanGuide) {
       setMetaContent('meta[property="og:url"]', 'content', canonicalUrl, 'property');
+      const socialImage = new URL('/assets/images/cgm_monitoring.png', window.location.origin).href;
+      setMetaContent('meta[property="og:image"]', 'content', socialImage, 'property');
+      setMetaContent('meta[name="twitter:image"]', 'content', socialImage);
+      setMetaContent('meta[property="og:image:alt"]', 'content', 'Continuous glucose monitoring educational guide for Pakistan', 'property');
+      setMetaContent('meta[name="twitter:image:alt"]', 'content', 'Continuous glucose monitoring educational guide for Pakistan');
     }
   }, [currentPage, selectedArticle]);
 }
