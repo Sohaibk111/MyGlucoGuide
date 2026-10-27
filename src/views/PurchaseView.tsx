@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, CheckCircle2, ShieldCheck, Package } from 'lucide-react';
+import { MessageCircle, ShieldCheck, Package } from 'lucide-react';
 import { trackEvent, trackWhatsAppClick } from '../services/analytics';
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
