@@ -229,10 +229,16 @@ export default function App() {
       <ArticleModal
         article={selectedArticle}
         onClose={() => {
+          if (articleReturnUrl) {
+            // Return to the page that opened the article without adding a duplicate history entry.
+            window.history.back();
+            return;
+          }
+
+          // A directly opened article has no in-app return entry, so send it to the blog.
           setSelectedArticle(null);
-          const returnUrl = articleReturnUrl || '/blog';
           setArticleReturnUrl(null);
-          window.history.pushState(null, '', returnUrl);
+          window.history.replaceState(null, '', '/blog');
         }}
         onOpenWhatsApp={handleOpenWhatsApp}
       />
