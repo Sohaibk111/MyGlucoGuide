@@ -20,9 +20,6 @@ const FaqView = lazy(() => import('./views/FaqView').then((m) => ({ default: m.F
 const ContactView = lazy(() => import('./views/ContactView').then((m) => ({ default: m.ContactView })));
 const PurchaseView = lazy(() => import('./views/PurchaseView').then((m) => ({ default: m.PurchaseView })));
 
-// Lazy-load QA/Developer tool only
-const AnalyticsInspector = lazy(() => import('./components/AnalyticsInspector').then((m) => ({ default: m.AnalyticsInspector })));
-
 function ViewLoadingFallback() {
   return (
     <div
@@ -57,7 +54,6 @@ export default function App() {
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [whatsAppSource, setWhatsAppSource] = useState('direct');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
   const [isSourcesOpen, setIsSourcesOpen] = useState(false);
 
   usePageSEO(currentPage, selectedArticle);
@@ -77,24 +73,7 @@ export default function App() {
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleLocationChange);
 
-    // Internal QA only: developer keyboard shortcut (Ctrl+Shift+A) or window.__openAnalyticsInspector()
-    const handleDevShortcut = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
-        e.preventDefault();
-        setIsAnalyticsOpen((prev) => !prev);
-      }
-    };
-    (window as unknown as { __openAnalyticsInspector?: () => void }).__openAnalyticsInspector = () => {
-      setIsAnalyticsOpen(true);
-    };
-    window.addEventListener('keydown', handleDevShortcut);
 
-    return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-      window.removeEventListener('hashchange', handleLocationChange);
-      window.removeEventListener('keydown', handleDevShortcut);
-      delete (window as unknown as { __openAnalyticsInspector?: () => void }).__openAnalyticsInspector;
-    };
   }, []);
 
   const handleNavigate = (page: PageId) => {
@@ -119,7 +98,10 @@ export default function App() {
     const message = encodeURIComponent(
       'Assalam-o-Alaikum MyGlucoGuide, mujhe glucose awareness aur CGM options ke bare mein maloomat chahiye.'
     );
-    window.open(`https://wa.me/923083280568?text=${message}`, '_blank', 'noopener,noreferrer');
+    const configuredNumber = (import.meta.env.VITE_WHATSAPP_NUMBER || '923083280568').trim();
+    if (/^\\d{8,15}$/.test(configuredNumber)) {
+      window.open(`https://wa.me/${configuredNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
@@ -231,15 +213,6 @@ export default function App() {
         onClose={() => setIsSourcesOpen(false)}
       />
 
-      {/* Meta Pixel & Custom Event Inspector (Developer/QA shortcut only: Ctrl+Shift+A) */}
-      {isAnalyticsOpen && (
-        <Suspense fallback={null}>
-          <AnalyticsInspector
-            isOpen={isAnalyticsOpen}
-            onClose={() => setIsAnalyticsOpen(false)}
-          />
-        </Suspense>
-      )}
     </div>
   );
 }
