@@ -130,6 +130,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <span>Explore Diabetes Education</span>
                   <ArrowRight className="w-4 h-4 text-fg-4" />
                 </button>
+
+                <button
+                  onClick={() => {
+                    trackEvent('cta_click', { action: 'hero_order_cgm_scroll', page: 'home' });
+                    document.getElementById('home-order-cgm')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-bold text-white bg-sky-700 hover:bg-sky-800 active:scale-[0.98] transition cursor-pointer"
+                >
+                  <span>Order EvoCheck CGM</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
 
               {/* Patient-focused trust reassurance */}
