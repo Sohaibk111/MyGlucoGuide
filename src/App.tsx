@@ -9,6 +9,7 @@ import { HomeView } from './views/HomeView';
 import { MessageCircle } from 'lucide-react';
 import { initUtmTracking, initMetaPixel, trackWhatsAppClick } from './services/analytics';
 import { usePageSEO } from './hooks/usePageSEO';
+import { ARTICLES } from './data/articles';
 import { useStructuredData } from './hooks/useStructuredData';
 
 // Route-level code splitting: secondary views lazy-loaded on demand
@@ -42,9 +43,12 @@ function getInitialPage(): PageId {
   if (validPages.includes(hash as PageId)) {
     return hash as PageId;
   }
-  const path = window.location.pathname.replace(/^\//, '').toLowerCase();
+  const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').toLowerCase();
   if (validPages.includes(path as PageId)) {
     return path as PageId;
+  }
+  if (ARTICLES.some((article) => article.slug === path)) {
+    return 'blog';
   }
   return 'home';
 }
@@ -53,7 +57,11 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [whatsAppSource, setWhatsAppSource] = useState('direct');
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(() => {
+    if (typeof window === 'undefined') return null;
+    const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').toLowerCase();
+    return ARTICLES.find((article) => article.slug === path) || null;
+  });
   const [isSourcesOpen, setIsSourcesOpen] = useState(false);
 
   usePageSEO(currentPage, selectedArticle);
@@ -68,7 +76,10 @@ export default function App() {
     // Listen for browser navigation (back/forward and hash changes)
     const handleLocationChange = () => {
       const page = getInitialPage();
+      const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').toLowerCase();
+      const article = ARTICLES.find((item) => item.slug === path) || null;
       setCurrentPage(page);
+      setSelectedArticle(article);
     };
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleLocationChange);
@@ -119,7 +130,10 @@ export default function App() {
           <HomeView
             onNavigate={handleNavigate}
             onOpenWhatsApp={handleOpenWhatsApp}
-            onSelectArticle={(art) => setSelectedArticle(art)}
+            onSelectArticle={(art) => {
+              setSelectedArticle(art);
+              window.history.pushState(null, '', `/${art.slug}`);
+            }}
           />
         )}
 
@@ -136,7 +150,10 @@ export default function App() {
             <EducationView
               onNavigate={handleNavigate}
               onOpenWhatsApp={handleOpenWhatsApp}
-              onSelectArticle={(art) => setSelectedArticle(art)}
+              onSelectArticle={(art) => {
+                setSelectedArticle(art);
+                window.history.pushState(null, '', `/${art.slug}`);
+              }}
             />
           )}
 
@@ -203,7 +220,10 @@ export default function App() {
       {/* Article Detail Reading Modal */}
       <ArticleModal
         article={selectedArticle}
-        onClose={() => setSelectedArticle(null)}
+        onClose={() => {
+          setSelectedArticle(null);
+          window.history.pushState(null, '', '/blog');
+        }}
         onOpenWhatsApp={handleOpenWhatsApp}
       />
 
