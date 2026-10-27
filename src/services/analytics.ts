@@ -159,35 +159,10 @@ export function trackEvent(
   if (typeof window !== 'undefined') {
     window._myGlucoEvents = recentEvents;
 
-    // Trigger Meta Pixel (fbq) safely if initialized
-    if (typeof window.fbq === 'function') {
-      try {
-        if (eventName === 'whatsapp_click') {
-          window.fbq('trackCustom', 'WhatsAppInquiry', mergedParams);
-        } else if (eventName === 'contact_form_submission') {
-          window.fbq('track', 'Lead', mergedParams);
-        } else if (eventName === 'cgm_page_view') {
-          window.fbq('trackCustom', 'CGMInterest', mergedParams);
-        } else if (eventName === 'article_view') {
-          window.fbq('track', 'ViewContent', {
-            content_name: mergedParams?.article_title,
-            ...mergedParams,
-          });
-        } else if (eventName === 'purchase_order_submitted') {
-          // Generic order-intent signal only. Never pass patient form data to Meta.
-          window.fbq('track', 'Purchase', {
-            value: mergedParams.value,
-            currency: mergedParams.currency,
-            content_name: mergedParams.content_name,
-            content_type: 'product',
-          });
-        } else {
-          window.fbq('trackCustom', eventName, mergedParams);
-        }
-      } catch (e) {
-        console.warn('Meta Pixel dispatch notice:', e);
-      }
-    }
+    // Meta tracking remains disabled unless explicitly enabled after policy review.
+    // Do not send health-content, article, contact, purchase, or WhatsApp intent events
+    // or event parameters to Meta from this educational health website.
+    // If enabled for an approved configuration, only a generic PageView is sent at init.
 
     // Trigger standard dataLayer push for GTM if available
     if (isMetaTrackingEnabled() && Array.isArray(window.dataLayer)) {
