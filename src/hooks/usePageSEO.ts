@@ -42,6 +42,11 @@ const PAGE_SEO_METADATA: Record<PageId, PageMetadata> = {
     description:
       'Get in touch with MyGlucoGuide for inquiries, educational support, or guidance on diabetes awareness and glucose monitoring resources.',
   },
+  purchase: {
+    title: 'EvoCheck Premium LinX CGM | Product Information & WhatsApp Order',
+    description:
+      'Review EvoCheck Premium LinX CGM product information and submit an order inquiry through WhatsApp. Confirm suitability with a healthcare professional.',
+  },
 };
 
 export function usePageSEO(currentPage: PageId, selectedArticle: Article | null): void {
