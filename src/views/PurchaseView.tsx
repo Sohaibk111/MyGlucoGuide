@@ -60,7 +60,7 @@ MyGlucoGuide`);
         <div className="space-y-5">
           <p className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Purchase & Availability</p>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-fg">EvoCheck Premium LinX CGM</h1>
-          <p className="text-fg-2 leading-relaxed">Continuous glucose monitoring to help you understand glucose trends and patterns. The current price shown is PKR 12,900. Confirm availability, delivery, installation, and final terms with the team before completing your order.</p>
+          <p className="text-fg-2 leading-relaxed">Continuous glucose monitoring to help you understand glucose trends and patterns. The current price is PKR 12,900. The sensor includes a 12-day replacement policy for eligible sensor-related issues, subject to verification and applicable terms. Please confirm availability, delivery, installation, and replacement policy details with our team before completing your order.</p>
           <div className="inline-flex flex-col gap-1 rounded-2xl border-2 border-sky-500 bg-sky-50 dark:bg-sky-950/40 px-5 py-4 shadow-sm"><span className="text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Price</span><span className="text-4xl sm:text-5xl font-black text-slate-950 dark:text-white">PKR 12,900</span><span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Confirm delivery and installation with the team</span></div>
           <div className="flex flex-wrap gap-2"></div>
         </div>
