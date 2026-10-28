@@ -11,6 +11,7 @@ import { initUtmTracking, initMetaPixel, trackWhatsAppClick } from './services/a
 import { usePageSEO } from './hooks/usePageSEO';
 import { ARTICLES } from './data/articles';
 import { useStructuredData } from './hooks/useStructuredData';
+import { SeoInternalLinks } from './components/SeoInternalLinks';
 
 // Route-level code splitting: secondary views lazy-loaded on demand
 const AboutView = lazy(() => import('./views/AboutView').then((m) => ({ default: m.AboutView })));
@@ -194,6 +195,9 @@ export default function App() {
           )}
         </Suspense>
       </main>
+
+      {/* Contextual crawlable links between related pages */}
+      <SeoInternalLinks currentPage={currentPage} selectedArticle={selectedArticle} />
 
       {/* Trustworthy Footer */}
       <Footer
