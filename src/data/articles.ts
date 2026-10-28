@@ -205,7 +205,7 @@ export const ARTICLES: Article[] = [
     summary: 'Researching a CGM in Pakistan? Learn how continuous glucose monitoring works, which device features to compare, what affects CGM prices, and what to discuss with your healthcare professional.',
     date: 'Oct 28, 2026',
     readTime: '8 min read',
-    imageUrl: '/assets/images/cgm_monitoring.png',
+    imageUrl: '/assets/images/evocheck-cgm-pakistan-blog.png',
     keyTakeaways: [
       'CGM stands for continuous glucose monitoring; a wearable sensor measures glucose in interstitial fluid and helps show patterns over time.',
       'CGM prices in Pakistan vary by model, seller, package contents, stock, warranty, and support. Confirm the current total price before purchasing.',
