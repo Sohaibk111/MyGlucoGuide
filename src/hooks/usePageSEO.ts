@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { PageId, Article } from '../types';
+import { SITE_URL } from '../config/site';
 
 interface PageMetadata {
   title: string;
@@ -64,8 +65,8 @@ export function usePageSEO(currentPage: PageId, selectedArticle: Article | null)
       ? 'Explore CGM prices in Pakistan, sensor features, wear time, compatibility, and buying questions. Verify current specifications and consult your healthcare professional.'
       : selectedArticle?.summary || pageMeta.description;
     const canonicalUrl = selectedArticle
-      ? new URL(`/${selectedArticle.slug}`, window.location.origin).href
-      : new URL(window.location.pathname, window.location.origin).href;
+      ? new URL(`/${selectedArticle.slug}`, SITE_URL).href
+      : new URL(window.location.pathname, SITE_URL).href;
 
     document.title = targetTitle;
 
@@ -95,7 +96,7 @@ export function usePageSEO(currentPage: PageId, selectedArticle: Article | null)
 
     const socialImage = new URL(
       selectedArticle?.imageUrl || '/assets/images/cgm_monitoring.png',
-      window.location.origin,
+      SITE_URL,
     ).href;
     setMetaContent('meta[property="og:image"]', socialImage, 'property', 'og:image');
     setMetaContent(

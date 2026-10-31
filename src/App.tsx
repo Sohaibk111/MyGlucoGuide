@@ -7,7 +7,7 @@ import { ArticleModal } from './components/ArticleModal';
 import { SourcesModal } from './components/SourcesModal';
 import { HomeView } from './views/HomeView';
 import { MessageCircle } from 'lucide-react';
-import { initUtmTracking, initMetaPixel, trackWhatsAppClick } from './services/analytics';
+import { initUtmTracking, initMetaPixel, trackWhatsAppClick, hasMetaConsent, setMetaConsent } from './services/analytics';
 import { usePageSEO } from './hooks/usePageSEO';
 import { ARTICLES } from './data/articles';
 import { useStructuredData } from './hooks/useStructuredData';
@@ -57,6 +57,7 @@ function getInitialPage(): PageId {
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
+  const [showMetaConsent, setShowMetaConsent] = useState(() => import.meta.env.VITE_META_PIXEL_ENABLED === 'true' && !hasMetaConsent());
   const [whatsAppSource, setWhatsAppSource] = useState('direct');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(() => {
     if (typeof window === 'undefined') return null;
@@ -224,6 +225,16 @@ export default function App() {
       </div>
 
       {/* WhatsApp Modal */}
+      {showMetaConsent && (
+        <aside role="dialog" aria-label="Optional analytics consent" className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-xl rounded-xl border border-slate-300 bg-white p-4 text-slate-900 shadow-xl">
+          <p className="text-sm">Optional Meta Pixel analytics may measure website activity. The Pixel will not load unless you accept.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button type="button" className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white" onClick={() => { setMetaConsent(true); setShowMetaConsent(false); }}>Accept optional tracking</button>
+            <button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold" onClick={() => { setMetaConsent(false); setShowMetaConsent(false); }}>Decline</button>
+          </div>
+        </aside>
+      )}
+
       <WhatsAppModal
         isOpen={isWhatsAppOpen}
         onClose={() => setIsWhatsAppOpen(false)}
