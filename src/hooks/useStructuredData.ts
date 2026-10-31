@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { PageId, Article } from '../types';
 import { FAQS } from '../data/faqs';
+import { SITE_URL } from '../config/site';
 
 const BASE_SCHEMA_ID = 'structured-data-base';
 const FAQ_SCHEMA_ID = 'structured-data-faq';
@@ -80,7 +81,7 @@ export function useStructuredData(currentPage: PageId, selectedArticle: Article 
     }
 
     if (selectedArticle) {
-      const articleUrl = `${window.location.origin}/${selectedArticle.slug}`;
+      const articleUrl = `${SITE_URL}/${selectedArticle.slug}`;
       const articleSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -106,7 +107,7 @@ export function useStructuredData(currentPage: PageId, selectedArticle: Article 
       };
 
       if (selectedArticle.imageUrl) {
-        articleSchema.image = [new URL(selectedArticle.imageUrl, window.location.origin).href];
+        articleSchema.image = [new URL(selectedArticle.imageUrl, SITE_URL).href];
       }
 
       setOrUpdateScript(ARTICLE_SCHEMA_ID, articleSchema);
