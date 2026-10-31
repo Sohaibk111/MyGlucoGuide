@@ -22,7 +22,9 @@ The repository includes a `vercel.json` SPA rewrite so direct section paths can 
 Add these only when the real values are available:
 
 - `VITE_WHATSAPP_NUMBER`: required for WhatsApp CTA launch. Use the real business number in international digits-only format, 8–15 digits, without `+` or spaces. Do not use an example or placeholder number.
-- `VITE_META_PIXEL_ID`: optional. Leave unset unless Meta tracking is intended and privacy/consent requirements have been reviewed.
+- `VITE_META_PIXEL_ID`: optional numeric Meta Pixel ID.
+- `VITE_META_PIXEL_ENABLED`: optional feature flag. Set to `true` only after privacy/legal review and only if the numeric Pixel ID is configured. The site presents an optional consent prompt; Pixel initialization requires both this flag and accepted consent. Leave unset/false to keep tracking disabled.
+- `VITE_SITE_URL`: optional canonical origin. Defaults to `https://myglucoguide.online`; set only if the production domain changes. Do not set this to a Vercel preview/alias URL.
 
 Do not add private API keys to variables prefixed with `VITE_`; Vite exposes those values to browser code. Do not put email-provider credentials in the frontend. The current contact form opens a prefilled email draft and does not send email from a backend.
 
@@ -31,9 +33,9 @@ The `.env.example` also mentions `GEMINI_API_KEY` and `APP_URL` for a Google AI 
 ### 2a. Current launch choices
 
 - Contact method: keep the existing email-draft flow. The site opens a prefilled draft; the visitor must review it and press Send in their email application.
-- Meta Pixel: disabled. Keep `VITE_META_PIXEL_ID` empty/unset.
+- Meta Pixel: disabled by default. Keep `VITE_META_PIXEL_ENABLED` unset/false and `VITE_META_PIXEL_ID` empty/unset until privacy review and consent behavior are approved.
 - WhatsApp number: the owner has supplied the real business number. Configure that value as `VITE_WHATSAPP_NUMBER` in the hosting provider's project environment settings for **Production** and **Preview** as needed, then trigger a fresh deployment. Do not commit the real number into application source or `.env.example`.
-- Production domain: not confirmed. Use the temporary host URL for initial QA; do not invent canonical URLs.
+- Canonical production domain: `https://myglucoguide.online`. SEO canonical, Open Graph URL, social-image absolute URLs, and Article structured-data URLs use this configured origin, not the current preview host. Confirm DNS/hosting ownership before changing it.
 
 The repository integration reads and validates `VITE_WHATSAPP_NUMBER` at build time. GitHub repository access does not provide the connected hosting provider's environment settings, so the variable still has to be entered in the host dashboard.
 
@@ -58,10 +60,10 @@ No production domain is currently confirmed in this repository.
 - Submit a valid contact form and confirm that it opens an email draft; manually press Send to actually send it.
 - Check mobile navigation, keyboard focus, and horizontal overflow on phone/tablet/desktop sizes.
 - Inspect browser console and Network panel for errors and missing assets.
-- Confirm Meta Pixel is absent when no ID is configured and verify event delivery only if a real pixel is enabled.
+- Confirm Meta Pixel remains absent unless both `VITE_META_PIXEL_ENABLED=true` and a valid numeric ID are configured and the visitor accepts optional tracking. Verify no health, glucose, order-form, or contact details are sent to Meta.
 - Revisit medical references, privacy copy, and product-specific CGM claims before public launch.
 - After domain setup, validate metadata, structured data, robots.txt, and sitemap, then configure Google Search Console.
 
 ## Current limitations
 
-The GitHub Actions type-check and production build passed on commit `b7e70d38bc3bf3446e44abc257e48c65b3fbdeb9` (run [39577280513](https://github.com/Sohaibk111/MyGlucoGuide/actions/runs/39577280513)). Browser-based QA and production smoke tests have not been run. GitHub repository access worked, but cloning from the local container failed because external DNS/network access was unavailable. No production deployment or confirmed production URL was found during this audit.
+The GitHub Actions type-check and production build passed on commit `b7e70d38bc3bf3446e44abc257e48c65b3fbdeb9` (run [39577280513](https://github.com/Sohaibk111/MyGlucoGuide/actions/runs/39577280513)). Browser-based QA and production smoke tests have not been run. GitHub repository access worked, but cloning from the local container failed because external DNS/network access was unavailable. No production deployment was performed. Canonical origin is configured to the project's stated domain `https://myglucoguide.online`; DNS and live production behavior were not verified.
