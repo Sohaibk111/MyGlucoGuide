@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MessageCircle, ShieldCheck, Package } from 'lucide-react';
-import { trackEvent, trackWhatsAppClick } from '../services/analytics';
+import { trackWhatsAppClick } from '../services/analytics';
 
 export const PurchaseView: React.FC<{ onOpenWhatsApp: (source: string) => void }> = ({ onOpenWhatsApp }) => {
   const [form, setForm] = useState({ name: '', mobile: '', address: '', city: '' });
@@ -31,13 +31,7 @@ Once we receive your details, we will guide you through the order process and ne
 
 Thank you! ❤️
 MyGlucoGuide`);
-    // Track only generic order metadata. Never send form fields or health information to Meta.
-    trackEvent('purchase_order_submitted', {
-      value: 12900,
-      currency: 'PKR',
-      content_name: 'EvoCheck Premium LinX CGM',
-      content_type: 'product',
-    });
+    // This is an inquiry/order-intent form, not a completed purchase. Do not emit Purchase.
     // Keep WhatsApp inquiry separate from Purchase and exclude patient data from event params.
     trackWhatsAppClick({
       sourceLocation: 'purchase_order_form',
