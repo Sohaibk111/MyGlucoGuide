@@ -52,6 +52,14 @@ export function getPreservedUtms(): UtmParameters {
   return {};
 }
 
+export function trackMetaPageView(): void {
+  if (typeof window === 'undefined' || !isMetaTrackingEnabled() || !hasMetaConsent()) return;
+  const pixelId = import.meta.env.VITE_META_PIXEL_ID;
+  if (typeof pixelId !== 'string' || !/^\\d+$/.test(pixelId.trim())) return;
+  if (initializedPixelId !== pixelId.trim() || typeof window.fbq !== 'function') return;
+  window.fbq('track', 'PageView');
+}
+
 export function initMetaPixel(): void {
   if (typeof window === 'undefined' || !isMetaTrackingEnabled() || !hasMetaConsent()) return;
   const pixelId = import.meta.env.VITE_META_PIXEL_ID;
