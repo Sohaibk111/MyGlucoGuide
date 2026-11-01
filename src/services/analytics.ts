@@ -13,15 +13,25 @@ const UTM_STORAGE_KEY = 'myglucoguide_utm_params';
 const CONSENT_KEY = 'myglucoguide_meta_consent';
 let initializedPixelId: string | null = null;
 
+export type MetaConsentState = 'accepted' | 'declined' | 'unset';
+
+export function getMetaConsentState(): MetaConsentState {
+  try {
+    if (typeof window === 'undefined') return 'unset';
+    const stored = localStorage.getItem(CONSENT_KEY);
+    return stored === 'accepted' || stored === 'declined' ? stored : 'unset';
+  } catch {
+    return 'unset';
+  }
+}
+
 export function hasMetaConsent(): boolean {
-  try { return typeof window !== 'undefined' && localStorage.getItem(CONSENT_KEY) === 'accepted'; }
-  catch { return false; }
+  return getMetaConsentState() === 'accepted';
 }
 
 export function setMetaConsent(accepted: boolean): void {
   try {
-    if (accepted) localStorage.setItem(CONSENT_KEY, 'accepted');
-    else localStorage.removeItem(CONSENT_KEY);
+    localStorage.setItem(CONSENT_KEY, accepted ? 'accepted' : 'declined');
   } catch { /* storage unavailable: tracking stays off */ }
   if (accepted) initMetaPixel();
 }

@@ -233,6 +233,12 @@ export const Footer: React.FC<FooterProps> = ({
               Privacy Policy
             </button>
             <button
+              onClick={() => window.dispatchEvent(new CustomEvent('myglucoguide:manage-consent'))}
+              className="hover:text-slate-300 transition-colors cursor-pointer"
+            >
+              Privacy Settings
+            </button>
+            <button
               onClick={() => setShowLegalModal('disclaimer')}
               className="hover:text-slate-300 transition-colors cursor-pointer"
             >

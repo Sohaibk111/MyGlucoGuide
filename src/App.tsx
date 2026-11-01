@@ -7,7 +7,7 @@ import { ArticleModal } from './components/ArticleModal';
 import { SourcesModal } from './components/SourcesModal';
 import { HomeView } from './views/HomeView';
 import { MessageCircle } from 'lucide-react';
-import { initUtmTracking, initMetaPixel, trackWhatsAppClick, hasMetaConsent, setMetaConsent } from './services/analytics';
+import { initUtmTracking, initMetaPixel, trackWhatsAppClick, getMetaConsentState, setMetaConsent } from './services/analytics';
 import { usePageSEO } from './hooks/usePageSEO';
 import { ARTICLES } from './data/articles';
 import { useStructuredData } from './hooks/useStructuredData';
@@ -57,7 +57,7 @@ function getInitialPage(): PageId {
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
-  const [showMetaConsent, setShowMetaConsent] = useState(() => import.meta.env.VITE_META_PIXEL_ENABLED === 'true' && !hasMetaConsent());
+  const [showMetaConsent, setShowMetaConsent] = useState(() => import.meta.env.VITE_META_PIXEL_ENABLED === 'true' && getMetaConsentState() === 'unset');
   const [whatsAppSource, setWhatsAppSource] = useState('direct');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(() => {
     if (typeof window === 'undefined') return null;
@@ -87,8 +87,15 @@ export default function App() {
     };
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleLocationChange);
+    const handleManageConsent = () => setShowMetaConsent(true);
+    window.addEventListener('myglucoguide:manage-consent', handleManageConsent);
 
 
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('myglucoguide:manage-consent', handleManageConsent);
+    };
   }, []);
 
   const handleNavigate = (page: PageId) => {
