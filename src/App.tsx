@@ -54,10 +54,16 @@ function getInitialPage(): PageId {
   return 'home';
 }
 
+function getPageViewLocation(): string {
+  if (typeof window === 'undefined') return '';
+  return `${window.location.pathname}${window.location.hash}`;
+}
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
-  // The initial PageView is emitted by initMetaPixel; only track subsequent page changes here.
-  const previousTrackedPage = useRef<PageId>(currentPage);
+  const [pageViewLocation, setPageViewLocation] = useState(getPageViewLocation);
+  // The initial PageView is emitted by initMetaPixel; only track subsequent location changes here.
+  const previousTrackedLocation = useRef(pageViewLocation);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [showMetaConsent, setShowMetaConsent] = useState(() => import.meta.env.VITE_META_PIXEL_ENABLED === 'true' && !hasMetaConsent());
   const [whatsAppSource, setWhatsAppSource] = useState('direct');
@@ -70,10 +76,10 @@ export default function App() {
   const [articleReturnUrl, setArticleReturnUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    if (previousTrackedPage.current === currentPage) return;
-    previousTrackedPage.current = currentPage;
+    if (previousTrackedLocation.current === pageViewLocation) return;
+    previousTrackedLocation.current = pageViewLocation;
     trackMetaPageView();
-  }, [currentPage]);
+  }, [pageViewLocation]);
 
   usePageSEO(currentPage, selectedArticle);
   useStructuredData(currentPage, selectedArticle);
@@ -91,6 +97,7 @@ export default function App() {
       const article = ARTICLES.find((item) => item.slug === path) || null;
       setCurrentPage(page);
       setSelectedArticle(article);
+      setPageViewLocation(getPageViewLocation());
       setArticleReturnUrl(null);
     };
     window.addEventListener('popstate', handleLocationChange);
@@ -105,6 +112,7 @@ export default function App() {
     const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
     if (currentPath !== targetPath || window.location.hash) {
       window.history.pushState(null, '', targetPath);
+      setPageViewLocation(getPageViewLocation());
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -148,6 +156,7 @@ export default function App() {
               setArticleReturnUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
               setSelectedArticle(art);
               window.history.pushState({ articleSlug: art.slug }, '', `/${art.slug}`);
+              setPageViewLocation(getPageViewLocation());
             }}
           />
         )}
@@ -169,6 +178,7 @@ export default function App() {
                 setArticleReturnUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
                 setSelectedArticle(art);
                 window.history.pushState({ articleSlug: art.slug }, '', `/${art.slug}`);
+                setPageViewLocation(getPageViewLocation());
               }}
             />
           )}
@@ -186,6 +196,7 @@ export default function App() {
                 setArticleReturnUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
                 setSelectedArticle(art);
                 window.history.pushState({ articleSlug: art.slug }, '', `/${art.slug}`);
+                setPageViewLocation(getPageViewLocation());
               }}
               onOpenWhatsApp={handleOpenWhatsApp}
             />
@@ -264,6 +275,7 @@ export default function App() {
           setSelectedArticle(null);
           setArticleReturnUrl(null);
           window.history.replaceState(null, '', '/blog');
+          setPageViewLocation(getPageViewLocation());
         }}
         onOpenWhatsApp={handleOpenWhatsApp}
       />
