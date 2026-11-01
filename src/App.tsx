@@ -91,7 +91,11 @@ export default function App() {
     window.addEventListener('myglucoguide:manage-consent', handleManageConsent);
 
 
-    return () => window.removeEventListener('myglucoguide:manage-consent', handleManageConsent);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('myglucoguide:manage-consent', handleManageConsent);
+    };
   }, []);
 
   const handleNavigate = (page: PageId) => {
