@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { PageId, Article } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -7,7 +7,7 @@ import { ArticleModal } from './components/ArticleModal';
 import { SourcesModal } from './components/SourcesModal';
 import { HomeView } from './views/HomeView';
 import { MessageCircle } from 'lucide-react';
-import { initUtmTracking, initMetaPixel, trackWhatsAppClick, hasMetaConsent, setMetaConsent } from './services/analytics';
+import { initUtmTracking, initMetaPixel, trackWhatsAppClick, trackMetaPageView, hasMetaConsent, setMetaConsent } from './services/analytics';
 import { usePageSEO } from './hooks/usePageSEO';
 import { ARTICLES } from './data/articles';
 import { useStructuredData } from './hooks/useStructuredData';
@@ -56,6 +56,8 @@ function getInitialPage(): PageId {
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>(getInitialPage);
+  // The initial PageView is emitted by initMetaPixel; only track subsequent page changes here.
+  const previousTrackedPage = useRef<PageId>(currentPage);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [showMetaConsent, setShowMetaConsent] = useState(() => import.meta.env.VITE_META_PIXEL_ENABLED === 'true' && !hasMetaConsent());
   const [whatsAppSource, setWhatsAppSource] = useState('direct');
@@ -66,6 +68,12 @@ export default function App() {
   });
   const [isSourcesOpen, setIsSourcesOpen] = useState(false);
   const [articleReturnUrl, setArticleReturnUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (previousTrackedPage.current === currentPage) return;
+    previousTrackedPage.current = currentPage;
+    trackMetaPageView();
+  }, [currentPage]);
 
   usePageSEO(currentPage, selectedArticle);
   useStructuredData(currentPage, selectedArticle);
